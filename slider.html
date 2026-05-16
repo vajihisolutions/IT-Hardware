@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#7cb686">
+  <title>Product Carousel | Pure Visual</title>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&display=swap");
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow-x: hidden;
+    }
+
+    body {
+      font-family: "Montserrat", sans-serif;
+      background: #0a0f1a;
+    }
+
+    /* main slider container - fullscreen feel */
+    .slider-main {
+      min-height: 100vh;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      background: radial-gradient(50% 50% at 50% 50%, #c7f6d0 0%, #7cb686 92.19%);
+      transition: background 0.2s;
+    }
+
+    /* animated backgrounds layer */
+    #backgrounds {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: 0;
+    }
+
+    .background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      will-change: opacity;
+    }
+
+    /* image container: full center focus */
+    .slider-images {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      max-height: 850px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      pointer-events: none;
+    }
+
+    /* each product image — identical size, perfectly centered */
+    .slider-image {
+      position: absolute;
+      top: 50%;
+      left: 100%;
+      filter: blur(28px);
+      transform: translate(-50%, -50%) scale(0.3);
+      transition: all 0.9s cubic-bezier(0.23, 1, 0.32, 1);
+      object-fit: contain;
+      width: 380px;
+      height: 380px;
+      max-width: 70vw;
+      max-height: 70vw;
+      pointer-events: none;
+      will-change: transform, filter, opacity;
+    }
+
+    /* active image: crisp, centered, full size */
+    .slider-image.active {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+      filter: blur(0px);
+      left: 50%;
+      top: 50%;
+      z-index: 30;
+    }
+
+    /* previous image (left/behind) */
+    .slider-image.previous {
+      opacity: 0.65;
+      filter: blur(18px);
+      left: 20%;
+      top: 60%;
+      transform: translate(-50%, -50%) scale(0.48);
+      z-index: 15;
+    }
+
+    /* next image (right/upper) */
+    .slider-image.next {
+      opacity: 0.65;
+      filter: blur(18px);
+      left: 80%;
+      top: 40%;
+      transform: translate(-50%, -50%) scale(0.48);
+      z-index: 15;
+    }
+
+    /* hidden inactive images */
+    .slider-image.inactive {
+      opacity: 0;
+      filter: blur(32px);
+      left: 100%;
+      top: 100%;
+      transform: translate(-50%, -50%) scale(0.2);
+      pointer-events: none;
+      z-index: 5;
+    }
+
+    /* PRODUCT NAME - centered below image, pure minimal */
+    .product-name-center {
+      position: absolute;
+      bottom: 12%;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+      z-index: 40;
+      width: 100%;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+    }
+
+    .product-title {
+      font-size: 1.9rem;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+      background: linear-gradient(135deg, #FFFFFF 0%, #F0F0F0 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.1);
+      margin-bottom: 8px;
+    }
+
+    .product-color-badge {
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: rgba(255,255,255,0.85);
+      background: rgba(0,0,0,0.2);
+      backdrop-filter: blur(8px);
+      display: inline-block;
+      padding: 5px 18px;
+      border-radius: 60px;
+      margin-top: 6px;
+      font-weight: 500;
+    }
+
+    /* optional tiny navigation dots (clean but minimal) */
+    .nav-dots {
+      position: absolute;
+      bottom: 5%;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 12px;
+      z-index: 45;
+      background: rgba(0,0,0,0.2);
+      backdrop-filter: blur(5px);
+      padding: 8px 18px;
+      border-radius: 60px;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      background: rgba(255,255,255,0.5);
+      border-radius: 50%;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      pointer-events: auto;
+    }
+
+    .dot.active-dot {
+      background: white;
+      width: 24px;
+      border-radius: 20px;
+    }
+
+    /* responsive: uniform image size on all devices */
+    @media (max-width: 900px) {
+      .slider-image {
+        width: 300px;
+        height: 300px;
+      }
+      .product-title {
+        font-size: 1.5rem;
+      }
+      .product-color-badge {
+        font-size: 0.75rem;
+        padding: 4px 14px;
+      }
+      .nav-dots {
+        bottom: 4%;
+        gap: 8px;
+        padding: 6px 14px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .slider-image {
+        width: 240px;
+        height: 240px;
+      }
+      .product-title {
+        font-size: 1.25rem;
+      }
+      .slider-image.previous {
+        left: 15%;
+        transform: translate(-50%, -50%) scale(0.4);
+      }
+      .slider-image.next {
+        left: 85%;
+        transform: translate(-50%, -50%) scale(0.4);
+      }
+      .product-name-center {
+        bottom: 10%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .slider-image {
+        width: 200px;
+        height: 200px;
+      }
+      .product-title {
+        font-size: 1.1rem;
+      }
+      .product-color-badge {
+        font-size: 0.65rem;
+      }
+      .nav-dots {
+        bottom: 3%;
+      }
+    }
+
+    /* landscape fix */
+    @media (max-aspect-ratio: 1/1) and (orientation: landscape) {
+      .slider-image {
+        width: 210px;
+        height: 210px;
+      }
+      .product-name-center {
+        bottom: 8%;
+      }
+      .product-title {
+        font-size: 1.1rem;
+      }
+    }
+
+    /* remove any extra spacing */
+    .slider-content, .social-icons, .logo, p, h3, .container, .slider-content-wrap {
+      display: none;
+    }
+
+    /* No container text at all */
+    .container, .slider-content-wrap, .slider-content, .social-icons, .logo, .product-description, .product-price {
+      display: none !important;
+    }
+
+    /* But we keep the main slider structure */
+    .slider-main .container {
+      display: none;
+    }
+
+    /* ensure the image container is full width */
+    .slider-main {
+      justify-content: center;
+    }
+  </style>
+</head>
+<body>
+
+<section class="slider-main">
+  <!-- background gradients layer (dynamic per product) -->
+  <div id="backgrounds">
+    <div class="background" style="background: radial-gradient(50% 50% at 50% 50%, #B8E4F9 0%, #3B82F6 92.19%);"></div>
+    <div class="background" style="background: radial-gradient(50% 50% at 50% 50%, #FDE8E0 0%, #E8A87C 100%);"></div>
+    <div class="background" style="background: radial-gradient(50% 50% at 50% 50%, #D1D5DB 0%, #4B5563 100%);"></div>
+    <div class="background" style="background: radial-gradient(50% 50% at 50% 50%, #E5E7EB 0%, #9CA3AF 100%);"></div>
+    <div class="background" style="background: radial-gradient(50% 50% at 50% 50%, #FED7AA 0%, #EA580C 100%);"></div>
+  </div>
+
+  <!-- image carousel zone: all images same dimensions -->
+  <div class="slider-images">
+    <img class="slider-image" src="Apple AirPods Max.png" alt="AirPods Max">
+    <img class="slider-image" src="Galaxy Buds4 Pro.png" alt="Galaxy Buds4 Pro">
+    <img class="slider-image" src="Galaxy Watch 6.png" alt="Galaxy Watch 6">
+    <img class="slider-image" src="HP 15.png" alt="HP 15">
+    <img class="slider-image" src="iPhone - 17.png" alt="iPhone 17">
+  </div>
+
+</section>
+
+<script>
+  (function() {
+    // ---- PRODUCT DATA (only name + color, no price, no description) ----
+    const products = [
+      { name: "Apple AirPods Max", color: "sky blue" },
+      { name: "Galaxy Buds4 Pro", color: "pink gold" },
+      { name: "Galaxy Watch 6", color: "graphite" },
+      { name: "HP 15", color: "silver" },
+      { name: "iPhone 17", color: "orange" }
+    ];
+
+    // DOM elements
+    const backgrounds = document.querySelectorAll('.background');
+    const sliderImages = document.querySelector('.slider-images');
+    const images = Array.from(document.querySelectorAll('.slider-image'));
+    const productNameEl = document.querySelector('.product-title');
+    const productColorEl = document.querySelector('.product-color-badge');
+    const dots = document.querySelectorAll('.dot');
+
+    let currentIndex = 0;
+    let isAnimating = false;
+    let autoInterval = null;
+    const AUTO_DELAY = 3200; // smooth rotation every 3.2 sec
+
+    // Helper: update active classes for images + backgrounds + centered text
+    function updateCarousel(index, immediate = false) {
+      if (isAnimating && !immediate) return;
+      if (!immediate) isAnimating = true;
+
+      // reset all image classes
+      images.forEach(img => {
+        img.classList.remove('active', 'previous', 'next', 'inactive');
+      });
+
+      // assign active, previous, next
+      images[index].classList.add('active');
+
+      const prevIndex = (index - 1 + images.length) % images.length;
+      const nextIndex = (index + 1) % images.length;
+
+      images[prevIndex].classList.add('previous');
+      images[nextIndex].classList.add('next');
+
+      // all other images become inactive
+      images.forEach((img, i) => {
+        if (i !== index && i !== prevIndex && i !== nextIndex) {
+          img.classList.add('inactive');
+        }
+      });
+
+      // update gradient backgrounds with crossfade
+      backgrounds.forEach((bg, i) => {
+        if (i === index) {
+          bg.style.opacity = '1';
+          bg.classList.add('active');
+        } else {
+          bg.style.opacity = '0';
+          bg.classList.remove('active');
+        }
+      });
+
+      // update centered product name + color (no extra text)
+      if (productNameEl && productColorEl) {
+        productNameEl.textContent = products[index].name;
+        productColorEl.textContent = products[index].color;
+      }
+
+      // update dot active state
+      dots.forEach((dot, i) => {
+        if (i === index) {
+          dot.classList.add('active-dot');
+        } else {
+          dot.classList.remove('active-dot');
+        }
+      });
+
+      // after transition ends, unlock animation flag
+      if (!immediate) {
+        setTimeout(() => {
+          isAnimating = false;
+        }, 950); // matches transition duration (0.9s)
+      }
+    }
+
+    // go to specific index (with safety)
+    function goToIndex(newIndex) {
+      if (isAnimating) return;
+      if (newIndex === currentIndex) return;
+      if (newIndex < 0) newIndex = images.length - 1;
+      if (newIndex >= images.length) newIndex = 0;
+      
+      currentIndex = newIndex;
+      updateCarousel(currentIndex);
+      
+      // reset auto timer for better UX
+      resetAutoTimer();
+    }
+
+    // next slide (auto rotation)
+    function nextSlide() {
+      if (isAnimating) return;
+      const nextIdx = (currentIndex + 1) % images.length;
+      goToIndex(nextIdx);
+    }
+
+    // reset timer after manual interaction (dot click)
+    function resetAutoTimer() {
+      if (autoInterval) {
+        clearInterval(autoInterval);
+        autoInterval = setInterval(() => {
+          nextSlide();
+        }, AUTO_DELAY);
+      }
+    }
+
+    // attach dot click events
+    dots.forEach((dot, idx) => {
+      dot.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (isAnimating) return;
+        if (idx === currentIndex) return;
+        currentIndex = idx;
+        updateCarousel(currentIndex);
+        resetAutoTimer();
+      });
+    });
+
+    // initial setup
+    function init() {
+      currentIndex = 0;
+      updateCarousel(0, true);
+      // start autoplay
+      autoInterval = setInterval(() => {
+        nextSlide();
+      }, AUTO_DELAY);
+    }
+
+    // optional: prevent transition conflicts on window resize, but keep smoothness
+    window.addEventListener('resize', () => {
+      // no reflow issues, just ensure nothing breaks
+    });
+
+    init();
+  })();
+</script>
+</body>
+</html>
