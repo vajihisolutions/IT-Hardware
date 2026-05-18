@@ -1,0 +1,1371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Titan Pro X1 – IT Hardware Products</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<style>
+/* ── RESET & TOKENS ── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:'DM Sans',sans-serif;background:#f8f9fb;color:#111827;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{text-decoration:none;color:inherit}
+button{font-family:inherit;cursor:pointer;border:none;background:none}
+ul{list-style:none}
+img{display:block;max-width:100%}
+
+:root{
+  --accent:#00C896;
+  --accent-dark:#00a87c;
+  --accent-light:#e6faf4;
+  --star:#f59e0b;
+  --dark:#111827;
+  --dark2:#1f2937;
+  --mid:#6b7280;
+  --lt-mid:#9ca3af;
+  --border:#e5e7eb;
+  --bg:#f8f9fb;
+  --white:#ffffff;
+  --sidebar-w:228px;
+  --header-h:56px;
+  --radius:10px;
+  --shadow-sm:0 1px 4px rgba(0,0,0,.07);
+  --shadow:0 2px 16px rgba(0,0,0,.09);
+  --shadow-lg:0 8px 40px rgba(0,0,0,.13);
+  --tr:.22s cubic-bezier(.4,0,.2,1);
+}
+
+/* ── HEADER ── */
+#header{
+  position:fixed;top:0;left:0;right:0;z-index:300;
+  height:var(--header-h);background:var(--white);
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:center;padding:0 24px;gap:0;
+  box-shadow:var(--shadow-sm);
+}
+.header-logo{font-size:.97rem;font-weight:700;color:var(--dark);letter-spacing:-.3px;white-space:nowrap;margin-left:12px;flex:1}
+.header-nav{display:flex;align-items:center;gap:6px;flex:1}
+.header-nav a{padding:6px 14px;border-radius:6px;font-size:.875rem;font-weight:500;color:var(--mid);transition:background var(--tr),color var(--tr)}
+.header-nav a:hover{background:var(--bg);color:var(--dark)}
+.header-nav a.active{color:var(--accent);font-weight:600}
+.header-right{display:flex;align-items:center;gap:10px;margin-left:auto}
+.search-wrap{display:flex;align-items:center;background:var(--bg);border:1px solid var(--border);border-radius:8px;overflow:hidden;transition:border-color var(--tr),box-shadow var(--tr)}
+.search-wrap:focus-within{border-color:var(--accent);box-shadow:0 0 0 3px rgba(26,86,219,.1)}
+.search-wrap input{background:none;border:none;outline:none;padding:8px 14px;font-family:inherit;font-size:.83rem;color:var(--dark);width:190px}
+.search-wrap input::placeholder{color:var(--lt-mid)}
+.search-wrap button{padding:0 14px;height:36px;background:var(--accent);color:var(--white);font-size:.82rem;display:flex;align-items:center;transition:background var(--tr)}
+.search-wrap button:hover{background:var(--accent-dark)}
+.icon-btn{position:relative;width:38px;height:38px;border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--mid);font-size:1rem;transition:background var(--tr),color var(--tr)}
+.icon-btn:hover{background:var(--bg);color:var(--accent)}
+.badge{position:absolute;top:4px;right:4px;width:16px;height:16px;background:var(--accent);border-radius:50%;font-size:.58rem;font-weight:700;color:var(--white);display:flex;align-items:center;justify-content:center}
+.ham-btn{display:none;width:36px;height:36px;border-radius:8px;align-items:center;justify-content:center;color:var(--dark);font-size:1rem;transition:background var(--tr);flex-shrink:0}
+.ham-btn:hover{background:var(--bg)}
+
+/* ── LAYOUT ── */
+#shell{display:flex;margin-top:var(--header-h);min-height:calc(100vh - var(--header-h))}
+
+/* ── SIDEBAR ── */
+#sidebar{
+  width:var(--sidebar-w);background:var(--white);
+  border-right:1px solid var(--border);
+  position:fixed;
+  top:var(--header-h);
+  left:0;
+  bottom:0;
+  overflow-y:auto;
+  z-index:200;
+  transform:translateX(-100%);
+  transition:none !important;
+}
+#sidebar.open{
+  transform:translateX(0);
+  box-shadow:var(--shadow-lg);
+  scrollbar-width:thin;scrollbar-color:var(--border) transparent;
+}
+#sidebar::-webkit-scrollbar{width:4px}
+#sidebar::-webkit-scrollbar-thumb{background:var(--border);border-radius:4px}
+.sidebar-brand{padding:22px 20px 16px;border-bottom:1px solid var(--border)}
+.sidebar-brand h2{font-size:1rem;font-weight:700;color:var(--dark)}
+.sidebar-brand p{font-size:.75rem;color:var(--mid);margin-top:3px}
+.cat-nav{padding:10px 0;border-bottom:1px solid var(--border)}
+.cat-nav-item{display:flex;align-items:center;gap:12px;padding:11px 20px;font-size:.875rem;font-weight:500;color:var(--mid);cursor:pointer;transition:background var(--tr),color var(--tr);border-left:3px solid transparent}
+.cat-nav-item i{font-size:.85rem;width:18px;text-align:center}
+.cat-nav-item:hover{background:var(--bg);color:var(--dark)}
+.cat-nav-item.active{background:var(--accent-light);color:var(--accent);font-weight:600;border-left-color:var(--accent)}
+.cat-nav-item.active i{color:var(--accent)}
+
+/* ── SIDEBAR OVERLAY ── */
+.sidebar-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:190;backdrop-filter:blur(2px)}
+.sidebar-overlay.show{display:block}
+
+/* ── MAIN ── */
+#main{flex:1;min-width:0;display:flex;flex-direction:column}
+
+/* BREADCRUMB */
+.breadcrumb{display:flex;align-items:center;gap:6px;padding:18px 36px 0;font-size:.8rem;color:var(--mid)}
+.breadcrumb a{color:var(--mid);transition:color var(--tr)}
+.breadcrumb a:hover{color:var(--accent)}
+.breadcrumb .sep{color:var(--border);font-size:.6rem}
+.breadcrumb .current{color:var(--accent);font-weight:500}
+
+/* ── PRODUCT DETAIL ── */
+.product-detail{display:grid;grid-template-columns:1fr 1fr;gap:40px;padding:24px 36px 50px;align-items:start}
+
+/* Gallery */
+.gallery{}
+.main-img-wrap{
+  position:relative;border-radius:var(--radius);overflow:hidden;
+  background:var(--dark2);aspect-ratio:4/3;cursor:zoom-in;
+  animation:fadeIn .5s both;
+}
+@keyframes fadeIn{from{opacity:0;transform:scale(.98)}to{opacity:1;transform:scale(1)}}
+.main-img-wrap img{width:100%;height:100%;object-fit:cover;transition:transform .5s cubic-bezier(.4,0,.2,1)}
+.main-img-wrap:hover img{transform:scale(1.04)}
+.thumbs{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:12px}
+.thumb{
+  border-radius:8px;overflow:hidden;aspect-ratio:4/3;cursor:pointer;
+  border:2px solid transparent;transition:border-color var(--tr),transform var(--tr);
+  background:var(--dark2);
+}
+.thumb img{width:100%;height:100%;object-fit:cover;transition:transform .35s}
+.thumb:hover{transform:translateY(-2px)}
+.thumb:hover img{transform:scale(1.06)}
+.thumb.active{border-color:var(--accent)}
+
+/* Info panel */
+.product-info{animation:slideUp .5s .1s both}
+@keyframes slideUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.product-info h1{font-size:1.65rem;font-weight:700;color:var(--dark);letter-spacing:-.4px;line-height:1.25;margin-bottom:12px}
+.rating-row{display:flex;align-items:center;gap:8px;margin-bottom:18px}
+.stars{display:flex;gap:2px}
+.stars i{color:var(--star);font-size:.85rem}
+.stars i.empty{color:var(--border)}
+.rating-count{font-size:.82rem;color:var(--mid)}
+.price{font-size:2rem;font-weight:700;color:var(--dark);letter-spacing:-.5px;margin-bottom:18px;line-height:1}
+.product-desc{font-size:.88rem;color:var(--mid);line-height:1.75;margin-bottom:24px}
+
+/* Options */
+.option-group{margin-bottom:18px}
+.option-label{font-size:.72rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--mid);margin-bottom:10px}
+.option-btns{display:flex;gap:8px;flex-wrap:wrap}
+.opt-btn{
+  padding:8px 20px;border:1.5px solid var(--border);border-radius:7px;
+  font-size:.875rem;font-weight:500;color:var(--dark);
+  transition:border-color var(--tr),background var(--tr),color var(--tr);
+}
+.opt-btn:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-light)}
+.opt-btn.active{border-color:var(--accent);background:var(--accent-light);color:var(--accent);font-weight:600}
+
+/* Qty + CTA */
+.buy-row{display:flex;align-items:center;gap:12px;margin:24px 0 12px;flex-wrap:wrap}
+.qty-ctrl{display:flex;align-items:center;border:1.5px solid var(--border);border-radius:8px;overflow:hidden}
+.qty-btn{width:36px;height:42px;display:flex;align-items:center;justify-content:center;font-size:.9rem;color:var(--dark);transition:background var(--tr)}
+.qty-btn:hover{background:var(--bg)}
+.qty-val{width:44px;text-align:center;font-size:.9rem;font-weight:600;color:var(--dark);border:none;outline:none;font-family:inherit;background:var(--white);cursor:default}
+.btn-cart{
+  flex:1;padding:12px 20px;background:var(--accent);color:var(--white);
+  border-radius:8px;font-size:.9rem;font-weight:600;
+  display:flex;align-items:center;justify-content:center;gap:9px;
+  transition:background var(--tr),transform var(--tr),box-shadow var(--tr);
+  min-width:160px;
+}
+.btn-cart:hover{background:var(--accent-dark);transform:translateY(-1px);box-shadow:0 4px 18px rgba(26,86,219,.3)}
+.btn-cart:active{transform:translateY(0)}
+.ships-note{font-size:.8rem;color:var(--mid);display:flex;align-items:center;gap:7px}
+.ships-note i{color:var(--green)}
+
+/* ── TABS ── */
+.tabs-section{padding:0 36px 50px;border-top:1px solid var(--border)}
+.tabs-nav{display:flex;gap:0;border-bottom:1px solid var(--border);margin-bottom:36px}
+.tab-btn{
+  padding:14px 24px;font-size:.9rem;font-weight:500;color:var(--mid);
+  border-bottom:2.5px solid transparent;margin-bottom:-1px;
+  transition:color var(--tr),border-color var(--tr);
+  background:none;
+}
+.tab-btn:hover{color:var(--dark)}
+.tab-btn.active{color:var(--accent);font-weight:600;border-bottom-color:var(--accent)}
+
+.tab-panel{display:none;animation:fadeIn .35s both}
+.tab-panel.active{display:block}
+
+/* Overview tab */
+.overview-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.overview-text h2{font-size:1.2rem;font-weight:700;color:var(--dark);margin-bottom:14px}
+.overview-text p{font-size:.88rem;color:var(--mid);line-height:1.75;margin-bottom:20px}
+.feature-list{display:flex;flex-direction:column;gap:10px}
+.feature-item{display:flex;align-items:center;gap:10px;font-size:.875rem;color:var(--dark2)}
+.feature-item i{color:var(--accent);font-size:.9rem;width:18px;text-align:center}
+.overview-img{border-radius:var(--radius);overflow:hidden;background:var(--dark2)}
+.overview-img img{width:100%;aspect-ratio:4/3;object-fit:cover;transition:transform .5s}
+.overview-img:hover img{transform:scale(1.03)}
+
+/* Specs tab */
+.specs-table{width:100%;border-collapse:collapse}
+.specs-table tr{border-bottom:1px solid var(--border)}
+.specs-table tr:last-child{border-bottom:none}
+.specs-table td{padding:12px 16px;font-size:.875rem}
+.specs-table td:first-child{font-weight:600;color:var(--dark);width:200px;background:var(--bg)}
+.specs-table td:last-child{color:var(--dark2)}
+
+/* Reviews tab */
+.reviews-grid{display:flex;flex-direction:column;gap:20px}
+.review-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:20px}
+.review-header{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.review-avatar{width:38px;height:38px;border-radius:50%;background:var(--accent-light);display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--accent);font-size:.9rem;flex-shrink:0}
+.review-meta h4{font-size:.875rem;font-weight:600;color:var(--dark)}
+.review-meta p{font-size:.75rem;color:var(--lt-mid)}
+.review-stars{display:flex;gap:2px;margin-bottom:8px}
+.review-stars i{color:var(--star);font-size:.78rem}
+.review-text{font-size:.855rem;color:var(--mid);line-height:1.7}
+
+/* ── ALSO BOUGHT ── */
+.also-bought{padding:10px 36px 50px}
+.also-bought h2{font-size:1.2rem;font-weight:700;color:var(--dark);margin-bottom:24px}
+.related-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.related-card{
+  background:var(--white);border:1px solid var(--border);border-radius:var(--radius);
+  overflow:hidden;transition:box-shadow var(--tr),transform var(--tr);
+  cursor:pointer;
+}
+.related-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-3px)}
+.related-img{height:140px;overflow:hidden;background:var(--dark2)}
+.related-img img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.related-card:hover .related-img img{transform:scale(1.07)}
+.related-body{padding:14px}
+.related-name{font-size:.875rem;font-weight:600;color:var(--dark);margin-bottom:3px}
+.related-sku{font-family:'DM Mono',monospace;font-size:.68rem;color:var(--lt-mid);margin-bottom:10px}
+.related-bottom{display:flex;align-items:center;justify-content:space-between}
+.related-price{font-size:.95rem;font-weight:700;color:var(--dark)}
+.related-add{
+  width:32px;height:32px;border-radius:50%;background:var(--green);
+  color:var(--white);display:flex;align-items:center;justify-content:center;
+  font-size:.8rem;transition:background var(--tr),transform var(--tr);
+}
+.related-add:hover{background:#00a87c;transform:scale(1.1)}
+
+/* ── FOOTER ── */
+#footer{background:var(--dark2);padding:56px 36px 0}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;padding-bottom:50px;border-bottom:1px solid rgba(255,255,255,.08)}
+.footer-brand h2{font-size:1.15rem;font-weight:700;color:var(--white);margin-bottom:12px}
+.footer-brand p{font-size:.82rem;color:rgba(255,255,255,.42);line-height:1.7}
+.footer-col h4{font-size:.7rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:16px}
+.footer-col ul{display:flex;flex-direction:column;gap:10px}
+.footer-col ul li a{font-size:.84rem;color:rgba(255,255,255,.45);transition:color var(--tr)}
+.footer-col ul li a:hover{color:var(--accent)}
+.footer-connect{display:flex;gap:10px;margin-top:4px}
+.footer-connect a{width:34px;height:34px;border-radius:8px;border:1px solid rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.4);font-size:.85rem;transition:background var(--tr),color var(--tr),border-color var(--tr)}
+.footer-connect a:hover{background:var(--accent);border-color:var(--accent);color:var(--white)}
+.footer-bottom{padding:20px 0;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.footer-bottom p{font-size:.75rem;color:rgba(255,255,255,.22)}
+
+/* ── TOAST ── */
+.toast{
+  position:fixed;bottom:28px;right:28px;z-index:999;
+  background:var(--dark);color:var(--white);
+  padding:13px 20px;border-radius:10px;
+  font-size:.87rem;font-weight:500;
+  display:flex;align-items:center;gap:10px;
+  box-shadow:0 8px 32px rgba(0,0,0,.22);
+  transform:translateY(80px);opacity:0;
+  transition:transform .35s cubic-bezier(.4,0,.2,1),opacity .35s;
+  border-left:3px solid var(--accent);pointer-events:none;
+}
+.toast.show{transform:translateY(0);opacity:1;pointer-events:auto}
+.toast i{color:var(--accent)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:960px){
+  #sidebar{position:fixed;top:var(--header-h);left:0;bottom:0;height:calc(100vh - var(--header-h));transform:translateX(calc(-1 * var(--sidebar-w)));z-index:210;box-shadow:none}
+  #sidebar.open{transform:translateX(0);box-shadow:var(--shadow-lg)}
+  .ham-btn{display:flex}
+  .header-nav{display:none}
+  .search-wrap input{width:150px}
+  .product-detail{grid-template-columns:1fr;gap:28px;padding:16px 20px 40px}
+  .thumbs{grid-template-columns:repeat(4,1fr)}
+  .tabs-section{padding:0 20px 40px}
+  .also-bought{padding:10px 20px 40px}
+  .related-grid{grid-template-columns:repeat(2,1fr)}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:30px}
+  #footer{padding:40px 20px 0}
+  .overview-grid{grid-template-columns:1fr;gap:24px}
+  .breadcrumb{padding:14px 20px 0}
+}
+@media(max-width:600px){
+  .product-detail{padding:12px 16px 36px}
+  .tabs-section{padding:0 16px 36px}
+  .also-bought{padding:10px 16px 36px}
+  .related-grid{grid-template-columns:repeat(2,1fr)}
+  .search-wrap{display:none}
+  .buy-row{flex-direction:column;align-items:stretch}
+  .btn-cart{width:100%}
+  .footer-grid{grid-template-columns:1fr}
+  .footer-bottom{flex-direction:column;align-items:flex-start}
+  .overview-grid{grid-template-columns:1fr}
+  .specs-table td:first-child{width:130px}
+  .tabs-nav{overflow-x:auto;gap:0}
+  .tab-btn{white-space:nowrap;padding:12px 16px;font-size:.82rem}
+}
+
+*:focus, *:active, button:focus, button:active, .cat-nav-item:focus {
+  outline: none !important;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ── Search Overlay ── */
+.search-overlay {
+  position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.85); backdrop-filter: blur(8px);
+  z-index: 1000; display: flex; align-items: flex-start; justify-content: center;
+  opacity: 0; visibility: hidden; transition: opacity 0.25s ease; padding: 20px;
+}
+.search-overlay.active { opacity: 1; visibility: visible; }
+.search-overlay-container {
+  margin-top: 80px; width: 100%; max-width: 500px;
+  background: white; border-radius: 40px; display: flex;
+  align-items: center; gap: 12px; padding: 12px 20px;
+}
+.search-overlay-container input { flex: 1; border: none; outline: none; background: transparent; }
+.close-search { background: none; font-size: 1.3rem; cursor: pointer; }
+
+/* ── Sidebar instant (no animation) ── */
+#sidebar { transition: none; }
+
+/* ── Dropdown nav CSS ── */
+.nav-item-header {
+  display: flex; align-items: center; gap: 12px;
+  padding: 11px 20px; font-size: .875rem; font-weight: 500;
+  color: var(--mid); cursor: pointer; border-left: 3px solid transparent;
+}
+.nav-item-header i { width: 18px; text-align: center; }
+.nav-item-header:hover { background: var(--bg); color: var(--dark); }
+.nav-item-header.active {
+  background: var(--accent-light); color: var(--accent); font-weight: 600;
+  border-left-color: var(--accent);
+}
+.chevron { font-size: .7rem; transition: transform .25s; margin-left: auto; }
+.nav-item-header.open .chevron { transform: rotate(180deg); }
+.dropdown-menu {
+  background: var(--bg); overflow: hidden;
+  max-height: 0; transition: max-height .3s ease;
+}
+.dropdown-menu.open { max-height: 300px; }
+.dropdown-menu a {
+  display: block; padding: 8px 18px 8px 46px;
+  font-size: .825rem; color: var(--mid);
+}
+.dropdown-menu a:hover { color: var(--accent); background: #f0fdf9; }
+
+/* ── 3D Raised Press Button ── */
+.btn-cart {
+  flex:1; padding:12px 20px; background:var(--accent); color:var(--white);
+  border-radius:8px; font-size:.9rem; font-weight:600;
+  display:flex; align-items:center; justify-content:center; gap:9px;
+  border: none;
+  box-shadow: 0 5px 0 #008f62;
+  transform: translateY(-2px);
+  transition: all 0.08s ease;
+  cursor: pointer;
+}
+.btn-cart:hover { background: var(--accent-dark); }
+.btn-cart:active {
+  transform: translateY(3px);
+  box-shadow: 0 2px 0 #008f62;
+  transition: all 0.05s ease;
+}
+
+/* ── 3D Fly to Cart Animation ── */
+.flying-image {
+  position: fixed; z-index: 9999;
+  width: 100px; height: 100px; object-fit: cover;
+  border-radius: 12px; box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+  pointer-events: none;
+  animation: flyToCart 0.55s cubic-bezier(0.34, 1.2, 0.55, 1) forwards;
+}
+@keyframes flyToCart {
+  0% { transform: scale(1) rotate(0deg); opacity: 1; filter: blur(0px); }
+  40% { transform: scale(1.1) rotate(6deg); opacity: 1; }
+  100% { transform: scale(0.15) rotate(20deg); opacity: 0; filter: blur(8px); }
+}
+.cart-catch { animation: cartCatchAnim 0.35s ease; }
+@keyframes cartCatchAnim {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.25); background: rgba(0,200,150,0.3); border-radius: 50%; }
+  100% { transform: scale(1); background: transparent; }
+}
+.badge-bounce { animation: badgePop 0.28s ease; }
+@keyframes badgePop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.6); background: var(--accent); }
+  100% { transform: scale(1); }
+}
+.ham-btn {
+  display: flex;  /* Change from 'none' to 'flex' */
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  align-items: center;
+  justify-content: center;
+  color: var(--dark);
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+@media (max-width: 960px) {
+  .header-nav {
+    display: none;
+  }
+  .ham-btn {
+    display: flex;
+  }
+}
+
+@media (min-width: 961px) {
+  .ham-btn {
+    display: flex;  /* Keep hamburger visible on large devices too */
+  }
+}
+#sidebar {
+  transition: none !important;
+}
+
+#sidebar.collapsed,
+#sidebar.open {
+  transition: none !important;
+}
+/* Sidebar Sign In Button */
+.sidebar-signin {
+  margin-top: 20px;
+  padding: 16px 0;
+  border-top: 1px solid var(--border);
+}
+
+#sidebarSigninBtn {
+  transition: all 0.2s ease;
+}
+
+#sidebarSigninBtn:hover {
+  background: var(--accent-light);
+  color: var(--accent);
+}
+
+#sidebarSigninBtn:hover i {
+  color: var(--accent);
+}
+/* Search Results Container */
+.search-results-container {
+  margin-top: 20px;
+  width: 100%;
+  max-width: 600px;
+  background: white;
+  border-radius: 20px;
+  max-height: 400px;
+  overflow-y: auto;
+  display: none;
+}
+
+.search-results-container.active {
+  display: block;
+}
+
+.search-result-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px 20px;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.search-result-item:hover {
+  background: var(--accent-light);
+}
+
+.search-result-img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 8px;
+  background: var(--dark2);
+}
+
+.search-result-info {
+  flex: 1;
+}
+
+.search-result-name {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--dark);
+  margin-bottom: 4px;
+}
+
+.search-result-price {
+  font-size: 0.8rem;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.search-result-sku {
+  font-size: 0.7rem;
+  color: var(--mid);
+  font-family: monospace;
+}
+
+.no-results {
+  padding: 30px;
+  text-align: center;
+  color: var(--mid);
+}
+/* Search Results Container */
+.search-results-container {
+  margin-top: 20px;
+  width: 100%;
+  max-width: 600px;
+  background: white;
+  border-radius: 20px;
+  max-height: 400px;
+  overflow-y: auto;
+  display: none;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.search-results-container.active {
+  display: block;
+}
+
+.search-result-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px 20px;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.search-result-item:hover {
+  background: var(--accent-light);
+}
+
+.search-result-img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 8px;
+  background: var(--dark2);
+}
+
+.search-result-info {
+  flex: 1;
+}
+
+.search-result-name {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--dark);
+  margin-bottom: 4px;
+}
+
+.search-result-price {
+  font-size: 0.8rem;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.search-result-sku {
+  font-size: 0.7rem;
+  color: var(--mid);
+  font-family: monospace;
+}
+
+.no-results {
+  padding: 30px;
+  text-align: center;
+  color: var(--mid);
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="header">
+  <button class="ham-btn" id="hamBtn" aria-label="Open menu"><i class="fa-solid fa-bars"></i></button>
+  <button class="icon-btn" id="globalSearchIcon" aria-label="Search">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+  <a href="#" class="header-logo">IT Hardware Products</a>
+  <div class="header-right">
+  <!-- Cart Icon - Links to cart.html -->
+  <a href="cart.html" class="icon-btn" id="cartLink" style="color: inherit; text-decoration: none;">
+    <i class="fa-solid fa-cart-shopping"></i>
+    <span class="badge" id="cartCount">0</span>
+  </a>
+  
+  <!-- Account Icon - Links to account or login -->
+  <a href="#" class="icon-btn" id="accountLink" style="color: inherit; text-decoration: none;">
+    <i class="fa-regular fa-circle-user"></i>
+  </a>
+</div>
+</header>
+
+
+  <div class="search-overlay" id="searchOverlay">
+  <div class="search-overlay-container">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <input type="text" id="overlaySearchInput" placeholder="Search laptops, GPUs, SSDs..." autocomplete="off">
+    <button class="close-search" id="closeSearchBtn"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+  <!-- ADD THIS - Search results container -->
+  <div class="search-results-container" id="searchResultsContainer"></div>
+</div>
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<!-- SHELL -->
+<div id="shell">
+
+  <!-- SIDEBAR -->
+  <aside id="sidebar">
+    <div class="sidebar-brand">
+      <h2>Hardware Catalog</h2>
+      <p>Enterprise Solutions</p>
+    </div>
+    <nav class="cat-nav">
+      <div class="nav-item">
+        <div class="nav-item-header" data-dropdown="products">
+          <i class="fa-solid fa-laptop nav-icon"></i>
+          <span>Products</span>
+          <i class="fa-solid fa-chevron-down chevron"></i>
+        </div>
+        <div class="dropdown-menu" id="products">
+          <a href="laptops/">Laptops</a><a href="#">Desktops</a><a href="#">Tablets</a><a href="#">Monitors</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <div class="nav-item-header" data-dropdown="parts">
+          <i class="fa-solid fa-microchip nav-icon"></i>
+          <span>Parts</span>
+          <i class="fa-solid fa-chevron-down chevron"></i>
+        </div>
+        <div class="dropdown-menu" id="parts">
+          <a href="#">Drives</a><a href="#">Video Cards</a><a href="#">Memory</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <div class="nav-item-header" data-dropdown="accessories">
+          <i class="fa-solid fa-keyboard nav-icon"></i>
+          <span>Accessories</span>
+          <i class="fa-solid fa-chevron-down chevron"></i>
+        </div>
+        <div class="dropdown-menu" id="accessories">
+          <a href="#">Chargers</a><a href="#">Batteries</a><a href="#">Keyboard &amp; Mouse</a><a href="#">Docking Stations</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <div class="nav-item-header" data-dropdown="brands">
+          <i class="fa-solid fa-tag nav-icon"></i>
+          <span>Brands</span>
+          <i class="fa-solid fa-chevron-down chevron"></i>
+        </div>
+        <div class="dropdown-menu" id="brands-dd">
+          <a href="#">Apple</a><a href="#">HP</a><a href="#">Dell</a><a href="#">Samsung</a><a href="#">Lenovo</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <div class="nav-item-header" data-no-dropdown>
+          <i class="fa-regular fa-circle-question nav-icon"></i>
+          <span>Support</span>
+        </div>
+      </div>
+      <!-- Sign In / Account Button at Bottom of Sidebar -->
+<div class="sidebar-signin">
+  <div class="nav-item-header" id="sidebarSigninBtn" data-no-dropdown>
+    <i class="fa-regular fa-circle-user nav-icon"></i>
+    <span id="sidebarSigninText">Sign In</span>
+    <i class="fa-solid fa-chevron-right" style="margin-left: auto; font-size: 0.7rem;"></i>
+  </div>
+</div>
+    </nav>
+  </aside>
+
+  <!-- MAIN -->
+  <main id="main">
+
+    <!-- BREADCRUMB -->
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="#">Home</a>
+      <i class="fa-solid fa-chevron-right sep"></i>
+      <a href="#">Products</a>
+      <i class="fa-solid fa-chevron-right sep"></i>
+      <a href="#">Laptops</a>
+      <i class="fa-solid fa-chevron-right sep"></i>
+      <span class="current">Titan Pro X1</span>
+    </nav>
+
+    <!-- PRODUCT DETAIL -->
+    <div class="product-detail">
+
+      <!-- Gallery -->
+      <div class="gallery">
+        <div class="main-img-wrap" id="mainImgWrap">
+          <img id="mainImg" src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=900&q=80" alt="Titan Pro X1"/>
+        </div>
+        <div class="thumbs">
+          <div class="thumb active" data-src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=900&q=80">
+            <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=300&q=70" alt="Thumb 1"/>
+          </div>
+          <div class="thumb" data-src="https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=900&q=80">
+            <img src="https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=300&q=70" alt="Thumb 2"/>
+          </div>
+          <div class="thumb" data-src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=900&q=80">
+            <img src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=300&q=70" alt="Thumb 3"/>
+          </div>
+          <div class="thumb" data-src="https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=900&q=80">
+            <img src="https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=300&q=70" alt="Thumb 4"/>
+          </div>
+        </div>
+      </div>
+
+      <!-- Info -->
+      <div class="product-info">
+        <h1>Titan Pro X1 – 16" Workstation</h1>
+        <div class="rating-row">
+          <div class="stars">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star-half-stroke"></i>
+          </div>
+          <span class="rating-count">4.8 (124 reviews)</span>
+        </div>
+        <p class="price">$2,499.00</p>
+        <p class="product-desc">The ultimate portable workstation for engineers and designers. Features an ultra-bright ProDisplay and liquid-cooled thermals for sustained peak performance.</p>
+
+        <div class="option-group">
+          <p class="option-label">Memory (RAM)</p>
+          <div class="option-btns" id="ramOpts">
+            <button class="opt-btn active" data-group="ram">32GB</button>
+            <button class="opt-btn" data-group="ram">64GB</button>
+          </div>
+        </div>
+
+        <div class="option-group">
+          <p class="option-label">Storage (SSD)</p>
+          <div class="option-btns" id="ssdOpts">
+            <button class="opt-btn active" data-group="ssd">1TB</button>
+            <button class="opt-btn" data-group="ssd">2TB</button>
+          </div>
+        </div>
+
+        <div class="buy-row">
+          <div class="qty-ctrl">
+            <button class="qty-btn" id="qtyDec" aria-label="Decrease"><i class="fa-solid fa-minus"></i></button>
+            <span class="qty-val" id="qtyVal">1</span>
+            <button class="qty-btn" id="qtyInc" aria-label="Increase"><i class="fa-solid fa-plus"></i></button>
+          </div>
+          <button class="btn-cart" id="addCartBtn">
+            <i class="fa-solid fa-cart-shopping"></i> Add to Cart
+          </button>
+        </div>
+        <p class="ships-note"><i class="fa-solid fa-truck"></i> Ships in 48 hours</p>
+      </div>
+    </div>
+
+    <!-- TABS -->
+    <div class="tabs-section">
+      <div class="tabs-nav" role="tablist">
+        <button class="tab-btn active" data-tab="overview" role="tab">Overview</button>
+        <button class="tab-btn" data-tab="specs" role="tab">Technical Specifications</button>
+        <button class="tab-btn" data-tab="reviews" role="tab">Reviews</button>
+      </div>
+
+      <!-- Overview -->
+      <div class="tab-panel active" id="tab-overview">
+        <div class="overview-grid">
+          <div class="overview-text">
+            <h2>Engineered for Excellence</h2>
+            <p>The Titan Pro X1 is more than just a laptop; it's a precision instrument designed for the most demanding technical workflows. From complex 3D rendering to massive dataset processing, every component is optimized for reliability and efficiency.</p>
+            <div class="feature-list">
+              <div class="feature-item"><i class="fa-solid fa-circle-check"></i> Liquid-Cooled Thermal Architecture</div>
+              <div class="feature-item"><i class="fa-solid fa-circle-check"></i> 1600 nits Peak Brightness ProDisplay</div>
+              <div class="feature-item"><i class="fa-solid fa-circle-check"></i> Magnesium-Alloy Unibody Construction</div>
+            </div>
+          </div>
+          <div class="overview-img">
+            <img src="https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=800&q=80" alt="Titan Pro internals"/>
+          </div>
+        </div>
+      </div>
+
+      <!-- Specs -->
+      <div class="tab-panel" id="tab-specs">
+        <table class="specs-table">
+          <tr><td>Processor</td><td>Intel Core i9-13900H, 24-Core, 5.4GHz Turbo</td></tr>
+          <tr><td>Memory</td><td>32GB / 64GB DDR5-5600 (2 SO-DIMM slots)</td></tr>
+          <tr><td>Storage</td><td>1TB / 2TB NVMe Gen4 SSD (PCIe 4.0 x4)</td></tr>
+          <tr><td>Display</td><td>16" ProDisplay, 3840×2400, 1600 nits, 120Hz</td></tr>
+          <tr><td>GPU</td><td>NVIDIA RTX 4080 Mobile, 12GB GDDR6</td></tr>
+          <tr><td>Battery</td><td>99.9Wh, 140W USB-C PD Charging</td></tr>
+          <tr><td>OS</td><td>Windows 11 Pro (64-bit)</td></tr>
+          <tr><td>Connectivity</td><td>Wi-Fi 6E, Bluetooth 5.3</td></tr>
+          <tr><td>Ports</td><td>3× Thunderbolt 4, 2× USB-A 3.2, HDMI 2.1, SD Card</td></tr>
+          <tr><td>Weight</td><td>2.1 kg / 4.6 lbs</td></tr>
+          <tr><td>Dimensions</td><td>355.4 × 243.3 × 19.8 mm</td></tr>
+          <tr><td>Chassis</td><td>Magnesium-Alloy Unibody (MIL-STD-810H)</td></tr>
+          <tr><td>Warranty</td><td>2 Years Limited + 1 Year Accidental</td></tr>
+        </table>
+      </div>
+
+      <!-- Reviews -->
+      <div class="tab-panel" id="tab-reviews">
+        <div class="reviews-grid">
+          <div class="review-card">
+            <div class="review-header">
+              <div class="review-avatar">JM</div>
+              <div class="review-meta"><h4>James Morrison</h4><p>Verified Buyer · 2 weeks ago</p></div>
+            </div>
+            <div class="review-stars">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <p class="review-text">Absolutely exceptional build quality. Runs our CAD workloads at full speed for hours without thermal throttling. The ProDisplay is simply stunning — best screen I've ever used on a laptop.</p>
+          </div>
+          <div class="review-card">
+            <div class="review-header">
+              <div class="review-avatar">SC</div>
+              <div class="review-meta"><h4>Sarah Chen</h4><p>Verified Buyer · 1 month ago</p></div>
+            </div>
+            <div class="review-stars">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
+            </div>
+            <p class="review-text">Excellent machine for data science and ML workflows. Pytorch training is blazing fast. Only minor complaint is the fan noise under heavy load, but it's manageable with headphones.</p>
+          </div>
+          <div class="review-card">
+            <div class="review-header">
+              <div class="review-avatar">RK</div>
+              <div class="review-meta"><h4>Raj Kumar</h4><p>Verified Buyer · 3 months ago</p></div>
+            </div>
+            <div class="review-stars">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+            </div>
+            <p class="review-text">Deployed 12 units for our engineering team. IT setup was straightforward and the 2-year warranty gave us confidence. Performance is consistently reliable across all units.</p>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /tabs-section -->
+
+    <!-- ALSO BOUGHT -->
+    <div class="also-bought">
+      <h2>Customers Also Bought</h2>
+      <div class="related-grid">
+        <div class="related-card">
+          <div class="related-img"><img src="https://images.unsplash.com/photo-1615750185825-9400de58e5cd?w=400&q=75" alt="Pro Hub 12-in-1 Dock"/></div>
+          <div class="related-body">
+            <p class="related-name">Pro Hub 12-in-1 Dock</p>
+            <p class="related-sku">SKU: HUB-12-P</p>
+            <div class="related-bottom">
+              <span class="related-price">$199.00</span>
+              <button class="related-add" onclick="addRelated(this,'Pro Hub 12-in-1 Dock')" aria-label="Add to cart"><i class="fa-solid fa-cart-plus"></i></button>
+            </div>
+          </div>
+        </div>
+        <div class="related-card">
+          <div class="related-img"><img src="https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=400&q=75" alt="Precision Wireless Mouse"/></div>
+          <div class="related-body">
+            <p class="related-name">Precision Wireless Mouse</p>
+            <p class="related-sku">SKU: MSE-WR-X</p>
+            <div class="related-bottom">
+              <span class="related-price">$89.00</span>
+              <button class="related-add" onclick="addRelated(this,'Precision Wireless Mouse')" aria-label="Add to cart"><i class="fa-solid fa-cart-plus"></i></button>
+            </div>
+          </div>
+        </div>
+        <div class="related-card">
+          <div class="related-img"><img src="https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=400&q=75" alt="Companion Tab S1"/></div>
+          <div class="related-body">
+            <p class="related-name">Companion Tab S1</p>
+            <p class="related-sku">SKU: TAB-S1-P</p>
+            <div class="related-bottom">
+              <span class="related-price">$549.00</span>
+              <button class="related-add" onclick="addRelated(this,'Companion Tab S1')" aria-label="Add to cart"><i class="fa-solid fa-cart-plus"></i></button>
+            </div>
+          </div>
+        </div>
+        <div class="related-card">
+          <div class="related-img"><img src="https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=400&q=75" alt="4K UltraSharp 27&quot;"/></div>
+          <div class="related-body">
+            <p class="related-name">4K UltraSharp 27"</p>
+            <p class="related-sku">SKU: MON-4K-27</p>
+            <div class="related-bottom">
+              <span class="related-price">$429.00</span>
+              <button class="related-add" onclick="addRelated(this,'4K UltraSharp 27&quot;')" aria-label="Add to cart"><i class="fa-solid fa-cart-plus"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer id="footer">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h2>IT Hardware Products</h2>
+          <p>Precision Engineering for Modern Enterprise. Trusted by professionals worldwide.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Product Links</h4>
+          <ul>
+            <li><a href="#">Shipping &amp; Returns</a></li>
+            <li><a href="#">Bulk Orders</a></li>
+            <li><a href="#">Technical Support</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <div class="footer-connect">
+            <a href="#" aria-label="Website"><i class="fa-solid fa-globe"></i></a>
+            <a href="#" aria-label="Email"><i class="fa-regular fa-envelope"></i></a>
+            <a href="#" aria-label="Community"><i class="fa-solid fa-users"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2024 IT Hardware Products. Precision Engineering for Modern Enterprise.</p>
+      </div>
+    </footer>
+
+  </main>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast" role="status" aria-live="polite">
+  <i class="fa-solid fa-circle-check"></i>
+  <span id="toastMsg">Added to cart!</span>
+</div>
+
+<script>
+// Sidebar toggle - FIXED
+const hamBtn = document.getElementById('hamBtn');
+const sidebar = document.getElementById('sidebar');
+const overlaySide = document.getElementById('sidebarOverlay');
+
+function openSidebar() {
+  sidebar.classList.add('open');
+  overlaySide.classList.add('show');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeSidebar() {
+  sidebar.classList.remove('open');
+  overlaySide.classList.remove('show');
+  document.body.style.overflow = '';
+}
+
+if (hamBtn) {
+  hamBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    if (sidebar.classList.contains('open')) {
+      closeSidebar();
+    } else {
+      openSidebar();
+    }
+  });
+}
+
+if (overlaySide) {
+  overlaySide.addEventListener('click', closeSidebar);
+}
+
+window.addEventListener('resize', function() {
+  if (window.innerWidth >= 960) {
+    closeSidebar();
+  }
+});
+
+// Start with sidebar CLOSED
+closeSidebar();
+
+
+
+// Dropdown menus
+document.querySelectorAll('.nav-item-header:not([data-no-dropdown])').forEach(header => {
+  header.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const id = header.dataset.dropdown;
+    const menu = document.getElementById(id === 'brands' ? 'brands-dd' : id);
+    const isOpen = menu.classList.contains('open');
+    document.querySelectorAll('.dropdown-menu').forEach(m => m.classList.remove('open'));
+    document.querySelectorAll('.nav-item-header').forEach(h => h.classList.remove('open'));
+    if (!isOpen) { menu.classList.add('open'); header.classList.add('open'); }
+    document.querySelectorAll('.nav-item-header').forEach(h => h.classList.remove('active'));
+    header.classList.add('active');
+  });
+});
+document.querySelectorAll('.nav-item-header[data-no-dropdown]').forEach(header => {
+  header.addEventListener('click', () => {
+    document.querySelectorAll('.dropdown-menu').forEach(m => m.classList.remove('open'));
+    document.querySelectorAll('.nav-item-header').forEach(h => h.classList.remove('open'));
+    document.querySelectorAll('.nav-item-header').forEach(h => h.classList.remove('active'));
+    header.classList.add('active');
+  });
+});
+
+// Search overlay
+const searchIcon = document.getElementById('globalSearchIcon');
+const searchOverlay = document.getElementById('searchOverlay');
+const closeBtn = document.getElementById('closeSearchBtn');
+const overlayInput = document.getElementById('overlaySearchInput');
+if(searchIcon) {
+  searchIcon.addEventListener('click', () => {
+    searchOverlay.classList.add('active');
+    setTimeout(() => overlayInput.focus(), 50);
+  });
+}
+if(closeBtn) {
+  closeBtn.addEventListener('click', () => searchOverlay.classList.remove('active'));
+}
+if(searchOverlay) {
+  searchOverlay.addEventListener('click', (e) => {
+    if (e.target === searchOverlay) searchOverlay.classList.remove('active');
+  });
+}
+if(overlayInput) {
+  overlayInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+      alert(`Searching for: ${overlayInput.value}`);
+      searchOverlay.classList.remove('active');
+    }
+  });
+}
+
+// Gallery
+const mainImg = document.getElementById('mainImg');
+document.querySelectorAll('.thumb').forEach(thumb => {
+  thumb.addEventListener('click', () => {
+    document.querySelectorAll('.thumb').forEach(t => t.classList.remove('active'));
+    thumb.classList.add('active');
+    mainImg.style.opacity = '0';
+    setTimeout(() => {
+      mainImg.src = thumb.dataset.src;
+      mainImg.style.opacity = '1';
+    }, 180);
+  });
+});
+
+// Options
+document.querySelectorAll('.opt-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const group = btn.dataset.group;
+    document.querySelectorAll(`.opt-btn[data-group="${group}"]`).forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  });
+});
+
+// Quantity
+let qty = 1;
+const qtyVal = document.getElementById('qtyVal');
+document.getElementById('qtyInc').addEventListener('click', () => { qty = Math.min(qty + 1, 99); qtyVal.textContent = qty; });
+document.getElementById('qtyDec').addEventListener('click', () => { qty = Math.max(qty - 1, 1); qtyVal.textContent = qty; });
+
+// Tabs
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+  });
+});
+
+// 3D Fly to Cart
+let cartCount = 0;
+const cartBadge = document.getElementById('cartCount');
+const cartBtnIcon = document.getElementById('cartBtn');
+const toast = document.getElementById('toast');
+const toastMsg = document.getElementById('toastMsg');
+let toastTimer;
+
+function animateFlyToCart(productName, qtyValue, optionsText) {
+  const mainImgEl = document.getElementById('mainImg');
+  if (!mainImgEl) return;
+  const clone = mainImgEl.cloneNode(true);
+  clone.classList.add('flying-image');
+  const rect = mainImgEl.getBoundingClientRect();
+  clone.style.left = rect.left + 'px';
+  clone.style.top = rect.top + 'px';
+  clone.style.width = rect.width + 'px';
+  clone.style.height = rect.height + 'px';
+  document.body.appendChild(clone);
+  clone.addEventListener('animationend', () => {
+    clone.remove();
+    if(cartBtnIcon) {
+      cartBtnIcon.classList.add('cart-catch');
+      setTimeout(() => cartBtnIcon.classList.remove('cart-catch'), 350);
+    }
+    cartCount += qtyValue;
+    cartBadge.textContent = cartCount;
+    cartBadge.classList.add('badge-bounce');
+    setTimeout(() => cartBadge.classList.remove('badge-bounce'), 280);
+    toastMsg.textContent = `✨ ${productName}${optionsText} ×${qtyValue} added!`;
+    toast.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => toast.classList.remove('show'), 2600);
+  });
+}
+
+document.getElementById('addCartBtn').addEventListener('click', () => {
+  const ram = document.querySelector('.opt-btn.active[data-group="ram"]')?.textContent || '32GB';
+  const ssd = document.querySelector('.opt-btn.active[data-group="ssd"]')?.textContent || '1TB';
+  animateFlyToCart('Titan Pro X1', qty, ` (${ram}, ${ssd})`);
+});
+
+function addRelated(btn, name) {
+  const card = btn.closest('.related-card');
+  const img = card?.querySelector('.related-img img');
+  if(img) {
+    const clone = img.cloneNode(true);
+    clone.classList.add('flying-image');
+    const rect = img.getBoundingClientRect();
+    clone.style.left = rect.left + 'px';
+    clone.style.top = rect.top + 'px';
+    clone.style.width = rect.width + 'px';
+    clone.style.height = rect.height + 'px';
+    document.body.appendChild(clone);
+    clone.addEventListener('animationend', () => {
+      clone.remove();
+      if(cartBtnIcon) {
+        cartBtnIcon.classList.add('cart-catch');
+        setTimeout(() => cartBtnIcon.classList.remove('cart-catch'), 350);
+      }
+      cartCount++;
+      cartBadge.textContent = cartCount;
+      cartBadge.classList.add('badge-bounce');
+      setTimeout(() => cartBadge.classList.remove('badge-bounce'), 280);
+      toastMsg.textContent = `✨ ${name} added to cart!`;
+      toast.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove('show'), 2600);
+    });
+  } else {
+    cartCount++;
+    cartBadge.textContent = cartCount;
+    cartBadge.classList.add('badge-bounce');
+    setTimeout(() => cartBadge.classList.remove('badge-bounce'), 280);
+    toastMsg.textContent = `✨ ${name} added to cart!`;
+    toast.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => toast.classList.remove('show'), 2600);
+  }
+}
+
+// Category nav active
+document.querySelectorAll('.cat-nav-item').forEach(item => {
+  item.addEventListener('click', () => {
+    document.querySelectorAll('.cat-nav-item').forEach(i => i.classList.remove('active'));
+    item.classList.add('active');
+  });
+});
+// Update cart count from localStorage
+function updateCartCount() {
+  const cart = JSON.parse(localStorage.getItem('cart')) || [];
+  const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+  const cartBadge = document.getElementById('cartCount');
+  if (cartBadge) cartBadge.textContent = count;
+}
+
+// Check if user is logged in and update account icon link
+function updateAccountLink() {
+  const currentUser = localStorage.getItem('currentUser');
+  const accountLink = document.getElementById('accountLink');
+  
+  if (accountLink) {
+    if (currentUser) {
+      // User is logged in - go to account page
+      accountLink.href = 'account.html';
+      accountLink.innerHTML = '<i class="fa-regular fa-circle-user"></i>';
+      accountLink.title = 'My Account';
+    } else {
+      // User not logged in - go to login page
+      accountLink.href = 'login.html';
+      accountLink.innerHTML = '<i class="fa-regular fa-circle-user"></i>';
+      accountLink.title = 'Login / Sign Up';
+    }
+  }
+}
+
+// Run on page load
+updateCartCount();
+updateAccountLink();
+
+// Also update cart count when page loads (in case items were added from other page)
+window.addEventListener('load', function() {
+  updateCartCount();
+  updateAccountLink();
+});
+// Sidebar Sign In Button - Check login status and handle click
+function updateSidebarSignIn() {
+  const currentUser = localStorage.getItem('currentUser');
+  const signinBtn = document.getElementById('sidebarSigninBtn');
+  const signinText = document.getElementById('sidebarSigninText');
+  
+  if (signinBtn && signinText) {
+    if (currentUser) {
+      const user = JSON.parse(currentUser);
+      signinText.innerHTML = `Hi, ${user.name.split(' ')[0]}`;
+      signinBtn.style.borderLeft = '3px solid var(--accent)';
+      signinBtn.style.background = 'var(--accent-light)';
+      // On click - go to account page
+      signinBtn.onclick = () => {
+        window.location.href = 'account.html';
+      };
+    } else {
+      signinText.innerHTML = 'Sign In';
+      signinBtn.style.borderLeft = 'none';
+      signinBtn.style.background = 'transparent';
+      // On click - go to login page
+      signinBtn.onclick = () => {
+        window.location.href = 'login.html';
+      };
+    }
+  }
+}
+
+// Call this function on page load
+updateSidebarSignIn();
+
+// Also update when page loads
+window.addEventListener('load', function() {
+  updateSidebarSignIn();
+});
+// ========== SEARCH FUNCTIONALITY ==========
+
+// Get all products from the page
+function getAllProducts() {
+  const products = [];
+  document.querySelectorAll('.product-card').forEach(card => {
+    const name = card.querySelector('.card-name')?.textContent || '';
+    const price = card.querySelector('.card-price')?.textContent || card.querySelector('.price')?.textContent || '';
+    const sku = card.querySelector('.card-sku')?.textContent || '';
+    const img = card.querySelector('.card-img-wrap img')?.src || '';
+    const link = card.querySelector('a')?.href || '#';
+    
+    products.push({
+      element: card,
+      name: name.toLowerCase(),
+      originalName: name,
+      price: price,
+      sku: sku,
+      img: img,
+      link: link
+    });
+  });
+  return products;
+}
+
+// Filter products based on search term
+let allProducts = [];
+
+function filterProducts(searchTerm) {
+  const term = searchTerm.toLowerCase().trim();
+  const resultsContainer = document.getElementById('searchResultsContainer');
+  
+  if (term === '') {
+    resultsContainer.classList.remove('active');
+    resultsContainer.innerHTML = '';
+    // Show all products
+    allProducts.forEach(p => {
+      p.element.style.display = '';
+    });
+    return;
+  }
+  
+  // Filter products
+  const filtered = allProducts.filter(product => 
+    product.name.includes(term) || 
+    product.sku.toLowerCase().includes(term)
+  );
+  
+  // Hide non-matching products on the page
+  allProducts.forEach(product => {
+    if (filtered.includes(product)) {
+      product.element.style.display = '';
+    } else {
+      product.element.style.display = 'none';
+    }
+  });
+  
+  // Show results in overlay
+  if (filtered.length === 0) {
+    resultsContainer.innerHTML = '<div class="no-results"><i class="fa-solid fa-face-frown"></i><p>No products found matching "' + searchTerm + '"</p></div>';
+    resultsContainer.classList.add('active');
+  } else {
+    resultsContainer.innerHTML = filtered.map(product => `
+      <div class="search-result-item" onclick="goToProduct('${product.link}')">
+        <img src="${product.img}" class="search-result-img" alt="${product.originalName}">
+        <div class="search-result-info">
+          <div class="search-result-name">${product.originalName}</div>
+          <div class="search-result-sku">${product.sku}</div>
+          <div class="search-result-price">${product.price}</div>
+        </div>
+      </div>
+    `).join('');
+    resultsContainer.classList.add('active');
+  }
+}
+
+// Function to navigate to product
+function goToProduct(link) {
+  if (link && link !== '#') {
+    window.location.href = link;
+  }
+}
+
+// Initialize search
+function initSearch() {
+  allProducts = getAllProducts();
+  
+  const searchInput = document.getElementById('overlaySearchInput');
+  const searchOverlay = document.getElementById('searchOverlay');
+  const resultsContainer = document.getElementById('searchResultsContainer');
+  
+  if (searchInput) {
+    // Real-time search as user types
+    searchInput.addEventListener('input', (e) => {
+      filterProducts(e.target.value);
+    });
+    
+    // Close search when pressing Escape
+    searchInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        searchOverlay.classList.remove('active');
+        resultsContainer.classList.remove('active');
+        // Reset all products visibility
+        allProducts.forEach(p => p.element.style.display = '');
+        searchInput.value = '';
+      }
+    });
+  }
+}
+
+// Call initSearch when page loads
+document.addEventListener('DOMContentLoaded', function() {
+  initSearch();
+});
+
+// Also re-init after any dynamic content changes
+window.addEventListener('load', function() {
+  initSearch();
+});
+</script>
+</body>
+</html>

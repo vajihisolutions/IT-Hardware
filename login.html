@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>IT Hardware Products – Sign In</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<style>
+/* ── RESET & TOKENS ── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:'DM Sans',sans-serif;background:#f8f9fb;color:#111827;-webkit-font-smoothing:antialiased;min-height:100vh}
+a{text-decoration:none;color:inherit}
+button{font-family:inherit;cursor:pointer;border:none;background:none}
+input{font-family:inherit}
+
+:root{
+  --accent:#00C896;
+  --accent-dark:#00a87c;
+  --accent-light:#e6faf4;
+  --dark:#111827;
+  --dark2:#1f2937;
+  --mid:#6b7280;
+  --lt-mid:#9ca3af;
+  --border:#e5e7eb;
+  --bg:#f8f9fb;
+  --white:#ffffff;
+  --header-h:56px;
+  --radius:10px;
+  --shadow-sm:0 1px 4px rgba(0,0,0,.07);
+  --shadow:0 2px 16px rgba(0,0,0,.09);
+  --shadow-lg:0 8px 40px rgba(0,0,0,.13);
+  --tr:.22s cubic-bezier(.4,0,.2,1);
+}
+
+*:focus, *:active, button:focus, button:active {
+  outline: none !important;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ── HEADER ── */
+#header{
+  position:fixed;top:0;left:0;right:0;z-index:300;
+  height:var(--header-h);background:var(--white);
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:center;padding:0 24px;gap:12px;
+  box-shadow:var(--shadow-sm);
+}
+.header-logo{font-size:.97rem;font-weight:700;color:var(--dark);letter-spacing:-.3px;white-space:nowrap;flex:1}
+.header-right{display:flex;align-items:center;gap:10px}
+.icon-btn{position:relative;width:38px;height:38px;border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--mid);font-size:1rem;transition:background var(--tr),color var(--tr)}
+.icon-btn:hover{background:var(--bg);color:var(--accent)}
+.badge{position:absolute;top:4px;right:4px;width:16px;height:16px;background:var(--accent);border-radius:50%;font-size:.58rem;font-weight:700;color:var(--white);display:flex;align-items:center;justify-content:center}
+
+/* ── PAGE LAYOUT ── */
+.page{
+  min-height:100vh;
+  padding-top:var(--header-h);
+  display:flex;
+  align-items:stretch;
+}
+
+/* ── LEFT PANEL ── */
+.auth-panel{
+  flex:0 0 480px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:60px 56px;
+  background:var(--white);
+  border-right:1px solid var(--border);
+  position:relative;
+  z-index:1;
+}
+
+/* ── RIGHT VISUAL PANEL ── */
+.visual-panel{
+  flex:1;
+  background:var(--dark2);
+  position:relative;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.visual-bg{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 70% 60% at 80% 40%, rgba(0,200,150,.18) 0%, transparent 65%),
+    radial-gradient(ellipse 50% 50% at 20% 70%, rgba(0,168,124,.12) 0%, transparent 60%),
+    linear-gradient(135deg, #111827 0%, #1f2937 50%, #111827 100%);
+}
+.visual-grid{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(0,200,150,.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,200,150,.06) 1px, transparent 1px);
+  background-size:40px 40px;
+}
+.visual-content{
+  position:relative;z-index:2;
+  padding:48px;
+  text-align:center;
+  max-width:400px;
+}
+.visual-icon-ring{
+  width:96px;height:96px;
+  border-radius:50%;
+  background:rgba(0,200,150,.12);
+  border:2px solid rgba(0,200,150,.3);
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 32px;
+  font-size:2.2rem;
+  color:var(--accent);
+  box-shadow:0 0 40px rgba(0,200,150,.15);
+}
+.visual-headline{
+  font-size:1.65rem;font-weight:700;
+  color:var(--white);
+  line-height:1.3;
+  margin-bottom:14px;
+  letter-spacing:-.4px;
+}
+.visual-sub{
+  font-size:.9rem;color:rgba(255,255,255,.5);
+  line-height:1.7;
+}
+.visual-stats{
+  display:flex;gap:32px;margin-top:40px;justify-content:center;
+}
+.stat-item{text-align:center}
+.stat-num{font-size:1.5rem;font-weight:700;color:var(--accent);font-family:'DM Mono',monospace}
+.stat-lbl{font-size:.75rem;color:rgba(255,255,255,.4);margin-top:4px;text-transform:uppercase;letter-spacing:.6px}
+
+/* floating blobs */
+.blob{
+  position:absolute;border-radius:50%;
+  border:1px solid rgba(0,200,150,.15);
+  animation:float 8s ease-in-out infinite;
+}
+.blob-1{width:220px;height:220px;top:-60px;right:-60px;animation-delay:0s}
+.blob-2{width:140px;height:140px;bottom:80px;left:40px;animation-delay:-3s}
+.blob-3{width:80px;height:80px;top:40%;right:15%;animation-delay:-5s}
+@keyframes float{
+  0%,100%{transform:translateY(0) rotate(0deg)}
+  50%{transform:translateY(-18px) rotate(8deg)}
+}
+
+/* ── TAB SWITCHER ── */
+.auth-tabs{
+  display:flex;
+  background:var(--bg);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:4px;
+  margin-bottom:36px;
+}
+.auth-tab{
+  flex:1;padding:9px 0;
+  border-radius:7px;
+  font-size:.875rem;font-weight:600;
+  color:var(--mid);
+  transition:all var(--tr);
+}
+.auth-tab.active{
+  background:var(--white);
+  color:var(--dark);
+  box-shadow:var(--shadow-sm);
+}
+
+/* ── FORM HEADING ── */
+.form-heading{margin-bottom:28px}
+.form-heading h1{font-size:1.45rem;font-weight:700;color:var(--dark);letter-spacing:-.4px;margin-bottom:6px}
+.form-heading p{font-size:.875rem;color:var(--mid);line-height:1.6}
+
+/* ── FORM FIELDS ── */
+.field{margin-bottom:18px;position:relative}
+.field label{
+  display:block;font-size:.8rem;font-weight:600;
+  color:var(--dark2);margin-bottom:7px;letter-spacing:.2px;
+}
+.field-wrap{position:relative}
+.field-wrap .field-icon{
+  position:absolute;left:14px;top:50%;transform:translateY(-50%);
+  color:var(--lt-mid);font-size:.9rem;pointer-events:none;
+  transition:color var(--tr);
+}
+.field-wrap input{
+  width:100%;
+  padding:11px 14px 11px 40px;
+  border:1.5px solid var(--border);
+  border-radius:8px;
+  font-size:.875rem;
+  color:var(--dark);
+  background:var(--white);
+  transition:border-color var(--tr),box-shadow var(--tr);
+}
+.field-wrap input::placeholder{color:var(--lt-mid)}
+.field-wrap input:focus{
+  border-color:var(--accent);
+  box-shadow:0 0 0 3px rgba(0,200,150,.12);
+}
+.field-wrap input:focus + .field-icon,
+.field-wrap:focus-within .field-icon{ color:var(--accent) }
+/* icon is before input in DOM, use sibling won't work — use wrapper focus */
+.field-wrap:focus-within .field-icon{ color:var(--accent) }
+
+.field-wrap .eye-btn{
+  position:absolute;right:12px;top:50%;transform:translateY(-50%);
+  color:var(--lt-mid);font-size:.88rem;padding:4px;
+  transition:color var(--tr);
+}
+.field-wrap .eye-btn:hover{color:var(--mid)}
+.field-wrap input.has-eye{padding-right:40px}
+
+/* ── ROW HELPERS ── */
+.field-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:22px}
+.checkbox-label{display:flex;align-items:center;gap:8px;font-size:.825rem;color:var(--mid);cursor:pointer;user-select:none}
+.checkbox-label input[type=checkbox]{display:none}
+.custom-check{
+  width:18px;height:18px;border-radius:5px;
+  border:1.5px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  transition:all var(--tr);flex-shrink:0;
+}
+.checkbox-label input[type=checkbox]:checked ~ .custom-check{
+  background:var(--accent);border-color:var(--accent);
+}
+.custom-check i{font-size:.6rem;color:white;opacity:0;transition:opacity .15s}
+.checkbox-label input[type=checkbox]:checked ~ .custom-check i{opacity:1}
+.forgot-link{font-size:.825rem;color:var(--accent);font-weight:500}
+.forgot-link:hover{color:var(--accent-dark);text-decoration:underline}
+
+/* ── SUBMIT BUTTON ── */
+.btn-submit{
+  width:100%;padding:13px;
+  background:var(--accent);
+  color:var(--white);
+  font-size:.925rem;font-weight:700;
+  border-radius:8px;
+  border:none;
+  box-shadow:0 5px 0 #008f62;
+  transform:translateY(-2px);
+  transition:all .08s ease;
+  cursor:pointer;
+  display:flex;align-items:center;justify-content:center;gap:9px;
+  margin-bottom:22px;
+}
+.btn-submit:hover{background:var(--accent-dark)}
+.btn-submit:active{transform:translateY(3px);box-shadow:0 2px 0 #008f62;transition:all .05s ease}
+
+/* ── DIVIDER ── */
+.divider{
+  display:flex;align-items:center;gap:14px;
+  margin-bottom:22px;
+  color:var(--lt-mid);font-size:.78rem;letter-spacing:.5px;
+}
+.divider::before,.divider::after{content:'';flex:1;height:1px;background:var(--border)}
+
+/* ── SOCIAL BUTTONS ── */
+.social-btns{display:flex;gap:12px;margin-bottom:28px}
+.btn-social{
+  flex:1;padding:10px;
+  border:1.5px solid var(--border);
+  border-radius:8px;
+  font-size:.82rem;font-weight:600;color:var(--dark2);
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  transition:all var(--tr);
+}
+.btn-social:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-light)}
+.btn-social img{width:16px;height:16px}
+
+/* ── BOTTOM SWITCH ── */
+.switch-line{
+  text-align:center;font-size:.825rem;color:var(--mid);
+}
+.switch-line a{color:var(--accent);font-weight:600}
+.switch-line a:hover{text-decoration:underline}
+
+/* ── NAME ROW ── */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+
+/* ── STRENGTH BAR ── */
+.strength-wrap{margin-top:8px;display:none}
+.strength-wrap.visible{display:block}
+.strength-bars{display:flex;gap:4px;margin-bottom:5px}
+.strength-bar{flex:1;height:3px;border-radius:2px;background:var(--border);transition:background .3s}
+.strength-label{font-size:.73rem;color:var(--lt-mid)}
+
+/* ── PANELS VISIBILITY ── */
+.auth-form{display:none}
+.auth-form.active{display:block}
+
+/* ── TOAST ── */
+.toast{
+  position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(20px);
+  background:var(--dark2);color:var(--white);
+  padding:12px 24px;border-radius:40px;
+  font-size:.85rem;font-weight:500;
+  box-shadow:var(--shadow-lg);
+  opacity:0;pointer-events:none;
+  transition:opacity .3s, transform .3s;
+  z-index:9999;white-space:nowrap;
+}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.toast i{color:var(--accent);margin-right:8px}
+
+/* ── RESPONSIVE ── */
+@media(max-width:860px){
+  .visual-panel{display:none}
+  .auth-panel{flex:1;padding:48px 32px}
+}
+@media(max-width:480px){
+  .auth-panel{padding:36px 20px}
+  .two-col{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="header">
+  <a href="#" class="header-logo">IT Hardware Products</a>
+  <div class="header-right">
+    <button class="icon-btn" aria-label="Search"><i class="fa-solid fa-magnifying-glass"></i></button>
+    <button class="icon-btn" aria-label="Cart">
+      <i class="fa-solid fa-cart-shopping"></i>
+      <span class="badge">3</span>
+    </button>
+    <button class="icon-btn" aria-label="Account"><i class="fa-regular fa-circle-user"></i></button>
+  </div>
+</header>
+
+<!-- PAGE -->
+<div class="page">
+
+  <!-- LEFT: AUTH PANEL -->
+  <div class="auth-panel">
+
+    <!-- Tab switcher -->
+    <div class="auth-tabs">
+      <button class="auth-tab active" id="tabLogin" onclick="switchTab('login')">Sign In</button>
+      <button class="auth-tab" id="tabSignup" onclick="switchTab('signup')">Create Account</button>
+    </div>
+
+    <!-- ── LOGIN FORM ── -->
+    <div class="auth-form active" id="formLogin">
+      <div class="form-heading">
+        <h1>Welcome back</h1>
+        <p>Sign in to your IT Hardware account</p>
+      </div>
+
+      <div class="field">
+        <label>Email address</label>
+        <div class="field-wrap">
+          <i class="fa-regular fa-envelope field-icon"></i>
+          <input type="email" placeholder="you@company.com" autocomplete="email"/>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Password</label>
+        <div class="field-wrap">
+          <i class="fa-solid fa-lock field-icon"></i>
+          <input type="password" id="loginPass" placeholder="Enter your password" class="has-eye" autocomplete="current-password"/>
+          <button class="eye-btn" type="button" onclick="togglePass('loginPass', this)">
+            <i class="fa-regular fa-eye"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="field-row">
+        <label class="checkbox-label">
+          <input type="checkbox" id="rememberMe"/>
+          <span class="custom-check"><i class="fa-solid fa-check"></i></span>
+          Remember me
+        </label>
+        <a href="#" class="forgot-link">Forgot password?</a>
+      </div>
+
+      <button class="btn-submit" onclick="handleLogin()">
+        <i class="fa-solid fa-arrow-right-to-bracket"></i>
+        Sign In
+      </button>
+
+      <div class="divider">or continue with</div>
+
+      <div class="social-btns">
+        <button class="btn-social">
+          <img src="https://www.google.com/favicon.ico" alt="Google"/> Google
+        </button>
+        <button class="btn-social">
+          <i class="fa-brands fa-microsoft" style="color:#00a1f1"></i> Microsoft
+        </button>
+      </div>
+
+      <div class="switch-line">
+        Don't have an account? <a href="#" onclick="switchTab('signup');return false;">Create one</a>
+      </div>
+    </div>
+
+    <!-- ── SIGNUP FORM ── -->
+    <div class="auth-form" id="formSignup">
+      <div class="form-heading">
+        <h1>Create account</h1>
+        <p>Join IT Hardware Products today</p>
+      </div>
+
+      <div class="two-col">
+        <div class="field">
+          <label>First name</label>
+          <div class="field-wrap">
+            <i class="fa-regular fa-user field-icon"></i>
+            <input type="text" placeholder="John" autocomplete="given-name"/>
+          </div>
+        </div>
+        <div class="field">
+          <label>Last name</label>
+          <div class="field-wrap">
+            <i class="fa-regular fa-user field-icon"></i>
+            <input type="text" placeholder="Doe" autocomplete="family-name"/>
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Email address</label>
+        <div class="field-wrap">
+          <i class="fa-regular fa-envelope field-icon"></i>
+          <input type="email" placeholder="you@company.com" autocomplete="email"/>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Password</label>
+        <div class="field-wrap">
+          <i class="fa-solid fa-lock field-icon"></i>
+          <input type="password" id="signupPass" placeholder="Create a strong password" class="has-eye" oninput="checkStrength(this.value)" autocomplete="new-password"/>
+          <button class="eye-btn" type="button" onclick="togglePass('signupPass', this)">
+            <i class="fa-regular fa-eye"></i>
+          </button>
+        </div>
+        <div class="strength-wrap" id="strengthWrap">
+          <div class="strength-bars">
+            <div class="strength-bar" id="sb1"></div>
+            <div class="strength-bar" id="sb2"></div>
+            <div class="strength-bar" id="sb3"></div>
+            <div class="strength-bar" id="sb4"></div>
+          </div>
+          <span class="strength-label" id="strengthLabel">Weak</span>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Confirm password</label>
+        <div class="field-wrap">
+          <i class="fa-solid fa-lock field-icon"></i>
+          <input type="password" id="confirmPass" placeholder="Repeat your password" class="has-eye" autocomplete="new-password"/>
+          <button class="eye-btn" type="button" onclick="togglePass('confirmPass', this)">
+            <i class="fa-regular fa-eye"></i>
+          </button>
+        </div>
+      </div>
+
+      <div style="margin-bottom:22px">
+        <label class="checkbox-label">
+          <input type="checkbox" id="agreeTerms"/>
+          <span class="custom-check"><i class="fa-solid fa-check"></i></span>
+          I agree to the <a href="#" style="color:var(--accent);font-weight:600">Terms of Service</a> &amp; <a href="#" style="color:var(--accent);font-weight:600">Privacy Policy</a>
+        </label>
+      </div>
+
+      <button class="btn-submit" onclick="handleSignup()">
+        <i class="fa-solid fa-user-plus"></i>
+        Create Account
+      </button>
+
+      <div class="divider">or sign up with</div>
+
+      <div class="social-btns">
+        <button class="btn-social">
+          <img src="https://www.google.com/favicon.ico" alt="Google"/> Google
+        </button>
+        <button class="btn-social">
+          <i class="fa-brands fa-microsoft" style="color:#00a1f1"></i> Microsoft
+        </button>
+      </div>
+
+      <div class="switch-line">
+        Already have an account? <a href="#" onclick="switchTab('login');return false;">Sign in</a>
+      </div>
+    </div>
+
+  </div><!-- /auth-panel -->
+
+  <!-- RIGHT: VISUAL PANEL -->
+  <div class="visual-panel">
+    <div class="visual-bg"></div>
+    <div class="visual-grid"></div>
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+
+    <div class="visual-content">
+      <div class="visual-icon-ring">
+        <i class="fa-solid fa-microchip"></i>
+      </div>
+      <div class="visual-headline" id="visualHeadline">Your hardware,<br>delivered fast.</div>
+      <div class="visual-sub" id="visualSub">Access thousands of laptops, GPUs, SSDs, and enterprise parts — all in one place.</div>
+      <div class="visual-stats">
+        <div class="stat-item">
+          <div class="stat-num">12K+</div>
+          <div class="stat-lbl">Products</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">98%</div>
+          <div class="stat-lbl">Satisfaction</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">24h</div>
+          <div class="stat-lbl">Dispatch</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /page -->
+
+<!-- TOAST -->
+<div class="toast" id="toast"><i class="fa-solid fa-circle-check"></i><span id="toastMsg"></span></div>
+
+<script>
+// ── TAB SWITCH ──
+function switchTab(tab) {
+  document.getElementById('tabLogin').classList.toggle('active', tab === 'login');
+  document.getElementById('tabSignup').classList.toggle('active', tab === 'signup');
+  document.getElementById('formLogin').classList.toggle('active', tab === 'login');
+  document.getElementById('formSignup').classList.toggle('active', tab === 'signup');
+  if (tab === 'signup') {
+    document.getElementById('visualHeadline').innerHTML = 'Join thousands<br>of IT pros.';
+    document.getElementById('visualSub').textContent = 'Create your free account and start ordering enterprise hardware in minutes.';
+  } else {
+    document.getElementById('visualHeadline').innerHTML = 'Your hardware,<br>delivered fast.';
+    document.getElementById('visualSub').textContent = 'Access thousands of laptops, GPUs, SSDs, and enterprise parts — all in one place.';
+  }
+}
+
+// ── TOGGLE PASSWORD VISIBILITY ──
+function togglePass(id, btn) {
+  const input = document.getElementById(id);
+  const icon = btn.querySelector('i');
+  if (input.type === 'password') {
+    input.type = 'text';
+    icon.className = 'fa-regular fa-eye-slash';
+  } else {
+    input.type = 'password';
+    icon.className = 'fa-regular fa-eye';
+  }
+}
+
+// ── PASSWORD STRENGTH ──
+function checkStrength(val) {
+  const wrap = document.getElementById('strengthWrap');
+  const label = document.getElementById('strengthLabel');
+  const bars = [sb1, sb2, sb3, sb4];
+  const colors = ['#ef4444','#f59e0b','#3b82f6','#00C896'];
+  const labels = ['Weak','Fair','Good','Strong'];
+
+  if (!val) { wrap.classList.remove('visible'); return; }
+  wrap.classList.add('visible');
+
+  let score = 0;
+  if (val.length >= 8) score++;
+  if (/[A-Z]/.test(val) && /[a-z]/.test(val)) score++;
+  if (/\d/.test(val)) score++;
+  if (/[^A-Za-z0-9]/.test(val)) score++;
+  score = Math.max(1, score);
+
+  bars.forEach((b, i) => {
+    b.style.background = i < score ? colors[score - 1] : 'var(--border)';
+  });
+  label.textContent = labels[score - 1];
+  label.style.color = colors[score - 1];
+}
+
+// ── CHECKBOX TOGGLE ──
+document.querySelectorAll('.checkbox-label').forEach(label => {
+  label.addEventListener('click', () => {
+    const cb = label.querySelector('input[type=checkbox]');
+    cb.checked = !cb.checked;
+  });
+});
+
+// ── TOAST ──
+let toastTimer;
+function showToast(msg) {
+  const toast = document.getElementById('toast');
+  document.getElementById('toastMsg').textContent = msg;
+  toast.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => toast.classList.remove('show'), 3000);
+}
+
+// ── HANDLERS ──
+function handleLogin() {
+  showToast('Signing you in…');
+}
+function handleSignup() {
+  const agree = document.getElementById('agreeTerms').checked;
+  if (!agree) { showToast('Please accept the Terms of Service'); return; }
+  showToast('Account created! Welcome aboard 🎉');
+}
+</script>
+</body>
+</html>
