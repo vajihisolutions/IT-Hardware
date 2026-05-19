@@ -981,6 +981,701 @@ a:active {
     grid-template-columns: repeat(2, 1fr);
   }
 }
+/* Sidebar Sign In Button */
+.sidebar-signin {
+  margin-top: 20px;
+  padding: 16px 0;
+  border-top: 1px solid var(--border);
+}
+
+#sidebarSigninBtn {
+  transition: all 0.2s ease;
+}
+
+#sidebarSigninBtn:hover {
+  background: var(--accent-light);
+  color: var(--accent);
+}
+
+#sidebarSigninBtn:hover i {
+  color: var(--accent);
+}
+/* Search Results Container */
+.search-results-container {
+  margin-top: 20px;
+  width: 100%;
+  max-width: 600px;
+  background: white;
+  border-radius: 20px;
+  max-height: 400px;
+  overflow-y: auto;
+  display: none;
+}
+
+.search-results-container.active {
+  display: block;
+}
+
+.search-result-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px 20px;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.search-result-item:hover {
+  background: var(--accent-light);
+}
+
+.search-result-img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 8px;
+  background: var(--dark2);
+}
+
+.search-result-info {
+  flex: 1;
+}
+
+.search-result-name {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--dark);
+  margin-bottom: 4px;
+}
+
+.search-result-price {
+  font-size: 0.8rem;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.search-result-sku {
+  font-size: 0.7rem;
+  color: var(--mid);
+  font-family: monospace;
+}
+
+.no-results {
+  padding: 30px;
+  text-align: center;
+  color: var(--mid);
+}
+/* Search Results Container */
+.search-results-container {
+  margin-top: 20px;
+  width: 100%;
+  max-width: 600px;
+  background: white;
+  border-radius: 20px;
+  max-height: 400px;
+  overflow-y: auto;
+  display: none;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.search-results-container.active {
+  display: block;
+}
+
+.search-result-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px 20px;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.search-result-item:hover {
+  background: var(--accent-light);
+}
+
+.search-result-img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 8px;
+  background: var(--dark2);
+}
+
+.search-result-info {
+  flex: 1;
+}
+
+.search-result-name {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--dark);
+  margin-bottom: 4px;
+}
+
+.search-result-price {
+  font-size: 0.8rem;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.search-result-sku {
+  font-size: 0.7rem;
+  color: var(--mid);
+  font-family: monospace;
+}
+
+.no-results {
+  padding: 30px;
+  text-align: center;
+  color: var(--mid);
+}
+/* ===== PRODUCT DETAIL PAGE STYLES (ADD THESE) ===== */
+
+/* Product Detail Layout */
+.product-detail {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  padding: 24px 36px 50px;
+  align-items: start;
+}
+
+/* Gallery */
+.main-img-wrap {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--dark2);
+  aspect-ratio: 4/3;
+  cursor: zoom-in;
+}
+
+.main-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s;
+}
+
+.main-img-wrap:hover img {
+  transform: scale(1.04);
+}
+
+.thumbs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.thumb {
+  border-radius: 8px;
+  overflow: hidden;
+  aspect-ratio: 4/3;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all 0.22s;
+  background: var(--dark2);
+}
+
+.thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.thumb:hover {
+  transform: translateY(-2px);
+}
+
+.thumb.active {
+  border-color: var(--accent);
+}
+
+/* Product Info Panel */
+.product-info h1 {
+  font-size: 1.65rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.rating-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.stars {
+  display: flex;
+  gap: 2px;
+}
+
+.stars i {
+  color: #f59e0b;
+  font-size: 0.85rem;
+}
+
+.rating-count {
+  font-size: 0.82rem;
+  color: var(--mid);
+}
+
+.price {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+
+.product-desc {
+  font-size: 0.88rem;
+  color: var(--mid);
+  line-height: 1.75;
+  margin-bottom: 24px;
+}
+
+/* Options */
+.option-group {
+  margin-bottom: 18px;
+}
+
+.option-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--mid);
+  margin-bottom: 10px;
+}
+
+.option-btns {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.opt-btn {
+  padding: 8px 20px;
+  border: 1.5px solid var(--border);
+  border-radius: 7px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  background: none;
+  cursor: pointer;
+  transition: all 0.22s;
+}
+
+.opt-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-light);
+}
+
+.opt-btn.active {
+  border-color: var(--accent);
+  background: var(--accent-light);
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* Buy Row */
+.buy-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 24px 0 12px;
+  flex-wrap: wrap;
+}
+
+.qty-ctrl {
+  display: flex;
+  align-items: center;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.qty-btn {
+  width: 36px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  background: none;
+  cursor: pointer;
+}
+
+.qty-btn:hover {
+  background: var(--bg);
+}
+
+.qty-val {
+  width: 44px;
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+/* Tabs Section */
+.tabs-section {
+  padding: 0 36px 50px;
+  border-top: 1px solid var(--border);
+}
+
+.tabs-nav {
+  display: flex;
+  gap: 0;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 36px;
+}
+
+.tab-btn {
+  padding: 14px 24px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--mid);
+  border-bottom: 2.5px solid transparent;
+  margin-bottom: -1px;
+  background: none;
+  cursor: pointer;
+}
+
+.tab-btn:hover {
+  color: var(--dark);
+}
+
+.tab-btn.active {
+  color: var(--accent);
+  font-weight: 600;
+  border-bottom-color: var(--accent);
+}
+
+.tab-panel {
+  display: none;
+}
+
+.tab-panel.active {
+  display: block;
+}
+
+/* Overview Tab */
+.overview-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.overview-text h2 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+
+.overview-text p {
+  font-size: 0.88rem;
+  color: var(--mid);
+  line-height: 1.75;
+  margin-bottom: 20px;
+}
+
+.feature-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.875rem;
+}
+
+.feature-item i {
+  color: var(--accent);
+}
+
+.overview-img {
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--dark2);
+}
+
+.overview-img img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+}
+
+/* Specs Table */
+.specs-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.specs-table tr {
+  border-bottom: 1px solid var(--border);
+}
+
+.specs-table tr:last-child {
+  border-bottom: none;
+}
+
+.specs-table td {
+  padding: 12px 16px;
+  font-size: 0.875rem;
+}
+
+.specs-table td:first-child {
+  font-weight: 600;
+  width: 200px;
+  background: var(--bg);
+}
+
+/* Reviews */
+.reviews-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.review-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.review-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.review-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--accent-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.review-meta h4 {
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.review-meta p {
+  font-size: 0.75rem;
+  color: var(--lt-mid);
+}
+
+.review-stars {
+  display: flex;
+  gap: 2px;
+  margin-bottom: 8px;
+}
+
+.review-stars i {
+  color: #f59e0b;
+  font-size: 0.78rem;
+}
+
+.review-text {
+  font-size: 0.855rem;
+  color: var(--mid);
+  line-height: 1.7;
+}
+
+/* Also Bought */
+.also-bought {
+  padding: 10px 36px 50px;
+}
+
+.also-bought h2 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+
+.related-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.related-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: all 0.22s;
+  cursor: pointer;
+}
+
+.related-card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-3px);
+}
+
+.related-img {
+  height: 140px;
+  overflow: hidden;
+  background: var(--dark2);
+}
+
+.related-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.related-body {
+  padding: 14px;
+}
+
+.related-name {
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-bottom: 3px;
+}
+
+.related-sku {
+  font-family: monospace;
+  font-size: 0.68rem;
+  color: var(--lt-mid);
+  margin-bottom: 10px;
+}
+
+.related-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.related-price {
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.related-add {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.related-add:hover {
+  background: var(--accent-dark);
+  transform: scale(1.1);
+}
+
+.ships-note {
+  font-size: 0.8rem;
+  color: var(--mid);
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.ships-note i {
+  color: var(--accent);
+}
+
+/* Responsive */
+@media (max-width: 960px) {
+  .product-detail {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding: 16px 20px 40px;
+  }
+  .thumbs {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .tabs-section {
+    padding: 0 20px 40px;
+  }
+  .also-bought {
+    padding: 10px 20px 40px;
+  }
+  .related-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .overview-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+@media (max-width: 600px) {
+  .product-detail {
+    padding: 12px 16px 36px;
+  }
+  .tabs-section {
+    padding: 0 16px 36px;
+  }
+  .also-bought {
+    padding: 10px 16px 36px;
+  }
+  .related-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .buy-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .btn-cart {
+    width: 100%;
+  }
+  .specs-table td:first-child {
+    width: 130px;
+  }
+}
+/* Product detail page button */
+#addCartBtnDetail {
+  width: 100%;
+  padding: 10px;
+  background: var(--accent);
+  color: var(--white);
+  font-weight: 600;
+  font-size: .82rem;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: none;
+  box-shadow: 0 5px 0 #008f62;
+  transform: translateY(-2px);
+  transition: all 0.08s ease;
+  cursor: pointer;
+}
+
+#addCartBtnDetail:hover {
+  background: var(--accent-dark);
+}
+
+#addCartBtnDetail:active {
+  transform: translateY(3px);
+  box-shadow: 0 2px 0 #008f62;
+  transition: all 0.05s ease;
+}
 </style>
 </head>
 <body>
@@ -995,21 +1690,26 @@ a:active {
 </button>
   <span class="header-title">IT Hardware Products</span>
   <div class="header-icons">
-    <button class="icon-btn" title="Cart" id="cartBtn">
-      <i class="fa-solid fa-cart-shopping"></i>
-      <span class="badge" id="cartCount">3</span>
-    </button>
-    <button class="icon-btn" title="Account">
-      <i class="fa-regular fa-circle-user"></i>
-    </button>
-  </div>
+  <!-- Cart Icon - Links to cart.html -->
+  <a href="cart.html" class="icon-btn" title="Cart" id="cartLink">
+    <i class="fa-solid fa-cart-shopping"></i>
+    <span class="badge" id="cartCount">0</span>
+  </a>
+  
+  <!-- Account Icon - Links based on login status -->
+  <a href="login.html" class="icon-btn" title="Account" id="accountLink">
+    <i class="fa-regular fa-circle-user"></i>
+  </a>
+</div>
 </header>
 <div class="search-overlay" id="searchOverlay">
   <div class="search-overlay-container">
     <i class="fa-solid fa-magnifying-glass"></i>
-    <input type="text" id="overlaySearchInput" placeholder="Search laptops, GPUs, SSDs…">
+    <input type="text" id="overlaySearchInput" placeholder="Search laptops, GPUs, SSDs..." autocomplete="off">
     <button class="close-search" id="closeSearchBtn"><i class="fa-solid fa-xmark"></i></button>
   </div>
+  <!-- ADD THIS - Search results container -->
+  <div class="search-results-container" id="searchResultsContainer"></div>
 </div>
 <!-- SIDEBAR OVERLAY -->
 <div class="sidebar-overlay" id="sidebarOverlay"></div>
@@ -1023,6 +1723,13 @@ a:active {
       <p>Enterprise Solutions</p>
     </div>
     <nav class="sidebar-nav">
+      <!-- Home - Direct Link -->
+    <div class="nav-item">
+      <a href="home/" class="nav-item-header" style="text-decoration: none;">
+        <i class="fa-solid fa-house nav-icon"></i>
+        <span>Home</span>
+      </a>
+    </div>
   <!-- Products -->
   <div class="nav-item">
     <div class="nav-item-header" data-dropdown="products">
@@ -1031,7 +1738,7 @@ a:active {
       <i class="fa-solid fa-chevron-down chevron"></i>
     </div>
     <div class="dropdown-menu" id="products">
-      <a href="#">Laptops</a>
+      <a href="laptops.html">Laptops</a>
       <a href="#">Desktops</a>
       <a href="#">Tablets</a>
       <a href="#">Phone Monitors</a>
@@ -1090,6 +1797,14 @@ a:active {
       <span>Support</span>
     </div>
   </div>
+  <!-- Sign In / Account Button at Bottom of Sidebar -->
+<div class="sidebar-signin">
+  <div class="nav-item-header" id="sidebarSigninBtn" data-no-dropdown>
+    <i class="fa-regular fa-circle-user nav-icon"></i>
+    <span id="sidebarSigninText">Sign In</span>
+    <i class="fa-solid fa-chevron-right" style="margin-left: auto; font-size: 0.7rem;"></i>
+  </div>
+</div>
 </nav>
   </aside>
 
@@ -1222,103 +1937,109 @@ a:active {
 </section>
 
     <!-- FEATURED Products -->
-    <section class="section reveal">
-      <div class="section-header">
-        <div class="section-header-left">
-          <h2>Featured Products</h2>
-          <p>Handpicked high-performance equipment</p>
-        </div>
-        <div class="section-header-right">
-          <button class="arr-btn" id="featPrev"><i class="fa-solid fa-chevron-left"></i></button>
-          <button class="arr-btn" id="featNext"><i class="fa-solid fa-chevron-right"></i></button>
-        </div>
-      </div>
-      <div class="product-track-wrap">
-        <div class="product-track" id="featTrack">
+<section class="section reveal">
+  <div class="section-header">
+    <div class="section-header-left">
+      <h2>Featured Products</h2>
+      <p>Handpicked high-performance equipment</p>
+    </div>
+    <div class="section-header-right">
+      <button class="arr-btn" id="featPrev"><i class="fa-solid fa-chevron-left"></i></button>
+      <button class="arr-btn" id="featNext"><i class="fa-solid fa-chevron-right"></i></button>
+    </div>
+  </div>
+  <div class="product-track-wrap">
+    <div class="product-track" id="featTrack">
 
-          <div class="product-card">
-            <span class="product-badge">HOT</span>
-            <img class="product-img" src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=600&q=80" alt="Titan Pro X1 Laptop"/>
-            <div class="product-info">
-              <p class="product-sku">SKU: WP-990-2024</p>
-              <h3 class="product-name">Titan Pro X1 Laptop</h3>
-              <p class="product-desc">32GB RAM, 1TB NVMe, RTX 4080 mobility workstation...</p>
-              <div class="product-price">
-                <span class="price">$2,499.00</span>
-                <span class="price-old">$2,899.00</span>
-              </div>
-              <button class="add-btn"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
-            </div>
+      <!-- Product 1 - Titan Pro X1 -->
+      <div class="product-card" data-product-id="1">
+        <span class="product-badge">HOT</span>
+        <img class="product-img" src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=600&q=80" alt="Titan Pro X1 Laptop"/>
+        <div class="product-info">
+          <p class="product-sku">SKU: WP-990-2024</p>
+          <h3 class="product-name">Titan Pro X1 Laptop</h3>
+          <p class="product-desc">32GB RAM, 1TB NVMe, RTX 4080 mobility workstation...</p>
+          <div class="product-price">
+            <span class="price">$2,499.00</span>
+            <span class="price-old">$2,899.00</span>
           </div>
-
-          <div class="product-card">
-            <img class="product-img" src="https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=600&q=80" alt="Ultima 4K Monitor"/>
-            <div class="product-info">
-              <p class="product-sku">SKU: MON-4K-U32</p>
-              <h3 class="product-name">Ultima 4K Monitor</h3>
-              <p class="product-desc">32" IPS panel, 100% AdobeRGB, ideal for...</p>
-              <div class="product-price">
-                <span class="price">$899.00</span>
-              </div>
-              <button class="add-btn"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
-            </div>
-          </div>
-
-          <div class="product-card">
-            <img class="product-img" src="https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?w=600&q=80" alt="RTX 5000 Workstation GPU"/>
-            <div class="product-info">
-              <p class="product-sku">SKU: GPU-RTX-5000</p>
-              <h3 class="product-name">RTX 5000 Workstation</h3>
-              <p class="product-desc">24GB GDDR6 ECC memory. The ultimate solution for AI...</p>
-              <div class="product-price">
-                <span class="price">$1,249.00</span>
-              </div>
-              <button class="add-btn"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
-            </div>
-          </div>
-
-          <div class="product-card">
-            <img class="product-img" src="https://images.unsplash.com/photo-1531492153519-e8e14e0ac8d1?w=600&q=80" alt="SafeStore 4-Bay NAS"/>
-            <div class="product-info">
-              <p class="product-sku">SKU: NAS-8TB-E</p>
-              <h3 class="product-name">SafeStore 4-Bay NAS</h3>
-              <p class="product-desc">High-speed central storage for creative teams. 8TB ra...</p>
-              <div class="product-price">
-                <span class="price">$649.00</span>
-              </div>
-              <button class="add-btn"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
-            </div>
-          </div>
-
-          <div class="product-card">
-            <img class="product-img" src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=600&q=80" alt="MacBook Pro M3"/>
-            <div class="product-info">
-              <p class="product-sku">SKU: AP-MBP-M3</p>
-              <h3 class="product-name">MacBook Pro M3 Max</h3>
-              <p class="product-desc">96GB unified memory, 16" ProMotion display, 22hr...</p>
-              <div class="product-price">
-                <span class="price">$3,199.00</span>
-              </div>
-              <button class="add-btn"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
-            </div>
-          </div>
-
-          <div class="product-card">
-            <img class="product-img" src="https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=600&q=80" alt="Samsung Galaxy Tab"/>
-            <div class="product-info">
-              <p class="product-sku">SKU: SAM-TAB-S9U</p>
-              <h3 class="product-name">Samsung Galaxy Tab S9 Ultra</h3>
-              <p class="product-desc">14.6" AMOLED, Snapdragon 8 Gen 2, 12GB RAM...</p>
-              <div class="product-price">
-                <span class="price">$1,099.00</span>
-              </div>
-              <button class="add-btn"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
-            </div>
-          </div>
-
+          <button class="add-btn"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
         </div>
       </div>
-    </section>
+
+      <!-- Product 2 - Ultima 4K Monitor -->
+      <div class="product-card" data-product-id="2">
+        <img class="product-img" src="https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=600&q=80" alt="Ultima 4K Monitor"/>
+        <div class="product-info">
+          <p class="product-sku">SKU: MON-4K-U32</p>
+          <h3 class="product-name">Ultima 4K Monitor</h3>
+          <p class="product-desc">32" IPS panel, 100% AdobeRGB, ideal for...</p>
+          <div class="product-price">
+            <span class="price">$899.00</span>
+          </div>
+          <button class="add-btn"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
+        </div>
+      </div>
+
+      <!-- Product 3 - RTX 5000 Workstation GPU -->
+      <div class="product-card" data-product-id="3">
+        <img class="product-img" src="https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?w=600&q=80" alt="RTX 5000 Workstation GPU"/>
+        <div class="product-info">
+          <p class="product-sku">SKU: GPU-RTX-5000</p>
+          <h3 class="product-name">RTX 5000 Workstation</h3>
+          <p class="product-desc">24GB GDDR6 ECC memory. The ultimate solution for AI...</p>
+          <div class="product-price">
+            <span class="price">$1,249.00</span>
+          </div>
+          <button class="add-btn"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
+        </div>
+      </div>
+
+      <!-- Product 4 - SafeStore 4-Bay NAS -->
+      <div class="product-card" data-product-id="4">
+        <img class="product-img" src="https://images.unsplash.com/photo-1531492153519-e8e14e0ac8d1?w=600&q=80" alt="SafeStore 4-Bay NAS"/>
+        <div class="product-info">
+          <p class="product-sku">SKU: NAS-8TB-E</p>
+          <h3 class="product-name">SafeStore 4-Bay NAS</h3>
+          <p class="product-desc">High-speed central storage for creative teams. 8TB ra...</p>
+          <div class="product-price">
+            <span class="price">$649.00</span>
+          </div>
+          <button class="add-btn"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
+        </div>
+      </div>
+
+      <!-- Product 5 - MacBook Pro M3 Max -->
+      <div class="product-card" data-product-id="5">
+        <img class="product-img" src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=600&q=80" alt="MacBook Pro M3"/>
+        <div class="product-info">
+          <p class="product-sku">SKU: AP-MBP-M3</p>
+          <h3 class="product-name">MacBook Pro M3 Max</h3>
+          <p class="product-desc">96GB unified memory, 16" ProMotion display, 22hr...</p>
+          <div class="product-price">
+            <span class="price">$3,199.00</span>
+          </div>
+          <button class="add-btn"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
+        </div>
+      </div>
+
+      <!-- Product 6 - Samsung Galaxy Tab S9 Ultra -->
+      <div class="product-card" data-product-id="6">
+        <img class="product-img" src="https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=600&q=80" alt="Samsung Galaxy Tab"/>
+        <div class="product-info">
+          <p class="product-sku">SKU: SAM-TAB-S9U</p>
+          <h3 class="product-name">Samsung Galaxy Tab S9 Ultra</h3>
+          <p class="product-desc">14.6" AMOLED, Snapdragon 8 Gen 2, 12GB RAM...</p>
+          <div class="product-price">
+            <span class="price">$1,099.00</span>
+          </div>
+          <button class="add-btn"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
 
     <!-- BRANDS -->
     <div class="brands-section reveal">
@@ -1347,104 +2068,110 @@ a:active {
   </div>
 </div>
     <!-- NEW ARRIVALS -->
-    <section class="section reveal">
-      <div class="section-header">
-        <div class="section-header-left">
-          <h2>New Arrivals</h2>
-          <p>Latest additions to our catalog</p>
-        </div>
-        <div class="section-header-right">
-          <button class="arr-btn" id="newPrev"><i class="fa-solid fa-chevron-left"></i></button>
-          <button class="arr-btn" id="newNext"><i class="fa-solid fa-chevron-right"></i></button>
-        </div>
-      </div>
-      <div class="product-track-wrap">
-        <div class="product-track" id="newTrack">
+<section class="section reveal">
+  <div class="section-header">
+    <div class="section-header-left">
+      <h2>New Arrivals</h2>
+      <p>Latest additions to our catalog</p>
+    </div>
+    <div class="section-header-right">
+      <button class="arr-btn" id="newPrev"><i class="fa-solid fa-chevron-left"></i></button>
+      <button class="arr-btn" id="newNext"><i class="fa-solid fa-chevron-right"></i></button>
+    </div>
+  </div>
+  <div class="product-track-wrap">
+    <div class="product-track" id="newTrack">
 
-          <div class="product-card">
-            <span class="product-badge new">NEW</span>
-            <img class="product-img" src="https://images.unsplash.com/photo-1601737487795-dab272f52420?w=600&q=80" alt="8TB NVMe Pro Storage"/>
-            <div class="product-info">
-              <p class="product-sku">SKU: SS-8TB-PRO</p>
-              <h3 class="product-name">8TB NVMe Pro Storage</h3>
-              <p class="product-desc">PCIe Gen 5 speeds, enterprise-grade endurance rating...</p>
-              <div class="product-price">
-                <span class="price">$899.00</span>
-              </div>
-              <button class="add-btn"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
-            </div>
+      <!-- Product 7 - 8TB NVMe Pro Storage -->
+      <div class="product-card" data-product-id="7">
+        <span class="product-badge new">NEW</span>
+        <img class="product-img" src="https://images.unsplash.com/photo-1601737487795-dab272f52420?w=600&q=80" alt="8TB NVMe Pro Storage"/>
+        <div class="product-info">
+          <p class="product-sku">SKU: SS-8TB-PRO</p>
+          <h3 class="product-name">8TB NVMe Pro Storage</h3>
+          <p class="product-desc">PCIe Gen 5 speeds, enterprise-grade endurance rating...</p>
+          <div class="product-price">
+            <span class="price">$899.00</span>
           </div>
-
-          <div class="product-card">
-            <span class="product-badge new">NEW</span>
-            <img class="product-img" src="https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=600&q=80" alt="4K UltraWide Monitor"/>
-            <div class="product-info">
-              <p class="product-sku">SKU: MN-4K-UW49</p>
-              <h3 class="product-name">4K UltraWide Monitor</h3>
-              <p class="product-desc">49" curved super-ultrawide, 120Hz, USB-C PD 96W...</p>
-              <div class="product-price">
-                <span class="price">$1,250.00</span>
-              </div>
-              <button class="add-btn"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
-            </div>
-          </div>
-
-          <div class="product-card">
-            <span class="product-badge new">NEW</span>
-            <img class="product-img" src="https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=600&q=80" alt="Xeon 64-Core Server CPU"/>
-            <div class="product-info">
-              <p class="product-sku">SKU: XE-640-IT</p>
-              <h3 class="product-name">Xeon 64-Core Server CPU</h3>
-              <p class="product-desc">Intel Xeon Platinum, 350W TDP, 96MB cache, HEDT platform...</p>
-              <div class="product-price">
-                <span class="price">$4,250.00</span>
-              </div>
-              <button class="add-btn"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
-            </div>
-          </div>
-
-          <div class="product-card">
-            <img class="product-img" src="https://images.unsplash.com/photo-1615750185825-9400de58e5cd?w=600&q=80" alt="Thunderbolt Docking Station"/>
-            <div class="product-info">
-              <p class="product-sku">SKU: DOCK-TB4-PRO</p>
-              <h3 class="product-name">Thunderbolt 4 Dock Pro</h3>
-              <p class="product-desc">12-in-1 docking station, triple 4K display support...</p>
-              <div class="product-price">
-                <span class="price">$349.00</span>
-              </div>
-              <button class="add-btn"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
-            </div>
-          </div>
-
-          <div class="product-card">
-            <img class="product-img" src="https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=600&q=80" alt="Mechanical Keyboard"/>
-            <div class="product-info">
-              <p class="product-sku">SKU: KB-MECH-RGB</p>
-              <h3 class="product-name">MechPro RGB Keyboard</h3>
-              <p class="product-desc">Cherry MX switches, full RGB, tenkeyless enterprise layout...</p>
-              <div class="product-price">
-                <span class="price">$189.00</span>
-              </div>
-              <button class="add-btn"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
-            </div>
-          </div>
-
-          <div class="product-card">
-            <img class="product-img" src="https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=600&q=80" alt="HP EliteBook"/>
-            <div class="product-info">
-              <p class="product-sku">SKU: HP-ELITE-865G</p>
-              <h3 class="product-name">HP EliteBook 865 G10</h3>
-              <p class="product-desc">AMD Ryzen 7 PRO, 32GB LPDDR5, 14" WUXGA touch...</p>
-              <div class="product-price">
-                <span class="price">$1,699.00</span>
-              </div>
-              <button class="add-btn"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
-            </div>
-          </div>
-
+          <button class="add-btn"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
         </div>
       </div>
-    </section>
+
+      <!-- Product 8 - 4K UltraWide Monitor -->
+      <div class="product-card" data-product-id="8">
+        <span class="product-badge new">NEW</span>
+        <img class="product-img" src="https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=600&q=80" alt="4K UltraWide Monitor"/>
+        <div class="product-info">
+          <p class="product-sku">SKU: MN-4K-UW49</p>
+          <h3 class="product-name">4K UltraWide Monitor</h3>
+          <p class="product-desc">49" curved super-ultrawide, 120Hz, USB-C PD 96W...</p>
+          <div class="product-price">
+            <span class="price">$1,250.00</span>
+          </div>
+          <button class="add-btn"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
+        </div>
+      </div>
+
+      <!-- Product 9 - Xeon 64-Core Server CPU -->
+      <div class="product-card" data-product-id="9">
+        <span class="product-badge new">NEW</span>
+        <img class="product-img" src="https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=600&q=80" alt="Xeon 64-Core Server CPU"/>
+        <div class="product-info">
+          <p class="product-sku">SKU: XE-640-IT</p>
+          <h3 class="product-name">Xeon 64-Core Server CPU</h3>
+          <p class="product-desc">Intel Xeon Platinum, 350W TDP, 96MB cache, HEDT platform...</p>
+          <div class="product-price">
+            <span class="price">$4,250.00</span>
+          </div>
+          <button class="add-btn"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
+        </div>
+      </div>
+
+      <!-- Product 10 - Thunderbolt 4 Dock Pro -->
+      <div class="product-card" data-product-id="10">
+        <img class="product-img" src="https://images.unsplash.com/photo-1615750185825-9400de58e5cd?w=600&q=80" alt="Thunderbolt Docking Station"/>
+        <div class="product-info">
+          <p class="product-sku">SKU: DOCK-TB4-PRO</p>
+          <h3 class="product-name">Thunderbolt 4 Dock Pro</h3>
+          <p class="product-desc">12-in-1 docking station, triple 4K display support...</p>
+          <div class="product-price">
+            <span class="price">$349.00</span>
+          </div>
+          <button class="add-btn"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
+        </div>
+      </div>
+
+      <!-- Product 11 - MechPro RGB Keyboard -->
+      <div class="product-card" data-product-id="11">
+        <img class="product-img" src="https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=600&q=80" alt="Mechanical Keyboard"/>
+        <div class="product-info">
+          <p class="product-sku">SKU: KB-MECH-RGB</p>
+          <h3 class="product-name">MechPro RGB Keyboard</h3>
+          <p class="product-desc">Cherry MX switches, full RGB, tenkeyless enterprise layout...</p>
+          <div class="product-price">
+            <span class="price">$189.00</span>
+          </div>
+          <button class="add-btn"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
+        </div>
+      </div>
+
+      <!-- Product 12 - HP EliteBook 865 G10 -->
+      <div class="product-card" data-product-id="12">
+        <img class="product-img" src="https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=600&q=80" alt="HP EliteBook"/>
+        <div class="product-info">
+          <p class="product-sku">SKU: HP-ELITE-865G</p>
+          <h3 class="product-name">HP EliteBook 865 G10</h3>
+          <p class="product-desc">AMD Ryzen 7 PRO, 32GB LPDDR5, 14" WUXGA touch...</p>
+          <div class="product-price">
+            <span class="price">$1,699.00</span>
+          </div>
+          <button class="add-btn"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
 
     <!-- SUBSCRIBE -->
     <div class="subscribe-sec reveal">
@@ -1518,6 +2245,21 @@ a:active {
 </div>
 
 <script>
+  // ========== PRODUCT DATABASE ==========
+const productsDatabase = {
+  1: { id: 1, name: "Titan Pro X1 Laptop", price: "$2,499.00", image: "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=600&q=80" },
+  2: { id: 2, name: "Ultima 4K Monitor", price: "$899.00", image: "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=600&q=80" },
+  3: { id: 3, name: "RTX 5000 Workstation", price: "$1,249.00", image: "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?w=600&q=80" },
+  4: { id: 4, name: "SafeStore 4-Bay NAS", price: "$649.00", image: "https://images.unsplash.com/photo-1531492153519-e8e14e0ac8d1?w=600&q=80" },
+  5: { id: 5, name: "MacBook Pro M3 Max", price: "$3,199.00", image: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=600&q=80" },
+  6: { id: 6, name: "Samsung Galaxy Tab S9 Ultra", price: "$1,099.00", image: "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=600&q=80" },
+  7: { id: 7, name: "8TB NVMe Pro Storage", price: "$899.00", image: "https://images.unsplash.com/photo-1601737487795-dab272f52420?w=600&q=80" },
+  8: { id: 8, name: "4K UltraWide Monitor", price: "$1,250.00", image: "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=600&q=80" },
+  9: { id: 9, name: "Xeon 64-Core Server CPU", price: "$4,250.00", image: "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=600&q=80" },
+  10: { id: 10, name: "Thunderbolt 4 Dock Pro", price: "$349.00", image: "https://images.unsplash.com/photo-1615750185825-9400de58e5cd?w=600&q=80" },
+  11: { id: 11, name: "MechPro RGB Keyboard", price: "$189.00", image: "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=600&q=80" },
+  12: { id: 12, name: "HP EliteBook 865 G10", price: "$1,699.00", image: "https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=600&q=80" }
+};
 // ── SIDEBAR TOGGLE ──
 const hamburgerBtn = document.getElementById('hamburgerBtn');
 const sidebar = document.getElementById('sidebar');
@@ -1611,7 +2353,7 @@ makeSlider('featTrack', 'featPrev', 'featNext');
 makeSlider('newTrack', 'newPrev', 'newNext');
 
 // ── 3D DROP INTO CART ANIMATION ──
-let cartCount = 3;
+let cartCount = 0;
 const cartBadge = document.getElementById('cartCount');
 const cartBtn = document.getElementById('cartBtn');
 const toast = document.getElementById('toast');
@@ -1791,6 +2533,381 @@ searchOverlay.addEventListener('click', (e) => {
   updateCarousel(0, true);
   autoInterval = setInterval(nextSlide, 3200);
 })();
+// Sidebar Sign In Button - Check login status and handle click
+function updateSidebarSignIn() {
+  const currentUser = localStorage.getItem('currentUser');
+  const signinBtn = document.getElementById('sidebarSigninBtn');
+  const signinText = document.getElementById('sidebarSigninText');
+  
+  if (signinBtn && signinText) {
+    if (currentUser) {
+      const user = JSON.parse(currentUser);
+      signinText.innerHTML = `Hi, ${user.name.split(' ')[0]}`;
+      signinBtn.style.borderLeft = '3px solid var(--accent)';
+      signinBtn.style.background = 'var(--accent-light)';
+      // On click - go to account page
+      signinBtn.onclick = () => {
+        window.location.href = 'account.html';
+      };
+    } else {
+      signinText.innerHTML = 'Sign In';
+      signinBtn.style.borderLeft = 'none';
+      signinBtn.style.background = 'transparent';
+      // On click - go to login page
+      signinBtn.onclick = () => {
+        window.location.href = 'login.html';
+      };
+    }
+  }
+}
+
+// Call this function on page load
+updateSidebarSignIn();
+
+// Also update when page loads
+window.addEventListener('load', function() {
+  updateSidebarSignIn();
+});
+// ========== SEARCH FUNCTIONALITY ==========
+
+// Get all products from the page
+function getAllProducts() {
+  const products = [];
+  document.querySelectorAll('.product-card').forEach(card => {
+    const name = card.querySelector('.card-name')?.textContent || '';
+    const price = card.querySelector('.card-price')?.textContent || card.querySelector('.price')?.textContent || '';
+    const sku = card.querySelector('.card-sku')?.textContent || '';
+    const img = card.querySelector('.card-img-wrap img')?.src || '';
+    const link = card.querySelector('a')?.href || '#';
+    
+    products.push({
+      element: card,
+      name: name.toLowerCase(),
+      originalName: name,
+      price: price,
+      sku: sku,
+      img: img,
+      link: link
+    });
+  });
+  return products;
+}
+
+// Filter products based on search term
+let allProducts = [];
+
+function filterProducts(searchTerm) {
+  const term = searchTerm.toLowerCase().trim();
+  const resultsContainer = document.getElementById('searchResultsContainer');
+  
+  if (term === '') {
+    resultsContainer.classList.remove('active');
+    resultsContainer.innerHTML = '';
+    // Show all products
+    allProducts.forEach(p => {
+      p.element.style.display = '';
+    });
+    return;
+  }
+  
+  // Filter products
+  const filtered = allProducts.filter(product => 
+    product.name.includes(term) || 
+    product.sku.toLowerCase().includes(term)
+  );
+  
+  // Hide non-matching products on the page
+  allProducts.forEach(product => {
+    if (filtered.includes(product)) {
+      product.element.style.display = '';
+    } else {
+      product.element.style.display = 'none';
+    }
+  });
+  
+  // Show results in overlay
+  if (filtered.length === 0) {
+    resultsContainer.innerHTML = '<div class="no-results"><i class="fa-solid fa-face-frown"></i><p>No products found matching "' + searchTerm + '"</p></div>';
+    resultsContainer.classList.add('active');
+  } else {
+    resultsContainer.innerHTML = filtered.map(product => `
+      <div class="search-result-item" onclick="goToProduct('${product.link}')">
+        <img src="${product.img}" class="search-result-img" alt="${product.originalName}">
+        <div class="search-result-info">
+          <div class="search-result-name">${product.originalName}</div>
+          <div class="search-result-sku">${product.sku}</div>
+          <div class="search-result-price">${product.price}</div>
+        </div>
+      </div>
+    `).join('');
+    resultsContainer.classList.add('active');
+  }
+}
+
+// Function to navigate to product
+function goToProduct(link) {
+  if (link && link !== '#') {
+    window.location.href = link;
+  }
+}
+
+// Initialize search
+function initSearch() {
+  allProducts = getAllProducts();
+  
+  const searchInput = document.getElementById('overlaySearchInput');
+  const searchOverlay = document.getElementById('searchOverlay');
+  const resultsContainer = document.getElementById('searchResultsContainer');
+  
+  if (searchInput) {
+    // Real-time search as user types
+    searchInput.addEventListener('input', (e) => {
+      filterProducts(e.target.value);
+    });
+    
+    // Close search when pressing Escape
+    searchInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        searchOverlay.classList.remove('active');
+        resultsContainer.classList.remove('active');
+        // Reset all products visibility
+        allProducts.forEach(p => p.element.style.display = '');
+        searchInput.value = '';
+      }
+    });
+  }
+}
+
+// Call initSearch when page loads
+document.addEventListener('DOMContentLoaded', function() {
+  initSearch();
+});
+
+// Also re-init after any dynamic content changes
+window.addEventListener('load', function() {
+  initSearch();
+});
+// Update account link based on login status
+function updateAccountLink() {
+  const currentUser = localStorage.getItem('it_hardware_current_user') || sessionStorage.getItem('it_hardware_session_user');
+  const accountLink = document.getElementById('accountLink');
+  
+  if (accountLink) {
+    if (currentUser) {
+      accountLink.href = 'account.html';
+      accountLink.title = 'My Account';
+    } else {
+      accountLink.href = 'login.html';
+      accountLink.title = 'Login / Sign Up';
+    }
+  }
+}
+
+updateAccountLink();
+
+updateAccountLink();
+
+// ========== SPA PRODUCT CLICK HANDLER ==========
+function initHomepageSPA() {
+  document.querySelectorAll('.product-card').forEach(card => {
+    card.addEventListener('click', function(e) {
+      // Don't trigger if clicking on Add to Cart button
+      if (e.target.closest('.add-btn')) return;
+      
+      const productId = this.dataset.productId;
+      if (productId && productsDatabase[productId]) {
+        e.preventDefault();
+        // Use the same loadProductDetail function from your SPA code
+        if (typeof loadProductDetail === 'function') {
+          loadProductDetail(productId);
+        } else {
+          // Fallback: redirect to product page
+          window.location.href = `it-hardware-titan-pro-x1-1.html?id=${productId}`;
+        }
+      }
+    });
+  });
+}
+
+// Call this when page loads
+initHomepageSPA();
+
+// ========== SPA PRODUCT DETAIL FUNCTION ==========
+
+// Helper function for star ratings
+function getStarRatingHTML(rating) {
+  let stars = '';
+  const fullStars = Math.floor(rating);
+  const hasHalf = rating % 1 !== 0;
+  for (let i = 0; i < fullStars; i++) stars += '<i class="fa-solid fa-star"></i>';
+  if (hasHalf) stars += '<i class="fa-solid fa-star-half-stroke"></i>';
+  for (let i = 0; i < 5 - Math.ceil(rating); i++) stars += '<i class="fa-regular fa-star"></i>';
+  return stars;
+}
+
+// Load product detail without page refresh
+function loadProductDetail(productId) {
+  const product = productsDatabase[productId];
+  if (!product) return;
+  
+  // Update URL
+  const newUrl = window.location.pathname + `?id=${productId}`;
+  window.history.pushState({ productId: productId }, product.name, newUrl);
+  
+  const mainContainer = document.getElementById('main');
+  if (!mainContainer) return;
+  
+  // Generate product detail HTML (NO BREADCRUMB)
+  mainContainer.innerHTML = `
+    <div class="product-detail">
+      <div class="gallery">
+        <div class="main-img-wrap">
+          <img id="mainImg" src="${product.image}" alt="${product.name}"/>
+        </div>
+        <div class="thumbs">
+          <div class="thumb active" data-src="${product.image}">
+            <img src="${product.image}?w=300&q=70" alt="Thumb"/>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-info">
+        <h1>${product.name}</h1>
+        <div class="rating-row">
+          <div class="stars">${getStarRatingHTML(4.8)}</div>
+          <span class="rating-count">4.8 (124 reviews)</span>
+        </div>
+        <p class="price">${product.price}</p>
+        <p class="product-desc">${product.description || 'High-quality product from IT Hardware.'}</p>
+
+        <div class="option-group">
+          <p class="option-label">Memory (RAM)</p>
+          <div class="option-btns">
+            <button class="opt-btn active" data-group="ram">32GB</button>
+            <button class="opt-btn" data-group="ram">64GB</button>
+          </div>
+        </div>
+
+        <div class="buy-row">
+          <div class="qty-ctrl">
+            <button class="qty-btn" id="qtyDec"><i class="fa-solid fa-minus"></i></button>
+            <span class="qty-val" id="qtyVal">1</span>
+            <button class="qty-btn" id="qtyInc"><i class="fa-solid fa-plus"></i></button>
+          </div>
+          <button class="btn-cart" id="addCartBtnDetail">
+            <i class="fa-solid fa-cart-shopping"></i> Add to Cart
+          </button>
+        </div>
+        <p class="ships-note"><i class="fa-solid fa-truck"></i> Ships in 48 hours</p>
+      </div>
+    </div>
+
+    <div class="tabs-section">
+      <div class="tabs-nav">
+        <button class="tab-btn active" data-tab="overview">Overview</button>
+        <button class="tab-btn" data-tab="specs">Technical Specifications</button>
+        <button class="tab-btn" data-tab="reviews">Reviews</button>
+      </div>
+
+      <div class="tab-panel active" id="tab-overview">
+        <div class="overview-grid">
+          <div class="overview-text">
+            <h2>Product Overview</h2>
+            <p>${product.description || 'Premium quality product with excellent performance.'}</p>
+          </div>
+          <div class="overview-img">
+            <img src="${product.image}" alt="${product.name}"/>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-panel" id="tab-specs">
+        <table class="specs-table">
+          <tr><td>Product Name</td><td>${product.name}</td></tr>
+          <tr><td>SKU</td><td>${product.sku || 'N/A'}</td></tr>
+          <tr><td>Price</td><td>${product.price}</td></tr>
+        </table>
+      </div>
+
+      <div class="tab-panel" id="tab-reviews">
+        <div class="reviews-grid">
+          <p>No reviews yet. Be the first to review!</p>
+        </div>
+      </div>
+    </div>
+  `;
+  
+  attachDetailEvents();
+  window.scrollTo(0, 0);
+}
+
+function attachDetailEvents() {
+  // Quantity
+  let qty = 1;
+  const qtyVal = document.getElementById('qtyVal');
+  document.getElementById('qtyInc')?.addEventListener('click', () => { qty = Math.min(qty + 1, 99); qtyVal.textContent = qty; });
+  document.getElementById('qtyDec')?.addEventListener('click', () => { qty = Math.max(qty - 1, 1); qtyVal.textContent = qty; });
+  
+  // Options
+  document.querySelectorAll('.opt-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const group = btn.dataset.group;
+      document.querySelectorAll(`.opt-btn[data-group="${group}"]`).forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    });
+  });
+  
+  // Tabs
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById(`tab-${btn.dataset.tab}`).classList.add('active');
+    });
+  });
+  
+  // Add to Cart
+  document.getElementById('addCartBtnDetail')?.addEventListener('click', () => {
+    alert('Product added to cart!');
+  });
+}
+
+// Handle product card clicks
+function initHomepageSPA() {
+  document.querySelectorAll('.product-card').forEach(card => {
+    card.addEventListener('click', function(e) {
+      if (e.target.closest('.add-btn')) return;
+      const productId = this.dataset.productId;
+      if (productId && productsDatabase[productId]) {
+        e.preventDefault();
+        loadProductDetail(productId);
+      }
+    });
+  });
+}
+
+// Handle browser back/forward
+window.addEventListener('popstate', () => {
+  const params = new URLSearchParams(window.location.search);
+  const id = params.get('id');
+  if (id && productsDatabase[id]) {
+    loadProductDetail(id);
+  } else {
+    location.reload();
+  }
+});
+
+// Initialize on page load
+document.addEventListener('DOMContentLoaded', function() {
+  const params = new URLSearchParams(window.location.search);
+  const id = params.get('id');
+  if (id && productsDatabase[id]) {
+    loadProductDetail(id);
+  } else {
+    initHomepageSPA();
+  }
+});
 </script>
 </body>
 </html>

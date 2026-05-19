@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>My Account – IT Hardware Products</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<style>
+/* ══════════════════════════════════════
+   TOKENS — green theme
+══════════════════════════════════════ */
+:root {
+  --accent:       #00C896;
+  --accent-dark:  #00a87c;
+  --accent-light: #e6faf4;
+  --dark:         #111827;
+  --dark2:        #1f2937;
+  --dark3:        #374151;
+  --mid:          #6b7280;
+  --lt-mid:       #9ca3af;
+  --light:        #f9fafb;
+  --bg:           #f8f9fb;
+  --border:       #e5e7eb;
+  --white:        #ffffff;
+  --radius:       12px;
+  --shadow-sm:    0 1px 4px rgba(0,0,0,.07);
+  --shadow:       0 2px 16px rgba(0,0,0,.08);
+  --shadow-md:    0 4px 24px rgba(0,0,0,.12);
+  --header-h:     64px;
+}
+
+/* ══ RESET ══ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'DM Sans',sans-serif;
+  background:var(--light);
+  color:var(--dark);
+  overflow-x:hidden;
+}
+a{text-decoration:none;color:inherit}
+button{font-family:inherit;cursor:pointer;border:none;background:none}
+img{display:block;max-width:100%}
+
+/* Remove all browser outlines */
+*:focus,*:active,button:focus,button:active{
+  outline:none!important;
+  -webkit-tap-highlight-color:transparent;
+}
+
+/* ══════════════════════════════════════
+   HEADER
+══════════════════════════════════════ */
+#header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 300;
+  height: var(--header-h);
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  gap: 12px;
+  box-shadow: var(--shadow-sm);
+}
+
+/* Logo */
+.header-logo {
+  font-size: 0.97rem;
+  font-weight: 700;
+  color: var(--dark);
+  letter-spacing: -0.3px;
+  white-space: nowrap;
+  flex: 1;
+  text-decoration: none;
+}
+
+/* Right icons container */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+}
+
+/* Icon buttons */
+.icon-btn {
+  position: relative;
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--mid);
+  font-size: 1rem;
+  transition: background 0.2s, color 0.2s;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.icon-btn:hover {
+  background: var(--bg);
+  color: var(--accent);
+}
+
+/* Cart badge */
+.badge {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  width: 16px;
+  height: 16px;
+  background: var(--accent);
+  border-radius: 50%;
+  font-size: 0.58rem;
+  font-weight: 700;
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Hamburger button */
+.ham-btn {
+  display: flex;
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  align-items: center;
+  justify-content: center;
+  color: var(--dark);
+  font-size: 1.1rem;
+  cursor: pointer;
+  background: none;
+  border: none;
+  flex-shrink: 0;
+}
+
+.ham-btn:hover {
+  background: var(--bg);
+}
+
+/* Desktop navigation (hidden on mobile) */
+.header-nav {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex: 1;
+}
+
+.header-nav a {
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--mid);
+  transition: background 0.2s, color 0.2s;
+  text-decoration: none;
+}
+
+.header-nav a:hover {
+  background: var(--bg);
+  color: var(--dark);
+}
+
+.header-nav a.active {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 960px) {
+  .header-nav {
+    display: none;
+  }
+}
+
+/* ══════════════════════════════════════
+   MAIN CONTENT
+══════════════════════════════════════ */
+main{
+  margin-top:var(--header-h);
+  padding:32px 24px 60px;
+  max-width:1200px;
+  margin-left:auto;
+  margin-right:auto;
+  min-height:calc(100vh - var(--header-h));
+}
+
+/* Profile Section */
+.profile-section{
+  background:var(--white);
+  border-radius:var(--radius);
+  border:1px solid var(--border);
+  padding:32px;
+  margin-bottom:32px;
+  display:flex;
+  align-items:center;
+  gap:32px;
+  flex-wrap:wrap;
+}
+
+.profile-photo{
+  position:relative;
+  cursor:pointer;
+}
+.profile-photo img{
+  width:120px;
+  height:120px;
+  border-radius:50%;
+  object-fit:cover;
+  border:4px solid var(--accent);
+  box-shadow:var(--shadow-md);
+}
+.photo-overlay{
+  position:absolute;
+  bottom:0;
+  right:0;
+  background:var(--accent);
+  width:36px;
+  height:36px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:white;
+  font-size:0.9rem;
+  border:2px solid var(--white);
+  cursor:pointer;
+  transition:all 0.2s;
+}
+.photo-overlay:hover{
+  background:var(--accent-dark);
+  transform:scale(1.05);
+}
+
+.profile-info{
+  flex:1;
+}
+.profile-info h2{
+  font-size:1.5rem;
+  margin-bottom:8px;
+  color:var(--dark);
+}
+.profile-info .profile-email{
+  color:var(--mid);
+  margin-bottom:12px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.profile-info .profile-email i{
+  color:var(--accent);
+}
+.profile-info .profile-member{
+  font-size:0.8rem;
+  color:var(--lt-mid);
+  display:flex;
+  align-items:center;
+  gap:6px;
+}
+
+.edit-profile-btn{
+  padding:10px 20px;
+  background:var(--light);
+  border:1px solid var(--border);
+  border-radius:8px;
+  color:var(--dark);
+  font-weight:500;
+  transition:all 0.2s;
+}
+.edit-profile-btn:hover{
+  background:var(--accent-light);
+  border-color:var(--accent);
+  color:var(--accent);
+}
+
+/* Activity Boxes Grid */
+.activity-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:32px;
+}
+
+.activity-box{
+  background:var(--white);
+  border-radius:var(--radius);
+  border:1px solid var(--border);
+  overflow:hidden;
+}
+
+.box-header{
+  padding:20px 24px;
+  background:linear-gradient(135deg, var(--white) 0%, var(--light) 100%);
+  border-bottom:1px solid var(--border);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.box-header h3{
+  font-size:1.2rem;
+  font-weight:700;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.box-header h3 i{
+  color:var(--accent);
+  font-size:1.2rem;
+}
+.view-all{
+  font-size:0.8rem;
+  color:var(--accent);
+  font-weight:500;
+}
+.view-all:hover{
+  text-decoration:underline;
+}
+
+.box-content{
+  padding:20px 24px;
+  max-height:400px;
+  overflow-y:auto;
+}
+
+/* Cart Items List */
+.cart-item-list{
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+}
+
+.cart-item{
+  display:flex;
+  gap:12px;
+  padding:12px;
+  background:var(--light);
+  border-radius:10px;
+  transition:all 0.2s;
+}
+.cart-item:hover{
+  background:var(--accent-light);
+  transform:translateX(4px);
+}
+.cart-item-img{
+  width:60px;
+  height:60px;
+  background:var(--dark2);
+  border-radius:8px;
+  overflow:hidden;
+  flex-shrink:0;
+}
+.cart-item-img img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+.cart-item-details{
+  flex:1;
+}
+.cart-item-details h4{
+  font-size:0.9rem;
+  font-weight:600;
+  margin-bottom:4px;
+}
+.cart-item-details .cart-item-spec{
+  font-size:0.7rem;
+  color:var(--mid);
+  margin-bottom:4px;
+}
+.cart-item-price{
+  font-weight:700;
+  color:var(--accent);
+  font-size:0.85rem;
+}
+.remove-cart-item{
+  color:var(--mid);
+  cursor:pointer;
+  padding:4px;
+  transition:color 0.2s;
+}
+.remove-cart-item:hover{
+  color:#ef4444;
+}
+
+.empty-state{
+  text-align:center;
+  padding:40px 20px;
+  color:var(--mid);
+}
+.empty-state i{
+  font-size:3rem;
+  color:var(--border);
+  margin-bottom:12px;
+  display:block;
+}
+.empty-state p{
+  font-size:0.9rem;
+}
+.shop-link{
+  display:inline-block;
+  margin-top:12px;
+  padding:8px 20px;
+  background:var(--accent);
+  color:white;
+  border-radius:6px;
+  font-size:0.8rem;
+  font-weight:500;
+}
+
+/* Orders List */
+.order-list{
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+}
+
+.order-card{
+  border:1px solid var(--border);
+  border-radius:10px;
+  overflow:hidden;
+  transition:all 0.2s;
+}
+.order-card:hover{
+  border-color:var(--accent);
+  box-shadow:var(--shadow);
+}
+
+.order-header{
+  padding:12px 16px;
+  background:var(--light);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:8px;
+}
+.order-id{
+  font-family:'DM Mono',monospace;
+  font-size:0.75rem;
+  font-weight:600;
+  color:var(--dark);
+}
+.order-date{
+  font-size:0.7rem;
+  color:var(--mid);
+}
+.order-status{
+  padding:4px 10px;
+  border-radius:20px;
+  font-size:0.7rem;
+  font-weight:600;
+}
+.status-delivered{
+  background:#dcfce7;
+  color:#15803d;
+}
+.status-shipped{
+  background:#fef3c7;
+  color:#b45309;
+}
+.status-processing{
+  background:#e0e7ff;
+  color:#4338ca;
+}
+.status-cancelled{
+  background:#fee2e2;
+  color:#dc2626;
+}
+
+.order-body{
+  padding:12px 16px;
+}
+.order-item{
+  display:flex;
+  justify-content:space-between;
+  padding:8px 0;
+  font-size:0.85rem;
+}
+.order-item-name{
+  color:var(--dark);
+}
+.order-item-price{
+  font-weight:500;
+  color:var(--dark);
+}
+.order-total{
+  margin-top:8px;
+  padding-top:8px;
+  border-top:1px solid var(--border);
+  display:flex;
+  justify-content:space-between;
+  font-weight:700;
+  color:var(--accent);
+}
+
+/* Modal for editing profile */
+.modal{
+  display:none;
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  background:rgba(0,0,0,0.5);
+  z-index:1000;
+  align-items:center;
+  justify-content:center;
+}
+.modal.active{
+  display:flex;
+}
+.modal-content{
+  background:var(--white);
+  border-radius:var(--radius);
+  max-width:500px;
+  width:90%;
+  padding:28px;
+}
+.modal-content h3{
+  margin-bottom:20px;
+}
+.modal-content input{
+  width:100%;
+  padding:12px;
+  border:1.5px solid var(--border);
+  border-radius:8px;
+  margin-bottom:16px;
+  font-family:inherit;
+}
+.modal-buttons{
+  display:flex;
+  gap:12px;
+  justify-content:flex-end;
+}
+.modal-buttons button{
+  padding:10px 20px;
+  border-radius:8px;
+  font-weight:500;
+}
+.save-btn{
+  background:var(--accent);
+  color:white;
+}
+.cancel-btn{
+  background:var(--light);
+  color:var(--dark);
+}
+
+/* Toast */
+.toast{
+  position:fixed;
+  bottom:24px;
+  right:24px;
+  background:var(--dark2);
+  color:white;
+  padding:12px 20px;
+  border-radius:8px;
+  font-size:0.85rem;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  transform:translateX(400px);
+  transition:transform 0.3s;
+  z-index:1000;
+  box-shadow:var(--shadow-md);
+}
+.toast.show{
+  transform:translateX(0);
+}
+.toast i{
+  color:var(--accent);
+}
+
+/* Search Overlay */
+.search-overlay{
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  background:rgba(0,0,0,0.85);
+  backdrop-filter:blur(8px);
+  z-index:1000;
+  display:flex;
+  align-items:flex-start;
+  justify-content:center;
+  opacity:0;
+  visibility:hidden;
+  transition:opacity 0.25s ease;
+  padding:20px;
+}
+.search-overlay.active{
+  opacity:1;
+  visibility:visible;
+}
+.search-overlay-container{
+  margin-top:80px;
+  width:100%;
+  max-width:500px;
+  background:white;
+  border-radius:40px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:12px 20px;
+}
+.search-overlay-container i{
+  color:var(--mid);
+  font-size:.95rem;
+}
+.search-overlay-container input{
+  flex:1;
+  border:none;
+  outline:none;
+  background:transparent;
+  font-size:1rem;
+  font-family:var(--font);
+  color:var(--dark);
+}
+.close-search{
+  background:none;
+  font-size:1.3rem;
+  cursor:pointer;
+  color:#6b7280;
+}
+.close-search:hover{
+  color:#111827;
+}
+
+/* Responsive */
+@media(max-width:768px){
+  main{
+    padding:20px 16px 40px;
+  }
+  .activity-grid{
+    grid-template-columns:1fr;
+    gap:20px;
+  }
+  .profile-section{
+    flex-direction:column;
+    text-align:center;
+  }
+  .profile-info .profile-email{
+    justify-content:center;
+  }
+  .profile-info .profile-member{
+    justify-content:center;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="header">
+  <button class="ham-btn" id="hamBtn" aria-label="Open menu">
+    <i class="fa-solid fa-bars"></i>
+  </button>
+  <button class="icon-btn" id="globalSearchIcon" aria-label="Search">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+  <a href="index.html" class="header-logo">IT Hardware Products</a>
+  <div class="header-right">
+    <a href="cart.html" class="icon-btn" id="cartLink" style="color: inherit; text-decoration: none;">
+      <i class="fa-solid fa-cart-shopping"></i>
+      <span class="badge" id="cartCount">0</span>
+    </a>
+    <a href="#" class="icon-btn" id="accountLink" style="color: inherit; text-decoration: none;">
+      <i class="fa-regular fa-circle-user"></i>
+    </a>
+  </div>
+</header>
+
+<!-- Search Overlay -->
+<div class="search-overlay" id="searchOverlay">
+  <div class="search-overlay-container">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <input type="text" id="overlaySearchInput" placeholder="Search products..." autocomplete="off">
+    <button class="close-search" id="closeSearchBtn"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<main>
+  <!-- Profile Section -->
+  <div class="profile-section">
+    <div class="profile-photo" onclick="triggerPhotoUpload()">
+      <img id="profileImage" src="https://ui-avatars.com/api/?background=00C896&color=fff&bold=true&size=120" alt="Profile Photo"/>
+      <div class="photo-overlay">
+        <i class="fa-solid fa-camera"></i>
+      </div>
+      <input type="file" id="photoUpload" accept="image/*" style="display:none" onchange="updateProfilePhoto(this)"/>
+    </div>
+    <div class="profile-info">
+      <h2 id="profileName">Loading...</h2>
+      <div class="profile-email">
+        <i class="fa-regular fa-envelope"></i>
+        <span id="profileEmail">loading@example.com</span>
+      </div>
+      <div class="profile-member">
+        <i class="fa-regular fa-calendar-alt"></i>
+        <span>Member since <span id="memberSince">Loading...</span></span>
+      </div>
+    </div>
+    <button class="edit-profile-btn" onclick="openEditModal()">
+      <i class="fa-regular fa-pen-to-square"></i> Edit Profile
+    </button>
+  </div>
+
+  <!-- Activity Grid -->
+  <div class="activity-grid">
+    <!-- Cart Box -->
+    <div class="activity-box">
+      <div class="box-header">
+        <h3><i class="fa-solid fa-cart-shopping"></i> My Cart</h3>
+        <a href="cart.html" class="view-all">View All →</a>
+      </div>
+      <div class="box-content" id="cartBoxContent">
+        <!-- Cart items will be loaded here -->
+      </div>
+    </div>
+
+    <!-- Orders Box -->
+    <div class="activity-box">
+      <div class="box-header">
+        <h3><i class="fa-solid fa-truck"></i> My Orders</h3>
+        <a href="#" class="view-all" onclick="viewAllOrders(); return false;">View All →</a>
+      </div>
+      <div class="box-content" id="ordersBoxContent">
+        <!-- Orders will be loaded here -->
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- Edit Profile Modal -->
+<div class="modal" id="editModal">
+  <div class="modal-content">
+    <h3>Edit Profile</h3>
+    <input type="text" id="editFirstName" placeholder="First Name"/>
+    <input type="text" id="editLastName" placeholder="Last Name"/>
+    <div class="modal-buttons">
+      <button class="cancel-btn" onclick="closeEditModal()">Cancel</button>
+      <button class="save-btn" onclick="saveProfile()">Save Changes</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast">
+  <i class="fa-solid fa-circle-check"></i>
+  <span id="toastMsg">Profile updated!</span>
+</div>
+
+<script>
+// Product database
+const productsDB = {
+  1: { name: "Titan Pro X1", price: 2499, sku: "TP-X1-2024", spec: "i9-13900H / 64GB / 2TB", image: "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=200&q=80" },
+  2: { name: "Precision 7680", price: 1849, sku: "DP-7680-WKS", spec: "i7-13850HX / 32GB / 1TB", image: "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=200&q=80" },
+  3: { name: "EliteBook X360", price: 2199, sku: "HE-360-XPRO", spec: "M3 Pro / 18GB / 512GB", image: "https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=200&q=80" },
+  4: { name: "HP EliteBook 865 G10", price: 1699, sku: "HP-ELITE-865G", spec: "Ryzen 7 PRO / 32GB / 1TB", image: "https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=200&q=80" },
+  5: { name: "MacBook Pro M3 Max", price: 3199, sku: "AP-MBP-M3MAX", spec: "M3 Max / 96GB / 1TB", image: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=200&q=80" },
+  6: { name: "ThinkPad X1 Carbon", price: 1949, sku: "LN-X1C-GEN12", spec: "Ultra 7 / 32GB / 1TB", image: "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=200&q=80" }
+};
+
+// Current user
+let currentUser = null;
+let userCart = [];
+
+// Orders storage
+let userOrders = [];
+
+// Load user data
+function loadUserData() {
+  // Check for logged in user
+  const storedUser = localStorage.getItem('it_hardware_current_user') || 
+                     sessionStorage.getItem('it_hardware_session_user');
+  
+  if (!storedUser) {
+    // No user logged in, redirect to auth page
+    showToast('Please sign in to view your account');
+    setTimeout(() => {
+      window.location.href = 'it-hardware-auth.html';
+    }, 1500);
+    return false;
+  }
+  
+  currentUser = JSON.parse(storedUser);
+  
+  // Load cart
+  const savedCart = localStorage.getItem('it_hardware_cart');
+  if (savedCart) {
+    userCart = JSON.parse(savedCart);
+  } else {
+    // Default cart items
+    userCart = [
+      { id: 1, productId: 1, name: "Titan Pro X1", price: 2499, quantity: 1, image: productsDB[1].image, sku: productsDB[1].sku, spec: productsDB[1].spec },
+      { id: 2, productId: 2, name: "Precision 7680", price: 1849, quantity: 1, image: productsDB[2].image, sku: productsDB[2].sku, spec: productsDB[2].spec },
+      { id: 3, productId: 3, name: "EliteBook X360", price: 2199, quantity: 1, image: productsDB[3].image, sku: productsDB[3].sku, spec: productsDB[3].spec }
+    ];
+    localStorage.setItem('it_hardware_cart', JSON.stringify(userCart));
+  }
+  
+  // Load orders
+  const savedOrders = localStorage.getItem(`it_hardware_orders_${currentUser.id}`);
+  if (savedOrders) {
+    userOrders = JSON.parse(savedOrders);
+  } else {
+    // Demo orders based on cart items
+    userOrders = [
+      {
+        id: "ORD-001",
+        date: "2024-11-15",
+        status: "delivered",
+        items: [
+          { name: "Titan Pro X1", price: 2499, quantity: 1 },
+          { name: "Precision 7680", price: 1849, quantity: 1 }
+        ],
+        total: 4348
+      },
+      {
+        id: "ORD-002",
+        date: "2024-12-01",
+        status: "shipped",
+        items: [
+          { name: "EliteBook X360", price: 2199, quantity: 1 }
+        ],
+        total: 2199
+      }
+    ];
+    localStorage.setItem(`it_hardware_orders_${currentUser.id}`, JSON.stringify(userOrders));
+  }
+  
+  // Update UI
+  updateProfileUI();
+  updateCartBadge();
+  renderCartBox();
+  renderOrdersBox();
+  
+  return true;
+}
+
+// Update profile UI
+function updateProfileUI() {
+  if (!currentUser) return;
+  
+  document.getElementById('profileName').textContent = `${currentUser.firstName || 'User'} ${currentUser.lastName || ''}`;
+  document.getElementById('profileEmail').textContent = currentUser.email;
+  
+  // Member since
+  const savedPhoto = localStorage.getItem(`profile_photo_${currentUser.id}`);
+  if (savedPhoto) {
+    document.getElementById('profileImage').src = savedPhoto;
+  } else {
+    document.getElementById('profileImage').src = `https://ui-avatars.com/api/?background=00C896&color=fff&bold=true&name=${currentUser.firstName}+${currentUser.lastName}&size=120`;
+  }
+  
+  // Member since date
+  const users = JSON.parse(localStorage.getItem('it_hardware_users') || '[]');
+  const userRecord = users.find(u => u.id === currentUser.id);
+  if (userRecord && userRecord.createdAt) {
+    const date = new Date(userRecord.createdAt);
+    document.getElementById('memberSince').textContent = date.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+  } else {
+    document.getElementById('memberSince').textContent = 'January 2024';
+  }
+}
+
+// Update cart badge
+function updateCartBadge() {
+  const totalItems = userCart.reduce((sum, item) => sum + item.quantity, 0);
+  const badge = document.getElementById('cartCount');
+  if (badge) badge.textContent = totalItems;
+}
+
+// Render cart box (shows first 3 items)
+function renderCartBox() {
+  const container = document.getElementById('cartBoxContent');
+  
+  if (!userCart || userCart.length === 0) {
+    container.innerHTML = `
+      <div class="empty-state">
+        <i class="fa-regular fa-cart-shopping"></i>
+        <p>Your cart is empty</p>
+        <a href="it-hardware-laptops-1.html" class="shop-link">Shop Now →</a>
+      </div>
+    `;
+    return;
+  }
+  
+  const displayItems = userCart.slice(0, 3);
+  
+  container.innerHTML = `
+    <div class="cart-item-list">
+      ${displayItems.map(item => `
+        <div class="cart-item">
+          <div class="cart-item-img">
+            <img src="${item.image}" alt="${item.name}">
+          </div>
+          <div class="cart-item-details">
+            <h4>${item.name}</h4>
+            <div class="cart-item-spec">${item.spec || 'Enterprise Laptop'}</div>
+            <div class="cart-item-price">$${item.price.toLocaleString()} × ${item.quantity}</div>
+          </div>
+          <div class="remove-cart-item" onclick="removeFromCart(${item.id})">
+            <i class="fa-regular fa-trash-can"></i>
+          </div>
+        </div>
+      `).join('')}
+      ${userCart.length > 3 ? `<div style="text-align:center; margin-top:12px; font-size:0.75rem; color:var(--mid);">+${userCart.length - 3} more item(s)</div>` : ''}
+    </div>
+  `;
+}
+
+// Remove from cart
+function removeFromCart(cartItemId) {
+  userCart = userCart.filter(item => item.id !== cartItemId);
+  localStorage.setItem('it_hardware_cart', JSON.stringify(userCart));
+  renderCartBox();
+  updateCartBadge();
+  showToast('Item removed from cart');
+}
+
+// Render orders box
+function renderOrdersBox() {
+  const container = document.getElementById('ordersBoxContent');
+  
+  if (!userOrders || userOrders.length === 0) {
+    container.innerHTML = `
+      <div class="empty-state">
+        <i class="fa-regular fa-receipt"></i>
+        <p>No orders yet</p>
+        <a href="it-hardware-laptops-1.html" class="shop-link">Start Shopping →</a>
+      </div>
+    `;
+    return;
+  }
+  
+  const displayOrders = userOrders.slice(0, 2);
+  
+  container.innerHTML = `
+    <div class="order-list">
+      ${displayOrders.map(order => `
+        <div class="order-card">
+          <div class="order-header">
+            <span class="order-id">${order.id}</span>
+            <span class="order-date">${new Date(order.date).toLocaleDateString()}</span>
+            <span class="order-status status-${order.status}">
+              ${order.status.charAt(0).toUpperCase() + order.status.slice(1)}
+            </span>
+          </div>
+          <div class="order-body">
+            ${order.items.slice(0, 2).map(item => `
+              <div class="order-item">
+                <span class="order-item-name">${item.name} × ${item.quantity}</span>
+                <span class="order-item-price">$${(item.price * item.quantity).toLocaleString()}</span>
+              </div>
+            `).join('')}
+            ${order.items.length > 2 ? `<div style="font-size:0.7rem; color:var(--mid); text-align:center;">+${order.items.length - 2} more item(s)</div>` : ''}
+            <div class="order-total">
+              <span>Total</span>
+              <span>$${order.total.toLocaleString()}</span>
+            </div>
+          </div>
+        </div>
+      `).join('')}
+      ${userOrders.length > 2 ? `<div style="text-align:center; margin-top:12px;"><a href="#" style="color:var(--accent); font-size:0.8rem;" onclick="viewAllOrders(); return false;">View all ${userOrders.length} orders →</a></div>` : ''}
+    </div>
+  `;
+}
+
+// View all orders
+function viewAllOrders() {
+  if (userOrders.length === 0) {
+    showToast('No orders to display');
+    return;
+  }
+  
+  let ordersHtml = '<div style="max-height:500px; overflow-y:auto;">';
+  userOrders.forEach(order => {
+    ordersHtml += `
+      <div style="border:1px solid var(--border); border-radius:10px; margin-bottom:16px; padding:16px;">
+        <div style="display:flex; justify-content:space-between; margin-bottom:12px;">
+          <strong>${order.id}</strong>
+          <span style="color:var(--mid); font-size:0.8rem;">${new Date(order.date).toLocaleDateString()}</span>
+          <span style="padding:2px 8px; border-radius:20px; background:#dcfce7; color:#15803d; font-size:0.7rem;">${order.status}</span>
+        </div>
+        ${order.items.map(item => `
+          <div style="display:flex; justify-content:space-between; padding:4px 0; font-size:0.85rem;">
+            <span>${item.name} × ${item.quantity}</span>
+            <span>$${(item.price * item.quantity).toLocaleString()}</span>
+          </div>
+        `).join('')}
+        <div style="border-top:1px solid var(--border); margin-top:8px; padding-top:8px; display:flex; justify-content:space-between; font-weight:700;">
+          <span>Total</span>
+          <span style="color:var(--accent);">$${order.total.toLocaleString()}</span>
+        </div>
+      </div>
+    `;
+  });
+  ordersHtml += '</div>';
+  
+  // Create modal for orders
+  const modal = document.createElement('div');
+  modal.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);z-index:1001;display:flex;align-items:center;justify-content:center;';
+  modal.innerHTML = `
+    <div style="background:white; border-radius:12px; max-width:600px; width:90%; max-height:80vh; overflow:auto; padding:24px;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+        <h3>All Orders</h3>
+        <button onclick="this.closest('div').parentElement.remove()" style="background:none; border:none; font-size:1.2rem; cursor:pointer;">&times;</button>
+      </div>
+      ${ordersHtml}
+    </div>
+  `;
+  document.body.appendChild(modal);
+  modal.addEventListener('click', (e) => { if (e.target === modal) modal.remove(); });
+}
+
+// Photo upload
+function triggerPhotoUpload() {
+  document.getElementById('photoUpload').click();
+}
+
+function updateProfilePhoto(input) {
+  if (input.files && input.files[0]) {
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      const imageUrl = e.target.result;
+      document.getElementById('profileImage').src = imageUrl;
+      localStorage.setItem(`profile_photo_${currentUser.id}`, imageUrl);
+      showToast('Profile photo updated!');
+    };
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+
+// Edit profile modal
+function openEditModal() {
+  if (!currentUser) return;
+  document.getElementById('editFirstName').value = currentUser.firstName || '';
+  document.getElementById('editLastName').value = currentUser.lastName || '';
+  document.getElementById('editModal').classList.add('active');
+}
+
+function closeEditModal() {
+  document.getElementById('editModal').classList.remove('active');
+}
+
+function saveProfile() {
+  const newFirstName = document.getElementById('editFirstName').value.trim();
+  const newLastName = document.getElementById('editLastName').value.trim();
+  
+  if (newFirstName) currentUser.firstName = newFirstName;
+  if (newLastName) currentUser.lastName = newLastName;
+  
+  // Update in localStorage
+  localStorage.setItem('it_hardware_current_user', JSON.stringify(currentUser));
+  
+  // Also update in users array
+  const users = JSON.parse(localStorage.getItem('it_hardware_users') || '[]');
+  const userIndex = users.findIndex(u => u.id === currentUser.id);
+  if (userIndex !== -1) {
+    users[userIndex].firstName = currentUser.firstName;
+    users[userIndex].lastName = currentUser.lastName;
+    localStorage.setItem('it_hardware_users', JSON.stringify(users));
+  }
+  
+  updateProfileUI();
+  closeEditModal();
+  showToast('Profile updated successfully!');
+}
+
+// Search functionality
+const searchIcon = document.getElementById('globalSearchIcon');
+const searchOverlay = document.getElementById('searchOverlay');
+const closeSearchBtn = document.getElementById('closeSearchBtn');
+const overlaySearchInput = document.getElementById('overlaySearchInput');
+
+searchIcon.addEventListener('click', () => {
+  searchOverlay.classList.add('active');
+  setTimeout(() => overlaySearchInput.focus(), 50);
+});
+
+closeSearchBtn.addEventListener('click', () => searchOverlay.classList.remove('active'));
+searchOverlay.addEventListener('click', (e) => {
+  if (e.target === searchOverlay) searchOverlay.classList.remove('active');
+});
+
+overlaySearchInput.addEventListener('keypress', (e) => {
+  if (e.key === 'Enter' && overlaySearchInput.value.trim()) {
+    showToast(`Searching for: ${overlaySearchInput.value}`);
+    searchOverlay.classList.remove('active');
+  }
+});
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') searchOverlay.classList.remove('active');
+});
+
+// Toast notification
+let toastTimer;
+function showToast(msg) {
+  const toast = document.getElementById('toast');
+  const toastMsg = document.getElementById('toastMsg');
+  toastMsg.textContent = msg;
+  toast.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => {
+    toast.classList.remove('show');
+  }, 2500);
+}
+
+// Hamburger menu (for mobile)
+const hamBtn = document.getElementById('hamBtn');
+hamBtn.addEventListener('click', () => {
+  showToast('Menu coming soon!');
+});
+
+// Account link
+document.getElementById('accountLink').addEventListener('click', (e) => {
+  e.preventDefault();
+  // Already on account page, do nothing or refresh
+  showToast('You are already on your account page');
+});
+
+// Initialize page
+loadUserData();
+
+// Listen for cart updates
+window.addEventListener('storage', (e) => {
+  if (e.key === 'it_hardware_cart') {
+    const savedCart = localStorage.getItem('it_hardware_cart');
+    if (savedCart) {
+      userCart = JSON.parse(savedCart);
+      renderCartBox();
+      updateCartBadge();
+    }
+  }
+});
+</script>
+</body>
+</html>
