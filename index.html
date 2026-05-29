@@ -1676,6 +1676,194 @@ a:active {
   box-shadow: 0 2px 0 #008f62;
   transition: all 0.05s ease;
 }
+/* Carousel Styles */
+.main-carousel {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #1f2937;
+  aspect-ratio: 4/3;
+}
+
+.carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  background: rgba(0,0,0,0.5);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.carousel-arrow:hover {
+  background: #00C896;
+}
+
+.carousel-arrow.prev {
+  left: 10px;
+}
+
+.carousel-arrow.next {
+  right: 10px;
+}
+/* Carousel Styles */
+.main-carousel {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #1f2937;
+  aspect-ratio: 4/3;
+}
+
+.carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  background: rgba(0,0,0,0.5);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.carousel-arrow:hover {
+  background: #00C896;
+}
+
+.carousel-arrow.prev {
+  left: 10px;
+}
+
+.carousel-arrow.next {
+  right: 10px;
+}
+
+/* Make sure 2-column layout works */
+.product-detail {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  padding: 24px 36px 50px;
+  align-items: start;
+}
+
+@media (max-width: 960px) {
+  .product-detail {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+}
+@keyframes badgePop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.5); background: var(--accent); }
+  100% { transform: scale(1); }
+}
+
+.badge-bounce {
+  animation: badgePop 0.28s ease;
+}
+
+@keyframes cartCatchAnim {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); background: rgba(0,200,150,0.3); }
+  100% { transform: scale(1); }
+}
+
+.cart-catch {
+  animation: cartCatchAnim 0.35s ease;
+}
+
+/* Tabs Section - Full Width */
+.tabs-section {
+  width: 100%;
+  padding: 0 36px 50px;
+  border-top: 1px solid var(--border);
+  background: var(--white);
+}
+
+.tabs-nav {
+  display: flex;
+  gap: 0;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 36px;
+}
+
+.tab-btn {
+  padding: 14px 24px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--mid);
+  border-bottom: 2.5px solid transparent;
+  margin-bottom: -1px;
+  background: none;
+  cursor: pointer;
+}
+
+.tab-btn.active {
+  color: var(--accent);
+  font-weight: 600;
+  border-bottom-color: var(--accent);
+}
+
+.tab-panel {
+  display: none;
+  width: 100%;
+}
+
+.tab-panel.active {
+  display: block;
+}
+
+/* Overview Grid - Full Width */
+.overview-grid {
+  display: block;
+  width: 100%;
+}
+
+.overview-text {
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Specs Table - Full Width */
+.specs-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.specs-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.specs-table td:first-child {
+  font-weight: 600;
+  width: 200px;
+  background: var(--light);
+}
+.product-detail {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  padding: 24px 36px 50px;
+  align-items: start;
+  background: var(--white);
+}
 </style>
 </head>
 <body>
@@ -1950,94 +2138,9 @@ a:active {
   </div>
   <div class="product-track-wrap">
     <div class="product-track" id="featTrack">
+  <!-- Products will be loaded dynamically from productsDatabase -->
+</div>
 
-      <!-- Product 1 - Titan Pro X1 -->
-      <div class="product-card" data-product-id="1">
-        <span class="product-badge">HOT</span>
-        <img class="product-img" src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=600&q=80" alt="Titan Pro X1 Laptop"/>
-        <div class="product-info">
-          <p class="product-sku">SKU: WP-990-2024</p>
-          <h3 class="product-name">Titan Pro X1 Laptop</h3>
-          <p class="product-desc">32GB RAM, 1TB NVMe, RTX 4080 mobility workstation...</p>
-          <div class="product-price">
-            <span class="price">$2,499.00</span>
-            <span class="price-old">$2,899.00</span>
-          </div>
-          <button class="add-btn"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
-        </div>
-      </div>
-
-      <!-- Product 2 - Ultima 4K Monitor -->
-      <div class="product-card" data-product-id="2">
-        <img class="product-img" src="https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=600&q=80" alt="Ultima 4K Monitor"/>
-        <div class="product-info">
-          <p class="product-sku">SKU: MON-4K-U32</p>
-          <h3 class="product-name">Ultima 4K Monitor</h3>
-          <p class="product-desc">32" IPS panel, 100% AdobeRGB, ideal for...</p>
-          <div class="product-price">
-            <span class="price">$899.00</span>
-          </div>
-          <button class="add-btn"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
-        </div>
-      </div>
-
-      <!-- Product 3 - RTX 5000 Workstation GPU -->
-      <div class="product-card" data-product-id="3">
-        <img class="product-img" src="https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?w=600&q=80" alt="RTX 5000 Workstation GPU"/>
-        <div class="product-info">
-          <p class="product-sku">SKU: GPU-RTX-5000</p>
-          <h3 class="product-name">RTX 5000 Workstation</h3>
-          <p class="product-desc">24GB GDDR6 ECC memory. The ultimate solution for AI...</p>
-          <div class="product-price">
-            <span class="price">$1,249.00</span>
-          </div>
-          <button class="add-btn"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
-        </div>
-      </div>
-
-      <!-- Product 4 - SafeStore 4-Bay NAS -->
-      <div class="product-card" data-product-id="4">
-        <img class="product-img" src="https://images.unsplash.com/photo-1531492153519-e8e14e0ac8d1?w=600&q=80" alt="SafeStore 4-Bay NAS"/>
-        <div class="product-info">
-          <p class="product-sku">SKU: NAS-8TB-E</p>
-          <h3 class="product-name">SafeStore 4-Bay NAS</h3>
-          <p class="product-desc">High-speed central storage for creative teams. 8TB ra...</p>
-          <div class="product-price">
-            <span class="price">$649.00</span>
-          </div>
-          <button class="add-btn"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
-        </div>
-      </div>
-
-      <!-- Product 5 - MacBook Pro M3 Max -->
-      <div class="product-card" data-product-id="5">
-        <img class="product-img" src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=600&q=80" alt="MacBook Pro M3"/>
-        <div class="product-info">
-          <p class="product-sku">SKU: AP-MBP-M3</p>
-          <h3 class="product-name">MacBook Pro M3 Max</h3>
-          <p class="product-desc">96GB unified memory, 16" ProMotion display, 22hr...</p>
-          <div class="product-price">
-            <span class="price">$3,199.00</span>
-          </div>
-          <button class="add-btn"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
-        </div>
-      </div>
-
-      <!-- Product 6 - Samsung Galaxy Tab S9 Ultra -->
-      <div class="product-card" data-product-id="6">
-        <img class="product-img" src="https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=600&q=80" alt="Samsung Galaxy Tab"/>
-        <div class="product-info">
-          <p class="product-sku">SKU: SAM-TAB-S9U</p>
-          <h3 class="product-name">Samsung Galaxy Tab S9 Ultra</h3>
-          <p class="product-desc">14.6" AMOLED, Snapdragon 8 Gen 2, 12GB RAM...</p>
-          <div class="product-price">
-            <span class="price">$1,099.00</span>
-          </div>
-          <button class="add-btn"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
-        </div>
-      </div>
-
-    </div>
   </div>
 </section>
 
@@ -2080,96 +2183,11 @@ a:active {
     </div>
   </div>
   <div class="product-track-wrap">
-    <div class="product-track" id="newTrack">
+   <div class="product-track" id="newTrack">
+  <!-- Products will be loaded dynamically from productsDatabase -->
+</div>
 
-      <!-- Product 7 - 8TB NVMe Pro Storage -->
-      <div class="product-card" data-product-id="7">
-        <span class="product-badge new">NEW</span>
-        <img class="product-img" src="https://images.unsplash.com/photo-1601737487795-dab272f52420?w=600&q=80" alt="8TB NVMe Pro Storage"/>
-        <div class="product-info">
-          <p class="product-sku">SKU: SS-8TB-PRO</p>
-          <h3 class="product-name">8TB NVMe Pro Storage</h3>
-          <p class="product-desc">PCIe Gen 5 speeds, enterprise-grade endurance rating...</p>
-          <div class="product-price">
-            <span class="price">$899.00</span>
-          </div>
-          <button class="add-btn"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
-        </div>
-      </div>
-
-      <!-- Product 8 - 4K UltraWide Monitor -->
-      <div class="product-card" data-product-id="8">
-        <span class="product-badge new">NEW</span>
-        <img class="product-img" src="https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=600&q=80" alt="4K UltraWide Monitor"/>
-        <div class="product-info">
-          <p class="product-sku">SKU: MN-4K-UW49</p>
-          <h3 class="product-name">4K UltraWide Monitor</h3>
-          <p class="product-desc">49" curved super-ultrawide, 120Hz, USB-C PD 96W...</p>
-          <div class="product-price">
-            <span class="price">$1,250.00</span>
-          </div>
-          <button class="add-btn"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
-        </div>
-      </div>
-
-      <!-- Product 9 - Xeon 64-Core Server CPU -->
-      <div class="product-card" data-product-id="9">
-        <span class="product-badge new">NEW</span>
-        <img class="product-img" src="https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=600&q=80" alt="Xeon 64-Core Server CPU"/>
-        <div class="product-info">
-          <p class="product-sku">SKU: XE-640-IT</p>
-          <h3 class="product-name">Xeon 64-Core Server CPU</h3>
-          <p class="product-desc">Intel Xeon Platinum, 350W TDP, 96MB cache, HEDT platform...</p>
-          <div class="product-price">
-            <span class="price">$4,250.00</span>
-          </div>
-          <button class="add-btn"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
-        </div>
-      </div>
-
-      <!-- Product 10 - Thunderbolt 4 Dock Pro -->
-      <div class="product-card" data-product-id="10">
-        <img class="product-img" src="https://images.unsplash.com/photo-1615750185825-9400de58e5cd?w=600&q=80" alt="Thunderbolt Docking Station"/>
-        <div class="product-info">
-          <p class="product-sku">SKU: DOCK-TB4-PRO</p>
-          <h3 class="product-name">Thunderbolt 4 Dock Pro</h3>
-          <p class="product-desc">12-in-1 docking station, triple 4K display support...</p>
-          <div class="product-price">
-            <span class="price">$349.00</span>
-          </div>
-          <button class="add-btn"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
-        </div>
-      </div>
-
-      <!-- Product 11 - MechPro RGB Keyboard -->
-      <div class="product-card" data-product-id="11">
-        <img class="product-img" src="https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=600&q=80" alt="Mechanical Keyboard"/>
-        <div class="product-info">
-          <p class="product-sku">SKU: KB-MECH-RGB</p>
-          <h3 class="product-name">MechPro RGB Keyboard</h3>
-          <p class="product-desc">Cherry MX switches, full RGB, tenkeyless enterprise layout...</p>
-          <div class="product-price">
-            <span class="price">$189.00</span>
-          </div>
-          <button class="add-btn"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
-        </div>
-      </div>
-
-      <!-- Product 12 - HP EliteBook 865 G10 -->
-      <div class="product-card" data-product-id="12">
-        <img class="product-img" src="https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=600&q=80" alt="HP EliteBook"/>
-        <div class="product-info">
-          <p class="product-sku">SKU: HP-ELITE-865G</p>
-          <h3 class="product-name">HP EliteBook 865 G10</h3>
-          <p class="product-desc">AMD Ryzen 7 PRO, 32GB LPDDR5, 14" WUXGA touch...</p>
-          <div class="product-price">
-            <span class="price">$1,699.00</span>
-          </div>
-          <button class="add-btn"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
-        </div>
-      </div>
-
-    </div>
+     
   </div>
 </section>
 
@@ -2245,21 +2263,1376 @@ a:active {
 </div>
 
 <script>
-  // ========== PRODUCT DATABASE ==========
-const productsDatabase = {
-  1: { id: 1, name: "Titan Pro X1 Laptop", price: "$2,499.00", image: "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=600&q=80" },
-  2: { id: 2, name: "Ultima 4K Monitor", price: "$899.00", image: "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=600&q=80" },
-  3: { id: 3, name: "RTX 5000 Workstation", price: "$1,249.00", image: "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?w=600&q=80" },
-  4: { id: 4, name: "SafeStore 4-Bay NAS", price: "$649.00", image: "https://images.unsplash.com/photo-1531492153519-e8e14e0ac8d1?w=600&q=80" },
-  5: { id: 5, name: "MacBook Pro M3 Max", price: "$3,199.00", image: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=600&q=80" },
-  6: { id: 6, name: "Samsung Galaxy Tab S9 Ultra", price: "$1,099.00", image: "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=600&q=80" },
-  7: { id: 7, name: "8TB NVMe Pro Storage", price: "$899.00", image: "https://images.unsplash.com/photo-1601737487795-dab272f52420?w=600&q=80" },
-  8: { id: 8, name: "4K UltraWide Monitor", price: "$1,250.00", image: "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=600&q=80" },
-  9: { id: 9, name: "Xeon 64-Core Server CPU", price: "$4,250.00", image: "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=600&q=80" },
-  10: { id: 10, name: "Thunderbolt 4 Dock Pro", price: "$349.00", image: "https://images.unsplash.com/photo-1615750185825-9400de58e5cd?w=600&q=80" },
-  11: { id: 11, name: "MechPro RGB Keyboard", price: "$189.00", image: "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=600&q=80" },
-  12: { id: 12, name: "HP EliteBook 865 G10", price: "$1,699.00", image: "https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=600&q=80" }
+  const productsDatabase = {
+  // ==================== BLUE LIST (Ai Folder) - 7 Products ====================
+  
+  1: {
+    id: 1,
+    name: "HP EliteBook 840 G5",
+    fullName: "HP EliteBook 840 G5 Business Laptop",
+    price: "$549.00",
+    oldPrice: "$799.00",
+    sku: "HP-840-G5",
+    rating: 4.5,
+    reviews: 28,
+    category: "Business",
+    source: "Ai",
+    // MAIN image first
+    image: "images/Ai/HP EliteBook 840 G5/hp-main.jpeg",
+    gallery: [
+      "images/Ai/HP EliteBook 840 G5/hp-main.jpeg",
+      "images/Ai/HP EliteBook 840 G5/hp-front.jpeg",
+      "images/Ai/HP EliteBook 840 G5/hp-side.jpeg"
+    ],
+    description: "HP EliteBook 840 G5 with Intel Core i5-8th Gen, 8GB RAM, 512GB SSD, 14 inch display. 3 Years Warranty.",
+    processor: "Intel Core i5-8th Gen (8250U/8350U)",
+    ram: "8GB DDR4",
+    storage: "512 GB SSD",
+    display: "14 inch FHD (1920x1080)",
+    touchscreen: "No",
+    gpu: "Intel UHD Graphics 620",
+    os: "Windows 10/11 Pro",
+    weight: "1.48 kg",
+    warranty: "3 Years",
+    features: ["HP Sure Start Gen4", "Spill-resistant keyboard", "Fingerprint reader", "HP Fast Charge"],
+    fullDescription: "The HP EliteBook 840 G5 is a premium business laptop featuring Intel's 8th generation Core i5 processor. With 8GB RAM and 512GB SSD storage, it delivers responsive performance for daily business tasks.",
+    reviewsList: []
+  },
+  
+  2: {
+    id: 2,
+    name: "HP ProBook 440 G5",
+    fullName: "HP ProBook 440 G5",
+    price: "$449.00",
+    oldPrice: "$649.00",
+    sku: "HP-440-G5",
+    rating: 4.3,
+    reviews: 42,
+    category: "Business",
+    source: "Ai",
+    image: "images/Ai/HP ProBook 440 G5/hp-main.jpeg",
+    gallery: [
+      "images/Ai/HP ProBook 440 G5/hp-main.jpeg",
+      "images/Ai/HP ProBook 440 G5/hp-back.jpeg",
+      "images/Ai/HP ProBook 440 G5/hp-side.jpeg"
+    ],
+    description: "HP ProBook 440 G5 with Intel Core i5-7th Gen, 8GB RAM, 256GB SSD, 14 inch display.",
+    processor: "Intel Core i5-7th Gen (7200U)",
+    ram: "8GB DDR4",
+    storage: "256 GB SSD",
+    display: "14 inch HD (1366x768)",
+    touchscreen: "No",
+    gpu: "Intel HD Graphics 620",
+    os: "Windows 10 Pro",
+    weight: "1.65 kg",
+    warranty: "3 Years",
+    features: ["HP BIOSphere", "Business-grade security", "Long battery life", "Durable design"],
+    fullDescription: "The HP ProBook 440 G5 offers a perfect balance of performance and affordability. Powered by Intel Core i5-7200U processor, 8GB RAM, and 256GB SSD.",
+    reviewsList: []
+  },
+  
+  3: {
+    id: 3,
+    name: "Lenovo V330",
+    fullName: "Lenovo V330 Business Laptop",
+    price: "$399.00",
+    oldPrice: "$599.00",
+    sku: "LEN-V330",
+    rating: 4.2,
+    reviews: 35,
+    category: "Business",
+    source: "Rahul",
+    image: "images/Rahul/Lenovo V330/lenovo-main.webp",
+    gallery: [
+      "images/Rahul/Lenovo V330/lenovo-main.webp",
+      "images/Rahul/Lenovo V330/lenovo-back.webp",
+      "images/Rahul/Lenovo V330/lenovo-front.webp",
+      "images/Rahul/Lenovo V330/lenovo-side.webp"
+    ],
+    description: "Lenovo V330 with Intel Core i3-8th Gen, 8GB RAM, 256GB SSD, 14 inch display.",
+    processor: "Intel Core i3-8th Gen (8130U)",
+    ram: "8GB DDR4",
+    storage: "256 GB SSD",
+    display: "14 inch HD",
+    touchscreen: "No",
+    gpu: "Intel UHD Graphics 620",
+    os: "Windows 10 Pro",
+    weight: "1.6 kg",
+    warranty: "3 Years",
+    features: ["Energy efficient", "Spill-resistant keyboard", "Trusted Platform Module"],
+    fullDescription: "The Lenovo V330 is designed for small businesses and professionals seeking value. With Intel Core i3-8130U processor, 8GB RAM, and 256GB SSD.",
+    reviewsList: []
+  },
+  
+  4: {
+    id: 4,
+    name: "Lenovo ThinkPad L460",
+    fullName: "Lenovo ThinkPad L460",
+    price: "$349.00",
+    oldPrice: "$549.00",
+    sku: "LEN-L460",
+    rating: 4.4,
+    reviews: 56,
+    category: "Business",
+    source: "Ai",
+    image: "images/Ai/Lenovo Thinkpad L460/lenovo-main.png",
+    gallery: [
+      "images/Ai/Lenovo Thinkpad L460/lenovo-main.png",
+      "images/Ai/Lenovo Thinkpad L460/lenovo-back.jpeg",
+      "images/Ai/Lenovo Thinkpad L460/lenovo-Side.jpeg"
+    ],
+    description: "Lenovo ThinkPad L460 with Intel Core i5-6th Gen, 8GB RAM, 256GB SSD.",
+    processor: "Intel Core i5-6th Gen (6300U)",
+    ram: "8GB DDR3",
+    storage: "256 GB SSD",
+    display: "14 inch HD",
+    touchscreen: "No",
+    gpu: "Intel HD Graphics 520",
+    os: "Windows 10 Pro",
+    weight: "1.9 kg",
+    warranty: "3 Years",
+    features: ["Spill-resistant keyboard", "TrackPoint", "MIL-STD-810G military standard"],
+    fullDescription: "The Lenovo ThinkPad L460 brings enterprise-grade durability and performance. Intel Core i5-6300U processor, 8GB RAM, and 256GB SSD.",
+    reviewsList: []
+  },
+  
+  5: {
+    id: 5,
+    name: "Lenovo ThinkPad L470",
+    fullName: "Lenovo ThinkPad L470",
+    price: "$379.00",
+    oldPrice: "$579.00",
+    sku: "LEN-L470",
+    rating: 4.3,
+    reviews: 48,
+    category: "Business",
+    source: "Ai",
+    image: "images/Ai/Lenovo Thinkpad L470/lenovo-main.jpeg",
+    gallery: [
+      "images/Ai/Lenovo Thinkpad L470/lenovo-main.jpeg",
+      "images/Ai/Lenovo Thinkpad L470/lenovo-up.jpg"
+    ],
+    description: "Lenovo ThinkPad L470 with Intel Core i5-7th Gen, 8GB RAM, 256GB SSD.",
+    processor: "Intel Core i5-7th Gen (7200U)",
+    ram: "8GB DDR4",
+    storage: "256 GB SSD",
+    display: "14 inch HD",
+    touchscreen: "No",
+    gpu: "Intel HD Graphics 620",
+    os: "Windows 10 Pro",
+    weight: "1.9 kg",
+    warranty: "3 Years",
+    features: ["ThinkPad durability", "Spill-resistant keyboard", "TPM 2.0"],
+    fullDescription: "The ThinkPad L470 offers enhanced performance with Intel Core i5-7200U processor. 8GB RAM and 256GB SSD configuration.",
+    reviewsList: []
+  },
+  
+  6: {
+    id: 6,
+    name: "Lenovo ThinkPad L490",
+    fullName: "Lenovo ThinkPad L490",
+    price: "$499.00",
+    oldPrice: "$749.00",
+    sku: "LEN-L490",
+    rating: 4.6,
+    reviews: 62,
+    category: "Business",
+    source: "Ai",
+    image: "images/Ai/Lenovo Thinkpad L490/lenovo main.jpeg",
+    gallery: [
+      "images/Ai/Lenovo Thinkpad L490/lenovo main.jpeg",
+      "images/Ai/Lenovo Thinkpad L490/lenovo back.jpeg"
+    ],
+    description: "Lenovo ThinkPad L490 with Intel Core i5-8th Gen, 8GB RAM, 512GB SSD.",
+    processor: "Intel Core i5-8th Gen (8265U)",
+    ram: "8GB DDR4",
+    storage: "512 GB SSD",
+    display: "14 inch FHD (1920x1080)",
+    touchscreen: "No",
+    gpu: "Intel UHD Graphics 620",
+    os: "Windows 10 Pro",
+    weight: "1.7 kg",
+    warranty: "3 Years",
+    features: ["Modern Standby", "Fast charging", "ThinkShutter camera cover"],
+    fullDescription: "The ThinkPad L490 combines classic ThinkPad durability with modern performance. Intel Core i5-8265U processor, 8GB RAM, and 512GB SSD.",
+    reviewsList: []
+  },
+  
+  7: {
+    id: 7,
+    name: "Lenovo ThinkPad L14 Gen 2",
+    fullName: "Lenovo ThinkPad L14 Gen 2",
+    price: "$699.00",
+    oldPrice: "$999.00",
+    sku: "LEN-L14G2",
+    rating: 4.8,
+    reviews: 89,
+    category: "Business",
+    source: "Rahul",
+    image: "images/Rahul/Lenovo Thinkpad L14/lenovo-main.webp",
+    gallery: [
+      "images/Rahul/Lenovo Thinkpad L14/lenovo-main.webp",
+      "images/Rahul/Lenovo Thinkpad L14/lenovo-left.webp",
+      "images/Rahul/Lenovo Thinkpad L14/lenovo-right.webp"
+    ],
+    description: "Lenovo ThinkPad L14 Gen 2 with Intel Core i5-11th Gen, 16GB RAM, 512GB SSD.",
+    processor: "Intel Core i5-11th Gen (1135G7)",
+    ram: "16GB DDR4",
+    storage: "512 GB SSD",
+    display: "14 inch FHD IPS",
+    touchscreen: "No",
+    gpu: "Intel Iris Xe Graphics",
+    os: "Windows 11 Pro",
+    weight: "1.6 kg",
+    warranty: "3 Years",
+    features: ["Intel Iris Xe Graphics", "Wi-Fi 6", "Modern Standby", "ThinkShutter"],
+    fullDescription: "The ThinkPad L14 Gen 2 is a powerhouse for business professionals. Intel Core i5-1135G7, 16GB RAM, and 512GB SSD.",
+    reviewsList: []
+  },
+
+  // ==================== YELLOW LIST (Rahul Folder) - 10 Products ====================
+  
+  8: {
+    id: 8,
+    name: "Dell Latitude 5410",
+    fullName: "Dell Latitude 5410",
+    price: "$599.00",
+    oldPrice: "$899.00",
+    sku: "DEL-5410",
+    rating: 4.5,
+    reviews: 73,
+    category: "Business",
+    source: "Rahul",
+    image: "images/Rahul/Dell Latitude 5410/dell-main.jpg",
+    gallery: [
+      "images/Rahul/Dell Latitude 5410/dell-main.jpg",
+      "images/Rahul/Dell Latitude 5410/dell-back.jpeg",
+      "images/Rahul/Dell Latitude 5410/dell-left.webp",
+      "images/Rahul/Dell Latitude 5410/dell-right.webp"
+    ],
+    description: "Dell Latitude 5410 with Intel Core i5-10th Gen, 16GB RAM, 512GB SSD.",
+    processor: "Intel Core i5-10th Gen (10310U)",
+    ram: "16GB DDR4",
+    storage: "512 GB SSD",
+    display: "14 inch FHD",
+    touchscreen: "No",
+    gpu: "Intel UHD Graphics",
+    os: "Windows 10/11 Pro",
+    weight: "1.5 kg",
+    warranty: "3 Years",
+    features: ["Dell Optimizer", "ExpressCharge", "Fingerprint reader"],
+    fullDescription: "The Dell Latitude 5410 is designed for productivity. Intel Core i5-10310U, 16GB RAM, and 512GB SSD.",
+    reviewsList: []
+  },
+  
+  9: {
+    id: 9,
+    name: "Dell Latitude 5420",
+    fullName: "Dell Latitude 5420",
+    price: "$799.00",
+    oldPrice: "$1,099.00",
+    sku: "DEL-5420",
+    rating: 4.6,
+    reviews: 67,
+    category: "Business",
+    source: "Rahul",
+    image: "images/Rahul/Dell 5420/dell-main.webp",
+    gallery: [
+      "images/Rahul/Dell 5420/dell-main.webp",
+      "images/Rahul/Dell 5420/dell-front.webp",
+      "images/Rahul/Dell 5420/dell-right.webp",
+      "images/Rahul/Dell 5420/dell-left.webp"
+    ],
+    description: "Dell Latitude 5420 with Intel Core i5-11th Gen, 16GB RAM, 512GB SSD, Windows 10.",
+    processor: "Intel Core i5-11th Gen (1135G7)",
+    ram: "16GB DDR4",
+    storage: "512 GB SSD",
+    display: "14 inch FHD",
+    touchscreen: "No",
+    gpu: "Intel Iris Xe Graphics",
+    os: "Windows 10 Pro",
+    weight: "1.4 kg",
+    warranty: "3 Years",
+    features: ["11th Gen Intel", "Windows 10 Pro", "Dell Optimizer"],
+    fullDescription: "The Dell Latitude 5420 is a powerful notebook with Intel Core i5-1135G7, 16GB RAM, and 512GB SSD.",
+    reviewsList: []
+  },
+  
+  10: {
+    id: 10,
+    name: "Dell Latitude 3420",
+    fullName: "Dell Latitude 3420",
+    price: "$699.00",
+    oldPrice: "$949.00",
+    sku: "DEL-3420",
+    rating: 4.5,
+    reviews: 44,
+    category: "Business",
+    source: "Rahul",
+    image: "images/Rahul/Dell Latitude 3420/dell-main.webp",
+    gallery: [
+      "images/Rahul/Dell Latitude 3420/dell-main.webp",
+      "images/Rahul/Dell Latitude 3420/dell-front.webp",
+      "images/Rahul/Dell Latitude 3420/dell-side.webp",
+      "images/Rahul/Dell Latitude 3420/dell-up.webp"
+    ],
+    description: "Dell Latitude 3420 with Intel Core i5-11th Gen, 16GB RAM, 512GB SSD.",
+    processor: "Intel Core i5-11th Gen (1135G7)",
+    ram: "16GB DDR4",
+    storage: "512 GB SSD",
+    display: "14 inch FHD",
+    touchscreen: "No",
+    gpu: "Intel Iris Xe Graphics",
+    os: "Windows 10 Pro",
+    weight: "1.6 kg",
+    warranty: "3 Years",
+    features: ["Great value", "Business security", "Reliable performance"],
+    fullDescription: "The Dell Latitude 3420 offers enterprise features at an accessible price.",
+    reviewsList: []
+  },
+  
+  11: {
+    id: 11,
+    name: "Dell Latitude 5410 i7",
+    fullName: "Dell Latitude 5410 (Core i7)",
+    price: "$649.00",
+    oldPrice: "$899.00",
+    sku: "DEL-5410-I7",
+    rating: 4.6,
+    reviews: 58,
+    category: "Business",
+    source: "Rahul",
+    image: "images/Rahul/Dell Latitude 5410/dell-main.jpg",
+    gallery: [
+      "images/Rahul/Dell Latitude 5410/dell-main.jpg",
+      "images/Rahul/Dell Latitude 5410/dell-back.jpeg"
+    ],
+    description: "Dell Latitude 5410 with Intel Core i7-10th Gen, 8GB RAM, 512GB SSD.",
+    processor: "Intel Core i7-10th Gen (10610U)",
+    ram: "8GB DDR4",
+    storage: "512 GB SSD",
+    display: "14 inch FHD",
+    touchscreen: "No",
+    gpu: "Intel UHD Graphics",
+    os: "Windows 10 Pro",
+    weight: "1.5 kg",
+    warranty: "3 Years",
+    features: ["Core i7 performance", "Business class", "Dell reliability"],
+    fullDescription: "Upgrade to Core i7 performance with this Dell Latitude 5410.",
+    reviewsList: []
+  },
+  
+  12: {
+    id: 12,
+    name: "HP EliteBook 840 G6",
+    fullName: "HP EliteBook 840 G6",
+    price: "$599.00",
+    oldPrice: "$849.00",
+    sku: "HP-840G6",
+    rating: 4.5,
+    reviews: 71,
+    category: "Business",
+    source: "Rahul",
+    image: "images/Rahul/HP EliteBook 840 G6/hp-main.jpeg",
+    gallery: [
+      "images/Rahul/HP EliteBook 840 G6/hp-main.jpeg",
+      "images/Rahul/HP EliteBook 840 G6/hp-front.jpg"
+    ],
+    description: "HP EliteBook 840 G6 with Intel Core i5-8th Gen, 8GB RAM, 512GB SSD.",
+    processor: "Intel Core i5-8th Gen (8265U)",
+    ram: "8GB DDR4",
+    storage: "512 GB SSD",
+    display: "14 inch FHD",
+    touchscreen: "No",
+    gpu: "Intel UHD Graphics 620",
+    os: "Windows 10 Pro",
+    weight: "1.5 kg",
+    warranty: "3 Years",
+    features: ["EliteBook premium", "Business security", "Durable design"],
+    fullDescription: "HP EliteBook 840 G6 with Intel Core i5-8265U, 8GB RAM, 512GB SSD.",
+    reviewsList: []
+  },
+  
+  13: {
+    id: 13,
+    name: "HP EliteBook 840 G8",
+    fullName: "HP EliteBook 840 G8",
+    price: "$899.00",
+    oldPrice: "$1,299.00",
+    sku: "HP-840G8",
+    rating: 4.8,
+    reviews: 76,
+    category: "Premium",
+    source: "Rahul",
+    image: "images/Rahul/HP EliteBook 840 G8/hp-main.jpeg",
+    gallery: [
+      "images/Rahul/HP EliteBook 840 G8/hp-main.jpeg",
+      "images/Rahul/HP EliteBook 840 G8/hp-back.jpeg",
+      "images/Rahul/HP EliteBook 840 G8/hp-side.jpeg"
+    ],
+    description: "HP EliteBook 840 G8 with Intel Core i5-11th Gen, 16GB RAM, 512GB SSD.",
+    processor: "Intel Core i5-11th Gen (1135G7)",
+    ram: "16GB DDR4",
+    storage: "512 GB SSD",
+    display: "14 inch FHD",
+    touchscreen: "No",
+    gpu: "Intel Iris Xe Graphics",
+    os: "Windows 10 Pro",
+    weight: "1.4 kg",
+    warranty: "3 Years",
+    features: ["11th Gen Intel", "Premium Metal Body", "HP Wolf Security"],
+    fullDescription: "Premium notebook with 11th Gen Intel and metal body.",
+    reviewsList: []
+  },
+  
+  14: {
+    id: 14,
+    name: "HP ProBook 640 G5",
+    fullName: "HP ProBook 640 G5",
+    price: "$549.00",
+    oldPrice: "$799.00",
+    sku: "HP-640G5",
+    rating: 4.4,
+    reviews: 38,
+    category: "Business",
+    source: "Rahul",
+    image: "images/Rahul/HP ProBook 640 G5/hp-main.jpg",
+    gallery: [
+      "images/Rahul/HP ProBook 640 G5/hp-main.jpg",
+      "images/Rahul/HP ProBook 640 G5/hp-back.jpeg"
+    ],
+    description: "HP ProBook 640 G5 with Intel Core i5-8th Gen, 8GB RAM, 512GB SSD.",
+    processor: "Intel Core i5-8th Gen (8265U)",
+    ram: "8GB DDR4",
+    storage: "512 GB SSD",
+    display: "14 inch FHD",
+    touchscreen: "No",
+    gpu: "Intel UHD Graphics 620",
+    os: "Windows 10 Pro",
+    weight: "1.6 kg",
+    warranty: "3 Years",
+    features: ["Business Ready", "Reliable", "HP Security"],
+    fullDescription: "Reliable business notebook with 8th Gen Intel Core i5.",
+    reviewsList: []
+  },
+  
+  15: {
+    id: 15,
+    name: "HP ProBook 640 G8",
+    fullName: "HP ProBook 640 G8",
+    price: "$749.00",
+    oldPrice: "$1,049.00",
+    sku: "HP-640G8",
+    rating: 4.7,
+    reviews: 91,
+    category: "Business",
+    source: "Rahul",
+    image: "images/Rahul/HP ProBook 640 G8/hp-main.webp",
+    gallery: [
+      "images/Rahul/HP ProBook 640 G8/hp-main.webp",
+      "images/Rahul/HP ProBook 640 G8/hp-back.jpg",
+      "images/Rahul/HP ProBook 640 G8/hp-front.jpeg"
+    ],
+    description: "HP ProBook 640 G8 with Intel Core i5-11th Gen, 16GB RAM, 512GB SSD.",
+    processor: "Intel Core i5-11th Gen (1135G7)",
+    ram: "16GB DDR4",
+    storage: "512 GB SSD",
+    display: "14 inch FHD",
+    touchscreen: "No",
+    gpu: "Intel Iris Xe Graphics",
+    os: "Windows 11 Pro",
+    weight: "1.4 kg",
+    warranty: "3 Years",
+    features: ["11th Gen Intel", "Iris Xe Graphics", "HP Wolf Security", "Modern design"],
+    fullDescription: "HP ProBook 640 G8 with Intel Core i5-1135G7, 16GB RAM, and 512GB SSD.",
+    reviewsList: []
+  },
+  
+  16: {
+    id: 16,
+    name: "HP EliteBook 840 G7",
+    fullName: "HP EliteBook 840 G7",
+    price: "$699.00",
+    oldPrice: "$999.00",
+    sku: "HP-840G7",
+    rating: 4.6,
+    reviews: 52,
+    category: "Business",
+    source: "Rahul",
+    image: "images/Rahul/HP EliteBook 840 G8/hp-main.jpeg",
+    gallery: [
+      "images/Rahul/HP EliteBook 840 G8/hp-main.jpeg",
+      "images/Rahul/HP EliteBook 840 G8/hp-back.jpeg"
+    ],
+    description: "HP EliteBook 840 G7 with Intel Core i5-10th Gen, 16GB RAM, 512GB SSD.",
+    processor: "Intel Core i5-10th Gen (10310U)",
+    ram: "16GB DDR4",
+    storage: "512 GB SSD",
+    display: "14 inch FHD",
+    touchscreen: "No",
+    gpu: "Intel UHD Graphics",
+    os: "Windows 10 Pro",
+    weight: "1.4 kg",
+    warranty: "3 Years",
+    features: ["10th Gen Intel", "EliteBook Quality", "Business Security"],
+    fullDescription: "HP EliteBook 840 G7 with 10th Gen Intel Core i5, 16GB RAM, and 512GB SSD.",
+    reviewsList: []
+  },
+  
+  17: {
+    id: 17,
+    name: "Lenovo ThinkPad L14 Gen 1",
+    fullName: "Lenovo ThinkPad L14 Gen 1",
+    price: "$599.00",
+    oldPrice: "$849.00",
+    sku: "LEN-L14G1",
+    rating: 4.5,
+    reviews: 43,
+    category: "Business",
+    source: "Rahul",
+    image: "images/Rahul/Lenovo Thinkpad L14/lenovo-main.webp",
+    gallery: [
+      "images/Rahul/Lenovo Thinkpad L14/lenovo-main.webp",
+      "images/Rahul/Lenovo Thinkpad L14/lenovo-left.webp",
+      "images/Rahul/Lenovo Thinkpad L14/lenovo-right.webp"
+    ],
+    description: "Lenovo ThinkPad L14 Gen 1 with Intel Core i5-10th Gen, 16GB RAM, 512GB SSD.",
+    processor: "Intel Core i5-10th Gen (10310U)",
+    ram: "16GB DDR4",
+    storage: "512 GB SSD",
+    display: "14 inch FHD",
+    touchscreen: "No",
+    gpu: "Intel UHD Graphics",
+    os: "Windows 10 Pro",
+    weight: "1.7 kg",
+    warranty: "3 Years",
+    features: ["ThinkPad Durability", "10th Gen Intel", "Business Ready"],
+    fullDescription: "Lenovo ThinkPad L14 Gen 1 with 10th Gen Intel Core i5, 16GB RAM, and 512GB SSD.",
+    reviewsList: []
+  },
+
+  // ==================== PRICELIST (Ma Folder) - 28 Products ====================
+  
+  18: {
+    id: 18,
+    name: "HP ProBook 640 G3",
+    fullName: "HP ProBook 640 G3 (Refurbished)",
+    price: "$299.00",
+    oldPrice: "$499.00",
+    sku: "HP-640G3-R",
+    rating: 4.2,
+    reviews: 34,
+    category: "Refurbished",
+    source: "Ma",
+    image: "images/Ma/HP ProBook 640 G3/hp-main.jpg",
+    gallery: [
+      "images/Ma/HP ProBook 640 G3/hp-main.jpg",
+      "images/Ma/HP ProBook 640 G3/hp-front.jpg",
+      "images/Ma/HP ProBook 640 G3/hp-side.jpg"
+    ],
+    description: "HP ProBook 640 G3 with Intel Core i5-7th Gen, 8GB RAM, 256GB SSD. A++ Grade.",
+    processor: "Intel Core i5-7th Gen (7200U)",
+    ram: "8GB DDR4",
+    storage: "256 GB SSD",
+    display: "14.1 inch FHD LED",
+    touchscreen: "No",
+    gpu: "Intel HD Graphics 620",
+    os: "Windows 10 Pro",
+    weight: "1.6 kg",
+    warranty: "6 Months",
+    condition: "A++ Grade, Refurbished",
+    features: ["A++ Grade Condition", "Original Adapter Included", "Windows 10 Pro", "Import Quality"],
+    fullDescription: "HP ProBook 640 G3 in A++ Grade condition. Intel Core i5-7200U, 8GB RAM, 256GB SSD, 14.1 FHD display. Includes Original Adapter.",
+    reviewsList: []
+  },
+  
+  19: {
+    id: 19,
+    name: "Lenovo ThinkPad L480",
+    fullName: "Lenovo ThinkPad L480 (Refurbished)",
+    price: "$349.00",
+    oldPrice: "$549.00",
+    sku: "LEN-L480",
+    rating: 4.4,
+    reviews: 47,
+    category: "Refurbished",
+    source: "Ma",
+    image: "images/Ma/Lenovo Thinkpad L480/lenovo-main.jpg",
+    gallery: [
+      "images/Ma/Lenovo Thinkpad L480/lenovo-main.jpg",
+      "images/Ma/Lenovo Thinkpad L480/lenovo-back.jpg",
+      "images/Ma/Lenovo Thinkpad L480/lenovo-side.jpg"
+    ],
+    description: "Lenovo ThinkPad L480 with Intel Core i5-8th Gen, 8GB RAM, 256GB SSD. A++ Grade.",
+    processor: "Intel Core i5-8th Gen (8250U)",
+    ram: "8GB DDR4",
+    storage: "256 GB SSD",
+    display: "14.1 inch HD LED",
+    touchscreen: "No",
+    gpu: "Intel UHD Graphics 620",
+    os: "Windows 10 Pro",
+    weight: "1.7 kg",
+    warranty: "6 Months",
+    condition: "A++ Grade, Refurbished",
+    features: ["ThinkPad durability", "A++ Grade", "Original Adapter"],
+    fullDescription: "Lenovo ThinkPad L480 in A++ Grade condition. Intel Core i5-8250U, 8GB RAM, 256GB SSD. Includes Original Adapter.",
+    reviewsList: []
+  },
+  
+  20: {
+    id: 20,
+    name: "Dell Latitude 7490",
+    fullName: "Dell Latitude 7490 (Refurbished)",
+    price: "$399.00",
+    oldPrice: "$599.00",
+    sku: "DEL-7490",
+    rating: 4.5,
+    reviews: 63,
+    category: "Refurbished",
+    source: "Ma",
+    image: "images/Ma/Dell Latitude 7490/dell-main.webp",
+    gallery: [
+      "images/Ma/Dell Latitude 7490/dell-main.webp",
+      "images/Ma/Dell Latitude 7490/dell-back.webp",
+      "images/Ma/Dell Latitude 7490/dell-side.webp"
+    ],
+    description: "Dell Latitude 7490 with Intel Core i5-8th Gen, 8GB RAM, 256GB SSD. A++ Grade.",
+    processor: "Intel Core i5-8th Gen (8350U)",
+    ram: "8GB DDR4",
+    storage: "256 GB SSD",
+    display: "14.1 inch FHD LED",
+    touchscreen: "No",
+    gpu: "Intel UHD Graphics 620",
+    os: "Windows 10 Pro",
+    weight: "1.4 kg",
+    warranty: "6 Months",
+    condition: "A++ Grade, Import",
+    features: ["Premium Latitude", "FHD Display", "Lightweight design", "Original Adapter"],
+    fullDescription: "Dell Latitude 7490 in A++ Grade. Intel Core i5-8350U, 8GB RAM, 256GB SSD, 14.1 FHD LED. Import quality with Original Adapter.",
+    reviewsList: []
+  },
+  
+  21: {
+    id: 21,
+    name: "Dell Latitude 5400",
+    fullName: "Dell Latitude 5400",
+    price: "$379.00",
+    oldPrice: "$569.00",
+    sku: "DEL-5400",
+    rating: 4.4,
+    reviews: 41,
+    category: "Refurbished",
+    source: "Ma",
+    image: "images/Ma/Dell Latitude 5400/dell-main.webp",
+    gallery: [
+      "images/Ma/Dell Latitude 5400/dell-main.webp",
+      "images/Ma/Dell Latitude 5400/dell-front.webp",
+      "images/Ma/Dell Latitude 5400/dell-side.webp",
+      "images/Ma/Dell Latitude 5400/dell-up.webp"
+    ],
+    description: "Dell Latitude 5400 with Intel Core i7-8th Gen, 8GB RAM, 256GB SSD.",
+    processor: "Intel Core i7-8th Gen (8650U)",
+    ram: "8GB DDR4",
+    storage: "256 GB SSD",
+    display: "14.1 inch FHD LED",
+    touchscreen: "No",
+    gpu: "Intel UHD Graphics 620",
+    os: "Windows 10 Pro",
+    weight: "1.5 kg",
+    warranty: "6 Months",
+    condition: "Good Condition",
+    features: ["Core i7", "Good Condition", "Original Adapter"],
+    fullDescription: "Dell Latitude 5400 with Intel Core i7-8650U, 8GB RAM, 256GB SSD. Good Condition with Original Adapter.",
+    reviewsList: []
+  },
+  
+  22: {
+    id: 22,
+    name: "Dell Latitude 5430",
+    fullName: "Dell Latitude 5430",
+    price: "$899.00",
+    oldPrice: "$1,249.00",
+    sku: "DEL-5430",
+    rating: 4.8,
+    reviews: 31,
+    category: "Business",
+    source: "Ma",
+    image: "images/Ma/Dell Latitude 5430/dell-main.jpg",
+    gallery: [
+      "images/Ma/Dell Latitude 5430/dell-main.jpg",
+      "images/Ma/Dell Latitude 5430/dell-front.jpg",
+      "images/Ma/Dell Latitude 5430/dell-side.jpeg"
+    ],
+    description: "Dell Latitude 5430 with Intel Core i7-12th Gen, 16GB RAM, 512GB SSD.",
+    processor: "Intel Core i7-12th Gen (1260P)",
+    ram: "16GB DDR4",
+    storage: "512 GB SSD",
+    display: "14.1 inch FHD LED",
+    touchscreen: "No",
+    gpu: "Intel Iris Xe Graphics",
+    os: "Windows 11 Pro",
+    weight: "1.4 kg",
+    warranty: "1 Year",
+    condition: "A++ Grade",
+    features: ["12th Gen Intel", "Dell Optimizer", "Fingerprint Reader", "A++ Grade"],
+    fullDescription: "Dell Latitude 5430 with Intel Core i7-12th Gen, 16GB RAM, 512GB SSD. A++ Grade with Original Adapter.",
+    reviewsList: []
+  },
+  
+  23: {
+    id: 23,
+    name: "Dell Latitude 5500",
+    fullName: "Dell Latitude 5500",
+    price: "$399.00",
+    oldPrice: "$599.00",
+    sku: "DEL-5500",
+    rating: 4.4,
+    reviews: 35,
+    category: "Business",
+    source: "Ma",
+    image: "images/Ma/Dell Latitude 5500/dell-main.jpg",
+    gallery: [
+      "images/Ma/Dell Latitude 5500/dell-main.jpg",
+      "images/Ma/Dell Latitude 5500/dell-side.jpg"
+    ],
+    description: "Dell Latitude 5500 with Intel Core i5-8th Gen, 8GB RAM, 256GB SSD. 15.6\" FHD.",
+    processor: "Intel Core i5-8th Gen (8265U)",
+    ram: "8GB DDR4",
+    storage: "256 GB SSD",
+    display: "15.6 inch FHD LED",
+    touchscreen: "No",
+    gpu: "Intel UHD Graphics 620",
+    os: "Windows 10 Pro",
+    weight: "1.9 kg",
+    warranty: "6 Months",
+    condition: "Import",
+    features: ["15.6\" FHD Display", "Numerical Pad", "Import Quality", "Business Ready"],
+    fullDescription: "Dell Latitude 5500 with Intel Core i5-8265U, 8GB RAM, 256GB SSD. 15.6 FHD display with Numerical Pad.",
+    reviewsList: []
+  },
+  
+  24: {
+    id: 24,
+    name: "Dell Latitude 5510",
+    fullName: "Dell Latitude 5510",
+    price: "$499.00",
+    oldPrice: "$699.00",
+    sku: "DEL-5510",
+    rating: 4.5,
+    reviews: 32,
+    category: "Business",
+    source: "Ma",
+    image: "images/Ma/Dell Latitude 5510/dell-main.webp",
+    gallery: [
+      "images/Ma/Dell Latitude 5510/dell-main.webp",
+      "images/Ma/Dell Latitude 5510/dell-left.webp",
+      "images/Ma/Dell Latitude 5510/dell-up.webp"
+    ],
+    description: "Dell Latitude 5510 with Intel Core i5-10th Gen, 8GB RAM, 256GB SSD. 15.6\" FHD.",
+    processor: "Intel Core i5-10th Gen (10310U)",
+    ram: "8GB DDR4",
+    storage: "256 GB NVMe SSD",
+    display: "15.6 inch FHD LED",
+    touchscreen: "No",
+    gpu: "Intel UHD Graphics",
+    os: "Windows 10 Pro",
+    weight: "1.8 kg",
+    warranty: "1 Year",
+    condition: "A++ Grade",
+    features: ["10th Gen Intel", "Backlit Keyboard", "NVMe SSD", "A++ Grade"],
+    fullDescription: "Dell Latitude 5510 with Intel Core i5-10th Gen, 8GB RAM, 256GB NVMe SSD. 15.6 FHD display with Backlit Keyboard.",
+    reviewsList: []
+  },
+  
+  25: {
+    id: 25,
+    name: "Dell Latitude 5520",
+    fullName: "Dell Latitude 5520",
+    price: "$599.00",
+    oldPrice: "$849.00",
+    sku: "DEL-5520",
+    rating: 4.6,
+    reviews: 44,
+    category: "Business",
+    source: "Ma",
+    image: "images/Ma/Dell Latitude 5520/dell-main.webp",
+    gallery: [
+      "images/Ma/Dell Latitude 5520/dell-main.webp",
+      "images/Ma/Dell Latitude 5520/dell-side.webp"
+    ],
+    description: "Dell Latitude 5520 with Intel Core i5-11th Gen, 8GB RAM, 256GB SSD. 15.6\" FHD.",
+    processor: "Intel Core i5-11th Gen (1135G7)",
+    ram: "8GB DDR4",
+    storage: "256 GB NVMe SSD",
+    display: "15.6 inch FHD LED",
+    touchscreen: "No",
+    gpu: "Intel Iris Xe Graphics",
+    os: "Windows 10 Pro",
+    weight: "1.7 kg",
+    warranty: "1 Year",
+    condition: "A++ Grade",
+    features: ["11th Gen Intel", "Backlit Keyboard", "NVMe SSD", "A++ Grade"],
+    fullDescription: "Dell Latitude 5520 with Intel Core i5-11th Gen, 8GB RAM, 256GB NVMe SSD. 15.6 FHD display with Backlit Keyboard.",
+    reviewsList: []
+  },
+  
+  26: {
+    id: 26,
+    name: "Dell Latitude 5530",
+    fullName: "Dell Latitude 5530",
+    price: "$899.00",
+    oldPrice: "$1,249.00",
+    sku: "DEL-5530",
+    rating: 4.7,
+    reviews: 28,
+    category: "Business",
+    source: "Ma",
+    image: "images/Ma/Dell Latitude 5530/dell-main.jpg",
+    gallery: [
+      "images/Ma/Dell Latitude 5530/dell-main.jpg",
+      "images/Ma/Dell Latitude 5530/dell-back.jpg",
+      "images/Ma/Dell Latitude 5530/dell-side.jpg"
+    ],
+    description: "Dell Latitude 5530 with Intel Core i7-12th Gen, 16GB RAM, 512GB SSD. 15.6\" FHD.",
+    processor: "Intel Core i7-12th Gen (1260P)",
+    ram: "16GB DDR4",
+    storage: "512 GB NVMe SSD",
+    display: "15.6 inch FHD LED",
+    touchscreen: "No",
+    gpu: "Intel Iris Xe Graphics",
+    os: "Windows 10 Pro",
+    weight: "1.7 kg",
+    warranty: "1 Year",
+    condition: "A+ Grade",
+    features: ["12th Gen Intel", "Iris Xe Graphics", "USB-C Adapter", "Business Ready"],
+    fullDescription: "Dell Latitude 5530 with Intel Core i7-12th Gen, 16GB RAM, 512GB NVMe SSD. 15.6 FHD display with Intel Iris Graphics.",
+    reviewsList: []
+  },
+  
+  27: {
+    id: 27,
+    name: "HP ProBook 440 G7",
+    fullName: "HP ProBook 440 G7",
+    price: "$449.00",
+    oldPrice: "$649.00",
+    sku: "HP-440G7",
+    rating: 4.5,
+    reviews: 36,
+    category: "Business",
+    source: "Ma",
+    image: "images/Ma/HP ProBook 440 G7/hp-main.webp",
+    gallery: [
+      "images/Ma/HP ProBook 440 G7/hp-main.webp",
+      "images/Ma/HP ProBook 440 G7/hp-front.webp",
+      "images/Ma/HP ProBook 440 G7/hp-side.webp"
+    ],
+    description: "HP ProBook 440 G7 with Intel Core i5-10th Gen, 8GB RAM, 256GB SSD. Touchscreen.",
+    processor: "Intel Core i5-10th Gen (10310U)",
+    ram: "8GB DDR4",
+    storage: "256 GB SSD",
+    display: "14.1 inch FHD Touch LED",
+    touchscreen: "Yes",
+    gpu: "Intel UHD Graphics",
+    os: "Windows 10 Pro",
+    weight: "1.6 kg",
+    warranty: "1 Year",
+    condition: "Like New",
+    features: ["Touchscreen", "10th Gen Intel", "Like New Condition", "Original Adapter"],
+    fullDescription: "HP ProBook 440 G7 with Touchscreen. Intel Core i5-10th Gen, 8GB RAM, 256GB SSD, 14.1 FHD Touch LED. Like New condition.",
+    reviewsList: []
+  },
+  
+  28: {
+    id: 28,
+    name: "HP EliteBook 1040 G8",
+    fullName: "HP EliteBook 1040 G8 2-in-1",
+    price: "$999.00",
+    oldPrice: "$1,399.00",
+    sku: "HP-1040G8",
+    rating: 4.8,
+    reviews: 45,
+    category: "Premium",
+    source: "Ma",
+    image: "images/Ma/HP EliteBook 1040/hp-main.webp",
+    gallery: [
+      "images/Ma/HP EliteBook 1040/hp-main.webp",
+      "images/Ma/HP EliteBook 1040/hp-back.webp"
+    ],
+    description: "HP EliteBook 1040 G8 with Intel Core i7-11th Gen, 16GB RAM, 512GB SSD. Touchscreen, 2-in-1.",
+    processor: "Intel Core i7-11th Gen (1165G7)",
+    ram: "16GB DDR4",
+    storage: "512 GB SSD",
+    display: "14.1 inch Touch X360 Rotate",
+    touchscreen: "Yes",
+    gpu: "Intel Iris Xe Graphics",
+    os: "Windows 11 Pro",
+    weight: "1.3 kg",
+    warranty: "1 Year",
+    condition: "A+ Grade",
+    features: ["2-in-1 Convertible", "Touchscreen", "X360 Rotate", "Fingerprint Reader", "Premium"],
+    fullDescription: "HP EliteBook 1040 G8 2-in-1 Convertible. Intel Core i7-1165G7, 16GB RAM, 512GB SSD, 14.1 Touch X360 Rotate display.",
+    reviewsList: []
+  },
+  
+  29: {
+    id: 29,
+    name: "HP FireFly ZBOOK G8",
+    fullName: "HP FireFly ZBOOK G8 Mobile Workstation",
+    price: "$899.00",
+    oldPrice: "$1,299.00",
+    sku: "HP-ZBOOK-G8",
+    rating: 4.8,
+    reviews: 34,
+    category: "Workstation",
+    source: "Ma",
+    image: "images/Ma/HP FireFly ZBook G8/hp-main.jpg",
+    gallery: [
+      "images/Ma/HP FireFly ZBook G8/hp-main.jpg"
+    ],
+    description: "HP FireFly ZBOOK G8 with Intel Core i5-11th Gen, 8GB RAM, 256GB SSD. Metal Body.",
+    processor: "Intel Core i5-11th Gen (1135G7)",
+    ram: "8GB DDR4",
+    storage: "256 GB SSD",
+    display: "14.1 inch FHD LED",
+    touchscreen: "No",
+    gpu: "Intel Iris Xe Graphics",
+    os: "Windows 10 Pro",
+    weight: "1.4 kg",
+    warranty: "1 Year",
+    condition: "Import, Premium",
+    features: ["Metal Body", "Premium Laptop", "Workstation Grade", "Original Adapter"],
+    fullDescription: "HP FireFly ZBOOK G8 Mobile Workstation. Intel Core i5-11th Gen, 8GB RAM, 256GB SSD, Metal Body.",
+    reviewsList: []
+  },
+  
+  30: {
+    id: 30,
+    name: "Lenovo Legion 5",
+    fullName: "Lenovo Legion 5 Gaming Laptop",
+    price: "$1,099.00",
+    oldPrice: "$1,499.00",
+    sku: "LEN-LEGION5",
+    rating: 4.7,
+    reviews: 52,
+    category: "Gaming",
+    source: "Ma",
+    image: "images/Ma/Lenovo Legion 5/lenovo-main.jpg",
+    gallery: [
+      "images/Ma/Lenovo Legion 5/lenovo-main.jpg",
+      "images/Ma/Lenovo Legion 5/lenovo-back.jpg",
+      "images/Ma/Lenovo Legion 5/lenovo-up.jpg"
+    ],
+    description: "Lenovo Legion 5 with Intel i7-14650HX, 16GB DDR5, 1TB NVMe. RTX 4060 8GB.",
+    processor: "Intel Core i7-14650HX (14th Gen, 16-Core)",
+    ram: "16GB DDR5",
+    storage: "1 TB NVMe SSD",
+    display: "16 inch 2K Resolution",
+    touchscreen: "No",
+    gpu: "NVIDIA RTX 4060 8GB GDDR6",
+    os: "Windows 11 SL",
+    weight: "2.4 kg",
+    warranty: "12 Months",
+    condition: "New",
+    features: ["RTX 4060 8GB", "16GB DDR5", "RGB Backlit", "AI + Gaming Ready", "12 Month Warranty"],
+    fullDescription: "Lenovo Legion 5 Gaming Laptop. Intel i7-14650HX 14th Gen, 16GB DDR5, 1TB NVMe, 16 2K display, RTX 4060 8GB.",
+    reviewsList: []
+  },
+  
+  31: {
+    id: 31,
+    name: "Lenovo Legion Pro 5",
+    fullName: "Lenovo Legion Pro 5 Gaming Laptop",
+    price: "$1,599.00",
+    oldPrice: "$1,999.00",
+    sku: "LEN-LP5",
+    rating: 4.9,
+    reviews: 56,
+    category: "Gaming",
+    source: "Ma",
+    image: "images/Ma/Lenovo Legion Pro 5/lenovo-main.jpg",
+    gallery: [
+      "images/Ma/Lenovo Legion Pro 5/lenovo-main.jpg",
+      "images/Ma/Lenovo Legion Pro 5/lenovo-back.jpg"
+    ],
+    description: "Lenovo Legion Pro 5 with Intel i9-14900HX 14th Gen, 32GB DDR5, 1TB NVMe. RTX 4070 8GB.",
+    processor: "Intel Core i9-14900HX (14th Gen, 24-Core)",
+    ram: "32GB DDR5",
+    storage: "1 TB NVMe SSD",
+    display: "16 inch 2K Resolution",
+    touchscreen: "No",
+    gpu: "NVIDIA RTX 4070 8GB GDDR6",
+    os: "Windows 11 SL",
+    weight: "2.5 kg",
+    warranty: "12 Months",
+    condition: "New",
+    features: ["RTX 4070 8GB", "32GB DDR5", "AI + Gaming Ready", "RGB Backlit", "12 Month Warranty"],
+    fullDescription: "Lenovo Legion Pro 5 Gaming Laptop. Intel i9-14900HX 14th Gen, 32GB DDR5, 1TB NVMe, 16 2K display, RTX 4070 8GB.",
+    reviewsList: []
+  },
+  
+  32: {
+    id: 32,
+    name: "Lenovo Legion Slim 7i",
+    fullName: "Lenovo Legion Slim 7i Gaming Laptop",
+    price: "$1,499.00",
+    oldPrice: "$1,899.00",
+    sku: "LEN-LS7I",
+    rating: 4.8,
+    reviews: 48,
+    category: "Gaming",
+    source: "Ma",
+    image: "images/Ma/Lenovo Legion Slim 7i/lenovo-main.jpg",
+    gallery: [
+      "images/Ma/Lenovo Legion Slim 7i/lenovo-main.jpg",
+      "images/Ma/Lenovo Legion Slim 7i/lenovo-back.jpg",
+      "images/Ma/Lenovo Legion Slim 7i/lenovo-up.jpg"
+    ],
+    description: "Lenovo Legion Slim 7i with Intel i9-13900H, 32GB DDR5, 1TB NVMe. RTX 4070 8GB.",
+    processor: "Intel Core i9-13900H (13th Gen, 14-Core)",
+    ram: "32GB DDR5",
+    storage: "1 TB NVMe SSD",
+    display: "16 inch 3.2K Resolution",
+    touchscreen: "No",
+    gpu: "NVIDIA RTX 4070 8GB GDDR6",
+    os: "Windows 11 SL",
+    weight: "2.0 kg",
+    warranty: "12 Months",
+    condition: "New",
+    features: ["3.2K Display", "RTX 4070 8GB", "Slim Design", "RGB Backlit", "12 Month Warranty"],
+    fullDescription: "Lenovo Legion Slim 7i Gaming Laptop. Intel i9-13900H, 32GB DDR5, 1TB NVMe, 16 3.2K display, RTX 4070 8GB.",
+    reviewsList: []
+  },
+  
+  33: {
+    id: 33,
+    name: "Lenovo LOQ",
+    fullName: "Lenovo LOQ Gaming Laptop",
+    price: "$899.00",
+    oldPrice: "$1,199.00",
+    sku: "LEN-LOQ",
+    rating: 4.7,
+    reviews: 52,
+    category: "Gaming",
+    source: "Ma",
+    image: "images/Ma/Lenovo LOQ Model/lenovo-main.jpg",
+    gallery: [
+      "images/Ma/Lenovo LOQ Model/lenovo-main.jpg",
+      "images/Ma/Lenovo LOQ Model/lenovo-back.jpg"
+    ],
+    description: "Lenovo LOQ with Intel i7-13650HX, 24GB DDR5, 512GB NVMe. RTX 4050 6GB.",
+    processor: "Intel Core i7-13650HX (13th Gen, 14-Core)",
+    ram: "24GB DDR5",
+    storage: "512 GB NVMe SSD",
+    display: "15.6 inch FHD IPS",
+    touchscreen: "No",
+    gpu: "NVIDIA RTX 4050 6GB GDDR6",
+    os: "Windows 11 SL",
+    weight: "2.4 kg",
+    warranty: "12 Months",
+    condition: "New",
+    features: ["RTX 4050 6GB", "144Hz Display", "RGB Backlit", "AI + Gaming Ready", "12 Month Warranty"],
+    fullDescription: "Lenovo LOQ Gaming Laptop. Intel i7-13650HX, 24GB DDR5, 512GB NVMe, 15.6 FHD IPS, RTX 4050 6GB.",
+    reviewsList: []
+  },
+  
+  34: {
+    id: 34,
+    name: "Lenovo ThinkPad P14s",
+    fullName: "Lenovo ThinkPad P14s Mobile Workstation",
+    price: "$999.00",
+    oldPrice: "$1,399.00",
+    sku: "LEN-P14S",
+    rating: 4.9,
+    reviews: 29,
+    category: "Workstation",
+    source: "Ma",
+    image: "images/Ma/Lenovo Thinkpad P14s/lenovo-main.webp",
+    gallery: [
+      "images/Ma/Lenovo Thinkpad P14s/lenovo-main.webp",
+      "images/Ma/Lenovo Thinkpad P14s/lenovo-front.webp",
+      "images/Ma/Lenovo Thinkpad P14s/lenovo-left.webp",
+      "images/Ma/Lenovo Thinkpad P14s/lenovo-right.webp"
+    ],
+    description: "Lenovo ThinkPad P14s with Intel Core i7-11th Gen, 16GB RAM, 512GB SSD. 4GB Graphics.",
+    processor: "Intel Core i7-11th Gen (1165G7)",
+    ram: "16GB DDR4",
+    storage: "512 GB SSD",
+    display: "14.1 inch FHD LED",
+    touchscreen: "No",
+    gpu: "NVIDIA T500 4GB GDDR6",
+    os: "Windows 10 Pro",
+    weight: "1.5 kg",
+    warranty: "1 Year",
+    condition: "A++ Grade",
+    features: ["4GB Graphics", "ThinkPad Quality", "Workstation Grade", "Original Adapter"],
+    fullDescription: "Lenovo ThinkPad P14s Mobile Workstation. Intel Core i7-1165G7, 16GB RAM, 512GB SSD, 4GB NVIDIA T500 Graphics.",
+    reviewsList: []
+  },
+  
+  35: {
+    id: 35,
+    name: "Lenovo YOGA 7i",
+    fullName: "Lenovo YOGA 7i 2-in-1",
+    price: "$899.00",
+    oldPrice: "$1,199.00",
+    sku: "LEN-YOGA7I",
+    rating: 4.7,
+    reviews: 34,
+    category: "Premium",
+    source: "Ma",
+    image: "images/Ma/Lenovo Yoga 7i/lenovo-main.jpg",
+    gallery: [
+      "images/Ma/Lenovo Yoga 7i/lenovo-main.jpg",
+      "images/Ma/Lenovo Yoga 7i/lenovo-back.jpg",
+      "images/Ma/Lenovo Yoga 7i/lenovo-up.jpg"
+    ],
+    description: "Lenovo YOGA 7i with Intel Core Ultra 5 125H, 16GB DDR5, 1TB NVMe. OLED Touch, 2-in-1.",
+    processor: "Intel Core Ultra 5 125H (14-Core)",
+    ram: "16GB DDR5",
+    storage: "1 TB NVMe SSD",
+    display: "14 inch WUXGA OLED Touch (1920x1200)",
+    touchscreen: "Yes",
+    gpu: "Intel Arc Graphics",
+    os: "Windows 11",
+    weight: "1.4 kg",
+    warranty: "6 Months",
+    condition: "Good, 5 Hour Backup",
+    features: ["OLED Touch Display", "2-in-1 Convertible", "X360 Rotate", "Digital Pen Included", "5 Hour Backup"],
+    fullDescription: "Lenovo YOGA 7i 2-in-1 Convertible. Intel Core Ultra 5 125H, 16GB DDR5, 1TB NVMe, 14 WUXGA OLED Touch display. Digital Pen included.",
+    reviewsList: []
+  },
+  
+  36: {
+    id: 36,
+    name: "Microsoft Surface Laptop 3 13.3",
+    fullName: "Microsoft Surface Laptop 3 13.3\"",
+    price: "$699.00",
+    oldPrice: "$999.00",
+    sku: "MS-SL3-133",
+    rating: 4.6,
+    reviews: 52,
+    category: "Premium",
+    source: "Ma",
+    image: "images/Ma/MS Laptop 3/ms-main.jpg",
+    gallery: [
+      "images/Ma/MS Laptop 3/ms-main.jpg",
+      "images/Ma/MS Laptop 3/ms-back.jpg"
+    ],
+    description: "Microsoft Surface Laptop 3 with Intel Core i7-10th Gen, 16GB RAM, 256GB SSD. 2K Touchscreen.",
+    processor: "Intel Core i7-10th Gen (1065G7)",
+    ram: "16GB LPDDR4",
+    storage: "256 GB SSD",
+    display: "13.3 inch 2K Touch (2736x1824)",
+    touchscreen: "Yes",
+    gpu: "Intel Iris Plus Graphics",
+    os: "Windows 10 Pro",
+    weight: "1.3 kg",
+    warranty: "6 Months",
+    condition: "Good, 4 Hour Backup",
+    features: ["2K Touchscreen", "Premium Build", "Lightweight", "4 Hour Plus Backup"],
+    fullDescription: "Microsoft Surface Laptop 3. Intel Core i7-10th Gen, 16GB RAM, 256GB SSD. 13.3 2K Touch display. 4 Hour Plus Backup.",
+    reviewsList: []
+  },
+  
+  37: {
+    id: 37,
+    name: "Microsoft Surface Laptop 3 15",
+    fullName: "Microsoft Surface Laptop 3 15\"",
+    price: "$799.00",
+    oldPrice: "$1,099.00",
+    sku: "MS-SL3-15",
+    rating: 4.6,
+    reviews: 41,
+    category: "Premium",
+    source: "Ma",
+    image: "images/Ma/MS Laptop 3 Model 1872/ms-main.webp",
+    gallery: [
+      "images/Ma/MS Laptop 3 Model 1872/ms-main.webp"
+    ],
+    description: "Microsoft Surface Laptop 3 with Intel Core i7-10th Gen, 16GB RAM, 256GB SSD. 15\" 2K Touchscreen.",
+    processor: "Intel Core i7-10th Gen (1065G7)",
+    ram: "16GB LPDDR4",
+    storage: "256 GB SSD",
+    display: "15 inch 2K Touch (2736x1824)",
+    touchscreen: "Yes",
+    gpu: "Intel Iris Plus Graphics",
+    os: "Windows 10 Pro",
+    weight: "1.5 kg",
+    warranty: "6 Months",
+    condition: "Good, 4 Hour Backup",
+    features: ["15\" 2K Touchscreen", "Premium Build", "Black Colour", "4 Hour Plus Backup"],
+    fullDescription: "Microsoft Surface Laptop 3 15\". Intel Core i7-10th Gen, 16GB RAM, 256GB SSD. 15\" 2K Touch display. Black colour.",
+    reviewsList: []
+  },
+  
+  38: {
+    id: 38,
+    name: "Dell Precision 3561",
+    fullName: "Dell Precision 3561 Workstation",
+    price: "$1,199.00",
+    oldPrice: "$1,699.00",
+    sku: "DEL-P3561",
+    rating: 4.8,
+    reviews: 27,
+    category: "Workstation",
+    source: "Ma",
+    image: "images/Ma/Dell Precision 3561/dell-main.jpg",
+    gallery: [
+      "images/Ma/Dell Precision 3561/dell-main.jpg",
+      "images/Ma/Dell Precision 3561/dell-front.jpg",
+      "images/Ma/Dell Precision 3561/dell-side.jpg"
+    ],
+    description: "Dell Precision 3561 with Intel Core i7-11th Gen, 16GB RAM, 512GB SSD. 4GB Graphics.",
+    processor: "Intel Core i7-11th Gen (11850H)",
+    ram: "16GB DDR4",
+    storage: "512 GB NVMe SSD",
+    display: "15.6 inch FHD LED",
+    touchscreen: "No",
+    gpu: "NVIDIA T1200 4GB GDDR6",
+    os: "Windows 10 Pro",
+    weight: "2.0 kg",
+    warranty: "1 Year",
+    condition: "A+ Grade",
+    features: ["4GB Graphics", "Workstation Grade", "ISV Certified", "USB-C Adapter"],
+    fullDescription: "Dell Precision 3561 Mobile Workstation. Intel Core i7-11850H, 16GB RAM, 512GB NVMe SSD, NVIDIA T1200 4GB Graphics.",
+    reviewsList: []
+  },
+  
+  39: {
+    id: 39,
+    name: "Dell Precision 3571",
+    fullName: "Dell Precision 3571 Workstation",
+    price: "$1,399.00",
+    oldPrice: "$1,999.00",
+    sku: "DEL-P3571",
+    rating: 4.9,
+    reviews: 22,
+    category: "Workstation",
+    source: "Ma",
+    image: "images/Ma/Dell Precision 3571/dell-main.jpg",
+    gallery: [
+      "images/Ma/Dell Precision 3571/dell-main.jpg",
+      "images/Ma/Dell Precision 3571/dell-side.jpg"
+    ],
+    description: "Dell Precision 3571 with Intel Core i9-12th Gen, 16GB RAM, 512GB SSD. 4GB Graphics.",
+    processor: "Intel Core i9-12th Gen (12900H)",
+    ram: "16GB DDR5",
+    storage: "512 GB NVMe SSD",
+    display: "15.6 inch FHD LED",
+    touchscreen: "No",
+    gpu: "NVIDIA RTX A2000 4GB",
+    os: "Windows 10 Pro",
+    weight: "2.1 kg",
+    warranty: "1 Year",
+    condition: "A+ Grade",
+    features: ["Core i9 12th Gen", "4GB NVIDIA Graphics", "Workstation Grade", "USB-C Adapter"],
+    fullDescription: "Dell Precision 3571 Mobile Workstation. Intel Core i9-12900H, 16GB DDR5 RAM, 512GB NVMe SSD, NVIDIA RTX A2000 4GB Graphics.",
+    reviewsList: []
+  }
 };
+
+// Make available globally
+if (typeof window !== 'undefined') {
+  window.productsDatabase = productsDatabase;
+}
+
+// ========== RENDER REAL PRODUCTS ON HOMEPAGE ==========
+
+// Function to render a product card
+function renderProductCard(product, isNew = false) {
+  return `
+    <div class="product-card" data-product-id="${product.id}">
+      ${isNew ? '<span class="product-badge new">NEW</span>' : '<span class="product-badge">HOT</span>'}
+      <img class="product-img" src="${product.image}" alt="${product.name}"/>
+      <div class="product-info">
+        <p class="product-sku">${product.sku}</p>
+        <h3 class="product-name">${product.name}</h3>
+        <p class="product-desc">${product.description ? product.description.substring(0, 70) + '...' : 'High-quality business laptop'}</p>
+        <div class="product-price">
+          <span class="price">${product.price}</span>
+          ${product.oldPrice ? `<span class="price-old">${product.oldPrice}</span>` : ''}
+        </div>
+        <button class="add-btn"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
+      </div>
+    </div>
+  `;
+}
+
+// Featured Products (IDs: 1, 2, 7, 8, 9, 13, 15, 20 - mix of business laptops)
+const featuredProductIds = [1, 2, 7, 8, 9, 13, 15, 20];
+
+// New Arrivals (IDs: 18, 19, 21, 22, 27, 28, 30, 31 - refurbished and newer models)
+const newProductIds = [18, 19, 21, 22, 27, 28, 30, 31];
+
+// Render Featured Products
+const featTrack = document.getElementById('featTrack');
+if (featTrack && window.productsDatabase) {
+  featTrack.innerHTML = featuredProductIds
+    .filter(id => window.productsDatabase[id])
+    .map(id => renderProductCard(window.productsDatabase[id], false))
+    .join('');
+}
+
+// Render New Arrivals
+const newTrack = document.getElementById('newTrack');
+if (newTrack && window.productsDatabase) {
+  newTrack.innerHTML = newProductIds
+    .filter(id => window.productsDatabase[id])
+    .map(id => renderProductCard(window.productsDatabase[id], true))
+    .join('');
+}
+
+// Re-attach add-to-cart event listeners for dynamically added buttons
+function attachHomepageCartEvents() {
+  const featuredButtons = document.querySelectorAll('#featTrack .add-btn');
+  const newButtons = document.querySelectorAll('#newTrack .add-btn');
+  const allButtons = [...featuredButtons, ...newButtons];
+  
+  allButtons.forEach(btn => {
+    // Remove existing listener to avoid duplicates
+    btn.removeEventListener('click', handleAddToCart);
+    // Add fresh listener
+    btn.addEventListener('click', handleAddToCart);
+  });
+}
+
+function handleAddToCart(e) {
+  e.preventDefault();
+  e.stopPropagation();
+  
+  const btn = e.currentTarget;  // ✅ Add this line
+  const productCard = btn.closest('.product-card');
+  const productId = productCard.dataset.productId;
+  const product = productsDatabase[productId];
+  
+  if (product) {
+    const cartBadge = document.getElementById('cartCount');
+    let cartCount = parseInt(cartBadge?.textContent || '0');
+    cartCount++;
+    if (cartBadge) cartBadge.textContent = cartCount;
+    
+    const toast = document.getElementById('toast');
+    if (toast) {
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2500);
+    }
+    
+    const cartIcon = document.querySelector('.icon-btn[title="Cart"]');
+    if (cartIcon) {
+      cartIcon.classList.add('cart-catch');
+      setTimeout(() => cartIcon.classList.remove('cart-catch'), 350);
+    }
+    
+    if (cartBadge) {
+      cartBadge.classList.add('badge-bounce');
+      setTimeout(() => cartBadge.classList.remove('badge-bounce'), 280);
+    }
+  }
+}
+
+// Call this after rendering
+attachHomepageCartEvents();
+
 // ── SIDEBAR TOGGLE ──
 const hamburgerBtn = document.getElementById('hamburgerBtn');
 const sidebar = document.getElementById('sidebar');
@@ -2329,28 +3702,56 @@ document.querySelectorAll('.nav-item-header[data-no-dropdown]').forEach(header =
 
 
 // ── PRODUCT SLIDERS ──
+
 function makeSlider(trackId, prevId, nextId) {
   const track = document.getElementById(trackId);
+  if (!track) return;
+  
   let idx = 0;
+  
   function getVisible() {
     if (window.innerWidth >= 1200) return 4;
     if (window.innerWidth >= 900) return 3;
     return 2;
   }
+  
   function slide(dir) {
     const cards = track.children;
+    if (!cards.length) return;
     const vis = getVisible();
     const max = Math.max(0, cards.length - vis);
     idx = Math.max(0, Math.min(idx + dir, max));
-    const cardW = track.parentElement.offsetWidth / vis;
-    track.style.transform = `translateX(-${idx * cardW}px)`;
+    const cardWidth = track.children[0]?.offsetWidth || 0;
+    const gap = 18; // gap between cards
+    track.style.transform = `translateX(-${idx * (cardWidth + gap)}px)`;
   }
-  document.getElementById(prevId).addEventListener('click', () => slide(-1));
-  document.getElementById(nextId).addEventListener('click', () => slide(1));
-  window.addEventListener('resize', () => { idx = 0; track.style.transform = 'translateX(0)'; });
+  
+  const prevBtn = document.getElementById(prevId);
+  const nextBtn = document.getElementById(nextId);
+  
+  if (prevBtn) {
+    prevBtn.removeEventListener('click', () => slide(-1));
+    prevBtn.addEventListener('click', () => slide(-1));
+  }
+  if (nextBtn) {
+    nextBtn.removeEventListener('click', () => slide(1));
+    nextBtn.addEventListener('click', () => slide(1));
+  }
+  
+  window.addEventListener('resize', () => { 
+    idx = 0; 
+    track.style.transform = 'translateX(0)'; 
+  });
 }
-makeSlider('featTrack', 'featPrev', 'featNext');
-makeSlider('newTrack', 'newPrev', 'newNext');
+
+// Re-initialize sliders after products load
+function initSliders() {
+  makeSlider('featTrack', 'featPrev', 'featNext');
+  makeSlider('newTrack', 'newPrev', 'newNext');
+}
+
+// Call this after rendering products
+initSliders();
 
 // ── 3D DROP INTO CART ANIMATION ──
 let cartCount = 0;
@@ -2749,7 +4150,7 @@ function getStarRatingHTML(rating) {
 function loadProductDetail(productId) {
   const product = productsDatabase[productId];
   if (!product) return;
-  
+  window.currentProductGallery = product.gallery || [product.image];
   // Update URL
   const newUrl = window.location.pathname + `?id=${productId}`;
   window.history.pushState({ productId: productId }, product.name, newUrl);
@@ -2758,106 +4159,122 @@ function loadProductDetail(productId) {
   if (!mainContainer) return;
   
   // Generate product detail HTML (NO BREADCRUMB)
-  mainContainer.innerHTML = `
-    <div class="product-detail">
-      <div class="gallery">
-        <div class="main-img-wrap">
-          <img id="mainImg" src="${product.image}" alt="${product.name}"/>
+ mainContainer.innerHTML = `
+  <div class="product-detail">
+    <!-- LEFT COLUMN: Gallery with Carousel -->
+    <div class="gallery">
+      <div class="main-carousel">
+        <button class="carousel-arrow prev" id="carouselPrev"><i class="fa-solid fa-chevron-left"></i></button>
+        <div class="main-img-wrap" id="mainImgWrap">
+          <img id="mainImg" src="${product.gallery[0] || product.image}" alt="${product.name}"/>
         </div>
-        <div class="thumbs">
-          <div class="thumb active" data-src="${product.image}">
-            <img src="${product.image}?w=300&q=70" alt="Thumb"/>
-          </div>
-        </div>
-      </div>
-
-      <div class="product-info">
-        <h1>${product.name}</h1>
-        <div class="rating-row">
-          <div class="stars">${getStarRatingHTML(4.8)}</div>
-          <span class="rating-count">4.8 (124 reviews)</span>
-        </div>
-        <p class="price">${product.price}</p>
-        <p class="product-desc">${product.description || 'High-quality product from IT Hardware.'}</p>
-
-        <div class="option-group">
-          <p class="option-label">Memory (RAM)</p>
-          <div class="option-btns">
-            <button class="opt-btn active" data-group="ram">32GB</button>
-            <button class="opt-btn" data-group="ram">64GB</button>
-          </div>
-        </div>
-
-        <div class="buy-row">
-          <div class="qty-ctrl">
-            <button class="qty-btn" id="qtyDec"><i class="fa-solid fa-minus"></i></button>
-            <span class="qty-val" id="qtyVal">1</span>
-            <button class="qty-btn" id="qtyInc"><i class="fa-solid fa-plus"></i></button>
-          </div>
-          <button class="btn-cart" id="addCartBtnDetail">
-            <i class="fa-solid fa-cart-shopping"></i> Add to Cart
-          </button>
-        </div>
-        <p class="ships-note"><i class="fa-solid fa-truck"></i> Ships in 48 hours</p>
+        <button class="carousel-arrow next" id="carouselNext"><i class="fa-solid fa-chevron-right"></i></button>
       </div>
     </div>
 
-    <div class="tabs-section">
-      <div class="tabs-nav">
-        <button class="tab-btn active" data-tab="overview">Overview</button>
-        <button class="tab-btn" data-tab="specs">Technical Specifications</button>
-        <button class="tab-btn" data-tab="reviews">Reviews</button>
+    <!-- RIGHT COLUMN: Product Info -->
+    <div class="product-info">
+      <h1>${product.name}</h1>
+      <div class="rating-row">
+        <div class="stars">${getStarRatingHTML(product.rating || 4.5)}</div>
+        <span class="rating-count">${product.rating || 4.5} (${product.reviews || 0} reviews)</span>
       </div>
+      <p class="price" id="productPrice">${product.price}</p>
+      ${product.oldPrice ? `<p style="text-decoration: line-through; color: var(--mid); margin-top: -15px;">${product.oldPrice}</p>` : ''}
+      <p class="product-desc">${product.description || 'High-quality product from IT Hardware.'}</p>
 
-      <div class="tab-panel active" id="tab-overview">
-        <div class="overview-grid">
-          <div class="overview-text">
-            <h2>Product Overview</h2>
-            <p>${product.description || 'Premium quality product with excellent performance.'}</p>
-          </div>
-          <div class="overview-img">
-            <img src="${product.image}" alt="${product.name}"/>
-          </div>
+      <!-- Storage Option -->
+      <div class="option-group">
+        <p class="option-label">Storage</p>
+        <div class="option-btns" id="storageOptions">
+          <button class="opt-btn active" data-storage="${product.storage}" data-price="0">${product.storage}</button>
         </div>
       </div>
 
-      <div class="tab-panel" id="tab-specs">
-        <table class="specs-table">
-          <tr><td>Product Name</td><td>${product.name}</td></tr>
-          <tr><td>SKU</td><td>${product.sku || 'N/A'}</td></tr>
-          <tr><td>Price</td><td>${product.price}</td></tr>
-        </table>
+      <div class="buy-row">
+        <div class="qty-ctrl">
+          <button class="qty-btn" id="qtyDec"><i class="fa-solid fa-minus"></i></button>
+          <span class="qty-val" id="qtyVal">1</span>
+          <button class="qty-btn" id="qtyInc"><i class="fa-solid fa-plus"></i></button>
+        </div>
+        <button class="btn-cart" id="addCartBtnDetail">
+          <i class="fa-solid fa-cart-shopping"></i> Add to Cart
+        </button>
       </div>
+      <p class="ships-note"><i class="fa-solid fa-truck"></i> Ships in 48 hours</p>
+    </div>
+  </div>
 
-      <div class="tab-panel" id="tab-reviews">
-        <div class="reviews-grid">
-          <p>No reviews yet. Be the first to review!</p>
+  <!-- TABS SECTION - This is OUTSIDE product-detail, full width -->
+  <div class="tabs-section">
+    <div class="tabs-nav">
+      <button class="tab-btn active" data-tab="overview">Overview</button>
+      <button class="tab-btn" data-tab="specs">Technical Specifications</button>
+      <button class="tab-btn" data-tab="reviews">Reviews</button>
+    </div>
+
+    <div class="tab-panel active" id="tab-overview">
+      <div class="overview-grid">
+        <div class="overview-text">
+          <h2>Product Overview</h2>
+          <p>${product.fullDescription || product.description || 'Premium quality product with excellent performance.'}</p>
+          <div class="feature-list">
+            ${(product.features || []).map(f => `<div class="feature-item"><i class="fa-solid fa-circle-check"></i> ${f}</div>`).join('')}
+          </div>
         </div>
       </div>
     </div>
-  `;
+
+    <div class="tab-panel" id="tab-specs">
+      <table class="specs-table">
+        <tr><td>Product Name</td><td>${product.name}</td></tr>
+        <tr><td>SKU</td><td>${product.sku || 'N/A'}</td></tr>
+        <tr><td>Price</td><td>${product.price}</td></tr>
+        <tr><td>Processor</td><td>${product.processor || 'N/A'}</td></tr>
+        <tr><td>RAM</td><td>${product.ram || 'N/A'}</td></tr>
+        <tr><td>Storage</td><td>${product.storage || 'N/A'}</td></tr>
+        <tr><td>Display</td><td>${product.display || 'N/A'}</td></tr>
+        <tr><td>Graphics</td><td>${product.gpu || 'N/A'}</td></tr>
+        <tr><td>Operating System</td><td>${product.os || 'N/A'}</td></tr>
+        <tr><td>Weight</td><td>${product.weight || 'N/A'}</td></tr>
+        <tr><td>Warranty</td><td>${product.warranty || 'N/A'}</td></tr>
+      </table>
+    </div>
+
+    <div class="tab-panel" id="tab-reviews">
+      <div class="reviews-grid">
+        <p>No reviews yet. Be the first to review!</p>
+      </div>
+    </div>
+  </div>
+`;
   
   attachDetailEvents();
   window.scrollTo(0, 0);
 }
 
 function attachDetailEvents() {
-  // Quantity
+  // Quantity buttons
   let qty = 1;
   const qtyVal = document.getElementById('qtyVal');
-  document.getElementById('qtyInc')?.addEventListener('click', () => { qty = Math.min(qty + 1, 99); qtyVal.textContent = qty; });
-  document.getElementById('qtyDec')?.addEventListener('click', () => { qty = Math.max(qty - 1, 1); qtyVal.textContent = qty; });
+  const qtyInc = document.getElementById('qtyInc');
+  const qtyDec = document.getElementById('qtyDec');
   
-  // Options
-  document.querySelectorAll('.opt-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const group = btn.dataset.group;
-      document.querySelectorAll(`.opt-btn[data-group="${group}"]`).forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
+  if (qtyInc) {
+    qtyInc.addEventListener('click', () => { 
+      qty = Math.min(qty + 1, 99); 
+      if (qtyVal) qtyVal.textContent = qty; 
     });
-  });
+  }
   
-  // Tabs
+  if (qtyDec) {
+    qtyDec.addEventListener('click', () => { 
+      qty = Math.max(qty - 1, 1); 
+      if (qtyVal) qtyVal.textContent = qty; 
+    });
+  }
+  
+  // Tab buttons
   document.querySelectorAll('.tab-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
@@ -2867,10 +4284,127 @@ function attachDetailEvents() {
     });
   });
   
-  // Add to Cart
-  document.getElementById('addCartBtnDetail')?.addEventListener('click', () => {
-    alert('Product added to cart!');
+  // STORAGE OPTION CLICK HANDLER
+  const storageBtns = document.querySelectorAll('#storageOptions .opt-btn');
+  const priceElement = document.getElementById('productPrice');
+  const originalPrice = priceElement ? priceElement.textContent : '$0';
+  
+  storageBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      // Remove active class from all storage buttons
+      storageBtns.forEach(b => b.classList.remove('active'));
+      // Add active class to clicked button
+      btn.classList.add('active');
+      
+      // Get price adjustment from data attribute
+      const priceAdjust = parseInt(btn.dataset.price) || 0;
+      const basePrice = parseFloat(originalPrice.replace('$', '').replace(',', ''));
+      const newPrice = basePrice + priceAdjust;
+      
+      // Update price display
+      if (priceElement) {
+        priceElement.textContent = '$' + newPrice.toFixed(2);
+      }
+      
+      // Show toast notification
+      const toast = document.getElementById('toast');
+      const toastMsg = document.getElementById('toastMsg');
+      if (toast && toastMsg) {
+        toastMsg.textContent = `Storage changed to: ${btn.dataset.storage}`;
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 1500);
+      }
+    });
   });
+  
+  // ADD TO CART BUTTON
+  const addToCartBtn = document.getElementById('addCartBtnDetail');
+  if (addToCartBtn) {
+    addToCartBtn.addEventListener('click', function() {
+      const productName = document.querySelector('.product-info h1')?.textContent || 'Product';
+      const selectedStorage = document.querySelector('#storageOptions .opt-btn.active')?.dataset.storage || 'Standard';
+      const finalPrice = document.getElementById('productPrice')?.textContent || '$0';
+      const quantity = parseInt(document.getElementById('qtyVal')?.textContent || '1');
+      
+      // Get cart badge
+      const cartBadge = document.getElementById('cartCount');
+      let cartCount = parseInt(cartBadge?.textContent || '0');
+      cartCount = cartCount + quantity;
+      if (cartBadge) cartBadge.textContent = cartCount;
+      
+      // Save to localStorage
+      const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+      cart.push({
+        name: productName,
+        storage: selectedStorage,
+        price: finalPrice,
+        quantity: quantity,
+        date: new Date().toISOString()
+      });
+      localStorage.setItem('cart', JSON.stringify(cart));
+      
+      // Show toast notification
+      const toast = document.getElementById('toast');
+      const toastMsg = document.getElementById('toastMsg');
+      if (toast && toastMsg) {
+        toastMsg.textContent = `${quantity}x ${productName} (${selectedStorage}) added to cart!`;
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 2600);
+      }
+      
+      // Cart icon bounce animation
+      const cartIcon = document.querySelector('.icon-btn[title="Cart"]');
+      if (cartIcon) {
+        cartIcon.classList.add('cart-catch');
+        setTimeout(() => cartIcon.classList.remove('cart-catch'), 350);
+      }
+      
+      // Badge bounce
+      if (cartBadge) {
+        cartBadge.classList.add('badge-bounce');
+        setTimeout(() => cartBadge.classList.remove('badge-bounce'), 280);
+      }
+    });
+  }
+  
+  // CAROUSEL FUNCTIONALITY
+  let currentIndex = 0;
+  const galleryImages = window.currentProductGallery || [];
+  const mainImg = document.getElementById('mainImg');
+  const prevBtn = document.getElementById('carouselPrev');
+  const nextBtn = document.getElementById('carouselNext');
+  
+  function updateCarouselImage(index) {
+    if (!galleryImages.length || !mainImg) return;
+    if (galleryImages[index]) {
+      mainImg.src = galleryImages[index];
+      currentIndex = index;
+    }
+  }
+  
+  if (prevBtn) {
+    const newPrev = prevBtn.cloneNode(true);
+    prevBtn.parentNode.replaceChild(newPrev, prevBtn);
+    newPrev.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (galleryImages.length) {
+        const newIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
+        updateCarouselImage(newIndex);
+      }
+    });
+  }
+  
+  if (nextBtn) {
+    const newNext = nextBtn.cloneNode(true);
+    nextBtn.parentNode.replaceChild(newNext, nextBtn);
+    newNext.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (galleryImages.length) {
+        const newIndex = (currentIndex + 1) % galleryImages.length;
+        updateCarouselImage(newIndex);
+      }
+    });
+  }
 }
 
 // Handle product card clicks
